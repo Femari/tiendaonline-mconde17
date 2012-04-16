@@ -3,17 +3,17 @@ package Model;
 public class Sale {
 
     private int saleID;
-    private User client;
-    private ShoppingCart cart;
-    private String paymentMethod;
-    private String date;
+    private User saleClient;
+    private ShoppingCart saleCart;
+    private String salePaymentMethod;
+    private String saleDate;
 
-    public Sale(int id, User clientSale, ShoppingCart trolley, String payment, String shoppingDate) {
+    public Sale(int id, User client, ShoppingCart cart, String paymentMethod, String shoppingDate) {
         saleID = id;
-        client = clientSale;
-        cart = trolley;
-        paymentMethod = payment;
-        date = shoppingDate;
+        saleClient = client;
+        saleCart = cart;
+        salePaymentMethod = paymentMethod;
+        saleDate = shoppingDate;
     }
 
     public int getID() {
@@ -25,35 +25,35 @@ public class Sale {
     }
 
     public User getClient() {
-        return this.client;
+        return this.saleClient;
     }
 
-    public void setClient(User clientSale) {
-        this.client = clientSale;
+    public void setClient(User client) {
+        this.saleClient = client;
     }
 
     public ShoppingCart getShoppingCart() {
-        return this.cart;
+        return this.saleCart;
     }
 
-    public void setShoppingCart(ShoppingCart trolley) {
-        this.cart = trolley;
+    public void setShoppingCart(ShoppingCart cart) {
+        this.saleCart = cart;
     }
 
     public String getPaymentMethod() {
-        return this.paymentMethod;
+        return this.salePaymentMethod;
     }
 
-    public void setPaymentMethod(String payment) {
-        this.paymentMethod = payment;
+    public void setPaymentMethod(String paymentMethod) {
+        this.salePaymentMethod = paymentMethod;
     }
 
     public String getDate() {
-        return this.date;
+        return this.saleDate;
     }
 
     public void setDate(String shoppingDate) {
-        this.date = shoppingDate;
+        this.saleDate = shoppingDate;
     }
 
     public void generateSaleInvoiceFile() {

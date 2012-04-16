@@ -2,77 +2,77 @@ package Model;
 
 public class User {
 
-    private String name;
-    private String surnames;
-    private String adress;
-    private String email;
-    private String password;
-    private boolean privileged;
+    private String userName;
+    private String userSurnames;
+    private String userAdress;
+    private String userEmail;
+    private String userPassword;
+    private boolean userPrivileged;
 
-    public User(String userName, String userSurnames, String userAdress, String userEmail, String userPassword) {
-        name = userName;
-        surnames = userSurnames;
-        adress = userAdress;
-        email = userEmail;
-        password = userPassword;
-        privileged = false;
+    public User(String name, String surnames, String adress, String email, String password) {
+        userName = name;
+        userSurnames = surnames;
+        userAdress = adress;
+        userEmail = email;
+        userPassword = password;
+        userPrivileged = false;
     }
 
-    public User(String userName, String userSurnames, String userAdress, String userEmail, String userPassword,
-            boolean userPrivileged) {
-        name = userName;
-        surnames = userSurnames;
-        adress = userAdress;
-        email = userEmail;
-        password = userPassword;
-        privileged = userPrivileged;
+    public User(String name, String surnames, String adress, String email, String password,
+            boolean privileged) {
+        userName = name;
+        userSurnames = surnames;
+        userAdress = adress;
+        userEmail = email;
+        userPassword = password;
+        userPrivileged = privileged;
     }
 
-    public void setName(String userName) {
-        this.name = userName;
+    public void setName(String name) {
+        this.userName = name;
     }
 
     public String getName() {
-        return this.name;
+        return this.userName;
     }
 
-    public void setSurnames(String userSurnames) {
-        this.surnames = userSurnames;
+    public void setSurnames(String surnames) {
+        this.userSurnames = surnames;
     }
 
     public String getSurnames() {
-        return this.surnames;
+        return this.userSurnames;
     }
 
-    public void setAdress(String userAdress) {
-        this.adress = userAdress;
+    public void setAdress(String adress) {
+        this.userAdress = adress;
     }
 
     public String getAdress() {
-        return this.adress;
+        return this.userAdress;
     }
 
-    public void setEmail(String userEmail) {
-        this.email = userEmail;
+    public void setEmail(String email) {
+        this.userEmail = email;
     }
 
     public String getEmail() {
-        return this.email;
+        return this.userEmail;
     }
 
-    public void setPassword(String userPassword) {
-        this.password = userPassword;
+    public void setPassword(String password) {
+        this.userPassword = password;
     }
 
     public String getPassword() {
-        return this.password;
+        return this.userPassword;
     }
 
-    public void setPrivileged(boolean userPrivileged) {
-        this.privileged = userPrivileged;
+    public void setPrivileged(boolean privileged) {
+        this.userPrivileged = privileged;
     }
 
     public boolean getPrivileged() {
-        return this.privileged;
+        return this.userPrivileged;
     }
 }
