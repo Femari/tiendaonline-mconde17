@@ -1,6 +1,7 @@
 package Persistence;
 
 import Model.User;
+import java.util.Map;
 
 public interface UserDAO {
 
@@ -12,4 +13,13 @@ public interface UserDAO {
 
     public boolean userAuthentication(String userName, String userPass);
 
+    public User getUser(String userEmail);
+
+    public Map<String, User> getUserMap();
+
+    public Map<String, User> getUserMap(String parameter, String condition);
+
+    public boolean connection(String user, String pass, String destiny, String driver);
+
+    public boolean disconnect();
 }

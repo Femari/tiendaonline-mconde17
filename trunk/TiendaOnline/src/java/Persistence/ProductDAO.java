@@ -1,7 +1,7 @@
 package Persistence;
 
 import Model.Product;
-import java.util.List;
+import java.util.Map;
 
 public interface ProductDAO {
 
@@ -13,8 +13,11 @@ public interface ProductDAO {
 
     public Product getProduct(String productName);
 
-    public List<Product> getProductList();
+    public Map<String, Product> getProductMap();
 
-    public List<Product> getProductList(Object parameter, String condition);
-   
+    public Map<String, Product> getProductMap(String parameter, String condition);
+
+    public boolean connect(String user, String pass, String destiny, String driver);
+
+    public boolean disconnect();
 }

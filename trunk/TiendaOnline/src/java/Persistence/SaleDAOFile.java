@@ -1,41 +1,153 @@
 package Persistence;
 
 import Model.Sale;
-import java.util.List;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SaleDAOFile implements SaleDAO {
 
-    @Override
-    public boolean newSale(Sale sale) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    private Map<String, Sale> saleMap = new HashMap<>();
+    private String saleFile;
+    private static SaleDAOFile implementationType = null;
+    private static final Logger log = Logger.getLogger(SaleDAOFile.class.getName());
 
-    @Override
-    public boolean deleteSale(Sale sale) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public boolean updateSale(Sale oldSale, Sale newSale) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Sale> getSaleList() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Sale> getSaleList(Object parameter, String condition) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Sale getSale(String saleID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public SaleDAOFile() {
     }
 
     public static SaleDAO getImplementation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (implementationType == null) {
+            implementationType = new SaleDAOFile();
+        }
+        return implementationType;
+    }
+
+    @Override
+    public synchronized boolean newSale(Sale sale) {
+        if (getSaleMap().containsKey(sale.getSaleID())) {
+            return false;
+        } else {
+            getSaleMap().put(sale.getSaleID(), sale);
+            return true;
+        }
+    }
+
+    @Override
+    public synchronized boolean deleteSale(Sale sale) {
+        if (getSaleMap().containsKey(sale.getSaleID())) {
+            getSaleMap().remove(sale.getSaleID());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public synchronized boolean updateSale(Sale oldSale, Sale newSale) {
+        if (getSaleMap().containsKey(oldSale.getSaleID())) {
+            getSaleMap().put(oldSale.getSaleID(), newSale);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public synchronized Sale getSale(String saleID) {
+        return getSaleMap().get(saleID);
+    }
+
+    @Override
+    public Map<String, Sale> getSaleMap() {
+        return saleMap;
+    }
+
+    @Override
+    public Map<String, Sale> getSaleMap(String parameter, String condition) {
+        Map<String, Sale> resultMap = new HashMap<>();
+        Iterator it = getSaleMap().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry) it.next();
+            Sale s = (Sale) e.getValue();
+            if (s.isEquals(parameter, condition)) {
+                resultMap.put(s.getSaleID(), s);
+            }
+        }
+        return resultMap;
+    }
+
+    @Override
+    public boolean connection(String user, String pass, String destiny, String driver) {
+        this.saleFile = user;
+        File f = new File(this.saleFile);
+        InputStream is = null;
+        ObjectInputStream ois = null;
+        try {
+            if (f.exists() && f.isFile()) {
+                is = new FileInputStream(f);
+                ois = new ObjectInputStream(is);
+                int numberOfSales = (Integer) ois.readObject();
+                for (int i = 0; i < numberOfSales; i++) {
+                    Sale s = (Sale) ois.readObject();
+                    getSaleMap().put(s.getSaleID(), s);
+                }
+            } else {
+                f.createNewFile();
+            }
+        } catch (ClassNotFoundException | IOException ex) {
+            log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);
+            return false;
+        } finally {
+            try {
+                ois.close();
+            } catch (IOException ex2) {
+                log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
+            }
+            try {
+                is.close();
+            } catch (IOException ex3) {
+                log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean disconnect() {
+        File f = new File(this.saleFile);
+        OutputStream os = null;
+        ObjectOutputStream oos = null;
+        try {
+            if (f.exists() && f.isFile()) {
+                os = new FileOutputStream(f);
+                oos = new ObjectOutputStream(os);
+                int mapSize = getSaleMap().size();
+                oos.writeObject(mapSize);
+                Iterator it = getSaleMap().entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry e = (Map.Entry) it.next();
+                    Sale s = (Sale) e.getValue();
+                    oos.writeObject(s);
+                }
+            }
+        } catch (IOException ex) {
+            log.log(Level.WARNING, "No se pudo realizar la Desconexión de forma correcta", ex);
+            return false;
+        } finally {
+            try {
+                oos.close();
+            } catch (IOException ex2) {
+                log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
+            }
+            try {
+                os.close();
+            } catch (IOException ex3) {
+                log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);
+            }
+        }
+        return true;
     }
 }
