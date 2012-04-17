@@ -28,51 +28,95 @@ public class User {
         userPrivileged = privileged;
     }
 
-    public void setName(String name) {
+    public void setUserName(String name) {
         this.userName = name;
     }
 
-    public String getName() {
+    public String getUserName() {
         return this.userName;
     }
 
-    public void setSurnames(String surnames) {
+    public void setUserSurnames(String surnames) {
         this.userSurnames = surnames;
     }
 
-    public String getSurnames() {
+    public String getUserSurnames() {
         return this.userSurnames;
     }
 
-    public void setAdress(String adress) {
+    public void setUserAdress(String adress) {
         this.userAdress = adress;
     }
 
-    public String getAdress() {
+    public String getUserAdress() {
         return this.userAdress;
     }
 
-    public void setEmail(String email) {
+    public void setUserEmail(String email) {
         this.userEmail = email;
     }
 
-    public String getEmail() {
+    public String getUserEmail() {
         return this.userEmail;
     }
 
-    public void setPassword(String password) {
+    public void setUserPassword(String password) {
         this.userPassword = password;
     }
 
-    public String getPassword() {
+    public String getUserPassword() {
         return this.userPassword;
     }
 
-    public void setPrivileged(boolean privileged) {
+    public void setUserPrivileged(boolean privileged) {
         this.userPrivileged = privileged;
     }
 
-    public boolean getPrivileged() {
+    public boolean getUserPrivileged() {
         return this.userPrivileged;
+    }
+
+    public boolean isEquals(String parameter, String condition) {
+        boolean equals = false;
+        switch (parameter) {
+            case "userName":
+                if (this.userName.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "userSurnames":
+                if (this.userSurnames.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "userAdress":
+                if (this.userAdress.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "userEmail":
+                if (this.userEmail.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "userPassword":
+                if (this.userPassword.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "userPrivileged":
+                boolean privileged = false;
+                if (condition.equals("true")) {
+                    privileged = true;
+                }
+                if (this.userPrivileged == privileged) {
+                    equals = true;
+                }
+                break;
+            default:
+                equals = false;
+                break;
+        }
+        return equals;
     }
 }

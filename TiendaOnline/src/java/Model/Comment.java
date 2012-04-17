@@ -1,59 +1,93 @@
 package Model;
 
 public class Comment {
-    
+
     private String commentID;
     private String commentDate;
-    private Product commentProduct;
-    private User commentUser;
+    private String commentProductID;
+    private String commentUserEmail;
     private String commentContent;
-    
-    public Comment(String id, String date, Product product, User user, String comment){
+
+    public Comment(String id, String date, String productID, String userEmail, String comment) {
         commentID = id;
         commentDate = date;
-        commentProduct = product;
-        commentUser = user;
+        commentProductID = productID;
+        commentUserEmail = userEmail;
         commentContent = comment;
     }
-    
-    public void setCommentID(String id){
+
+    public void setCommentID(String id) {
         this.commentID = id;
     }
-    
-    public String getCommentID(){
+
+    public String getCommentID() {
         return this.commentID;
     }
-    
-    public void setCommentDate(String date){
+
+    public void setCommentDate(String date) {
         this.commentDate = date;
     }
-    
-    public String getCommentDate(){
+
+    public String getCommentDate() {
         return this.commentDate;
     }
-    
-    public void setCommentProduct(Product product){
-        this.commentProduct = product;
+
+    public void setCommentProductID(String productID) {
+        this.commentProductID = productID;
     }
-    
-    public Product getCommentProduct(){
-        return this.commentProduct;
+
+    public String getCommentProductID() {
+        return this.commentProductID;
     }
-    
-    public void setCommentUser(User user){
-        this.commentUser = user;
+
+    public void setCommentUserEmail(String userEmail) {
+        this.commentUserEmail = userEmail;
     }
-    
-    public User getCommentUser(){
-        return this.commentUser;
+
+    public String getCommentUserEmail() {
+        return this.commentUserEmail;
     }
-    
-    public void setCommentContent(String comment){
+
+    public void setCommentContent(String comment) {
         this.commentContent = comment;
     }
-    
-    public String getCommentContent(){
+
+    public String getCommentContent() {
         return this.commentContent;
     }
-    
+
+    public boolean isEquals(String parameter, String condition) {
+        boolean equals = false;
+        switch (parameter) {
+            case "commentID":
+                if (this.commentID.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "commentDate":
+                if (this.commentDate.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "commentProductID":
+                if (this.commentProductID.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "commentUserEmail":
+                if (this.commentUserEmail.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "commentContent":
+                if (this.commentContent.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            default:
+                equals = false;
+                break;
+        }
+        return equals;
+    }
 }

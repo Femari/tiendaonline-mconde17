@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 13-feb-2012, 11:46:02
-    Author     : Reiser
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

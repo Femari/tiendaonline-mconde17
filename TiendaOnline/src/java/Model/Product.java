@@ -17,43 +17,78 @@ public class Product {
         productStock = stock;
     }
 
-    public void setNameID(String nameID) {
+    public void setProductID(String nameID) {
         this.productID = nameID;
     }
 
-    public String getNameID() {
+    public String getProductID() {
         return this.productID;
     }
 
-    public void setPrice(float price) {
+    public void setProductPrice(float price) {
         this.productPrice = price;
     }
 
-    public float getPrice() {
+    public float getProductPrice() {
         return this.productPrice;
     }
 
-    public void setShortDescription(String shortDescription) {
+    public void setProductShortDescription(String shortDescription) {
         this.productShortDescription = shortDescription;
     }
 
-    public String getShortDescription() {
+    public String getProductShortDescription() {
         return this.productShortDescription;
     }
 
-    public void setLongDescription(String longDescription) {
+    public void setProductLongDescription(String longDescription) {
         this.productLongDescription = longDescription;
     }
 
-    public String getLongDescription() {
+    public String getProductLongDescription() {
         return this.productLongDescription;
     }
 
-    public void setStock(int stock) {
+    public void setProductStock(int stock) {
         this.productStock = stock;
     }
 
-    public int getStock() {
+    public int getProductStock() {
         return this.productStock;
+    }
+
+    public boolean isEquals(String parameter, String condition) {
+        boolean equals = false;
+        switch (parameter) {
+            case "productID":
+                if (this.productID.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "productPrice":
+                if (this.productPrice == Float.parseFloat(condition)) {
+                    equals = true;
+                }
+                break;
+            case "productShortDescription":
+                if (this.productShortDescription.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "productLongDescription":
+                if (this.productLongDescription.equals(condition)) {
+                    equals = true;
+                }
+                break;
+            case "producStock":
+                if (this.productStock == Integer.parseInt(condition)) {
+                    equals = true;
+                }
+                break;
+            default:
+                equals = false;
+                break;
+        }
+        return equals;
     }
 }

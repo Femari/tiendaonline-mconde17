@@ -33,7 +33,7 @@ public class ShoppingCart {
         Iterator it = shoppingCart.iterator();
         while (it.hasNext()) {
             p = (Product) it.next();
-            total = total + p.getPrice();
+            total = total + p.getProductPrice();
         }
         return total;
     }
