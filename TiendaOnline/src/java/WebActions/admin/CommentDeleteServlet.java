@@ -1,5 +1,5 @@
 package WebActions.admin;
 
-public class DeleteProductServlet {
+public class CommentDeleteServlet {
     
 }

@@ -1,5 +1,5 @@
 package WebActions.admin;
 
-public class EditProductServlet {
+public class UserSearchServlet {
     
 }
