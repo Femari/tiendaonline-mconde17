@@ -110,8 +110,50 @@ public class UserDAOJDBC implements UserDAO {
     }
 
     @Override
-    public boolean userAuthentication(String userName, String userPass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String userAuthentication(String userEmail, String userPass) {
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        User u;
+        String response = null;
+        if (userEmail != null && userPass != null) {
+            try {
+                String query = "SELECT * FROM \"USERS\" WHERE userEmail = ?";
+                synchronized (lock) {
+                    statement = connection.prepareStatement(query);
+                }
+                statement.setString(1, userEmail);
+                result = statement.executeQuery();
+                if (result.next()) {
+                    u = new User(result.getString("userName"), result.getString("userSurnames"),
+                            result.getString("userAdress"), result.getString("userEmail"),
+                            result.getString("userPassword"), result.getBoolean("userPrivileged"));
+                    if (u.getUserPrivileged()) {
+                        response = "true";
+                    } else {
+                        response = "false";
+                    }
+                }
+            } catch (SQLException ex) {
+                log.log(Level.WARNING, "Fallo al realizar SELECT contra la Base de Datos", ex);
+                response = null;
+            } finally {
+                if (result != null) {
+                    try {
+                        result.close();
+                    } catch (SQLException ex2) {
+                        log.log(Level.INFO, "No se pudo cerrar el ResultSet del SELECT", ex2);
+                    }
+                }
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    } catch (SQLException ex3) {
+                        log.log(Level.INFO, "No se pudo cerrar el Statemet del SELECT", ex3);
+                    }
+                }
+            }
+        }
+        return response;
     }
 
     @Override

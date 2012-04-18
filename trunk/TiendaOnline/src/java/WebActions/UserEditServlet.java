@@ -1,5 +1,5 @@
 package WebActions;
 
-public class EditUserServlet {
+public class UserEditServlet {
     
 }

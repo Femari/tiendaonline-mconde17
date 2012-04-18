@@ -1,5 +1,5 @@
 package WebActions.admin;
 
-public class DeleteUserServlet {
+public class ProductCreateServlet {
     
 }

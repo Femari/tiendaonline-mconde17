@@ -56,8 +56,21 @@ public class UserDAOFile implements UserDAO {
     }
 
     @Override
-    public boolean userAuthentication(String userName, String userPass) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String userAuthentication(String userEmail, String userPass) {
+        String response;
+        if (userEmail != null && userPass != null) {
+            User u = getUserMap().get(userEmail);
+            if (u == null) {
+                response = null;
+            } else if (u.getUserPrivileged()) {
+                response = "true";
+            } else {
+                response = "false";
+            }
+        } else {
+            response = null;
+        }
+        return response;
     }
 
     @Override
