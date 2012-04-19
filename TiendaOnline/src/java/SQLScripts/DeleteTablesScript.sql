@@ -13,12 +13,12 @@ alter table SHOPPINGCARTS
 alter table SHOPPINGCARTS
    drop constraint FK_SALE_SHOPPINGCART;
 
-drop table if exists COMMENTS;
+drop table COMMENTS;
 
-drop table if exists PRODUCTS;
+drop table PRODUCTS;
 
-drop table if exists SALES;
+drop table SALES;
 
-drop table if exists SHOPPINGCARTS;
+drop table SHOPPINGCARTS;
 
-drop table if exists USERS;
+drop table USERS;
