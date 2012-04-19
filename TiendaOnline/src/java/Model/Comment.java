@@ -69,12 +69,12 @@ public class Comment {
                     equals = true;
                 }
                 break;
-            case "commentProductID":
+            case "productID":
                 if (this.commentProductID.equals(condition)) {
                     equals = true;
                 }
                 break;
-            case "commentUserEmail":
+            case "userEmail":
                 if (this.commentUserEmail.equals(condition)) {
                     equals = true;
                 }

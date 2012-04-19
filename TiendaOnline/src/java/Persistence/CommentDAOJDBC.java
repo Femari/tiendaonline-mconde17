@@ -81,7 +81,7 @@ public class CommentDAOJDBC implements CommentDAO {
         PreparedStatement statement = null;
         try {
             String query = "UPDATE \"COMMENTS\" SET commentID = ?, commentDate = ?, "
-                    + "commentProductID = ?, commentUserMail = ?, commentContent = ?"
+                    + "productID = ?, userEmail = ?, commentContent = ?"
                     + "WHERE commentID = ?";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
@@ -121,7 +121,7 @@ public class CommentDAOJDBC implements CommentDAO {
             result = statement.executeQuery();
             if (result.next()) {
                 c = new Comment(result.getString("commentID"), result.getString("commentDate"),
-                        result.getString("commentProductID"), result.getString("commentUserMail"),
+                        result.getString("productID"), result.getString("userEmail"),
                         result.getString("commentContent"));
             }
         } catch (SQLException ex) {
@@ -160,7 +160,7 @@ public class CommentDAOJDBC implements CommentDAO {
             result = statement.executeQuery();
             while (result.next()) {
                 c = new Comment(result.getString("commentID"), result.getString("commentDate"),
-                        result.getString("commentProductID"), result.getString("commentUserMail"),
+                        result.getString("productID"), result.getString("userEmail"),
                         result.getString("commentContent"));
                 map.put(c.getCommentID(), c);
             }
@@ -203,7 +203,7 @@ public class CommentDAOJDBC implements CommentDAO {
             result = statement.executeQuery();
             while (result.next()) {
                 c = new Comment(result.getString("commentID"), result.getString("commentDate"),
-                        result.getString("commentProductID"), result.getString("commentUserMail"),
+                        result.getString("productID"), result.getString("userEmail"),
                         result.getString("commentContent"));
                 map.put(c.getCommentID(), c);
             }

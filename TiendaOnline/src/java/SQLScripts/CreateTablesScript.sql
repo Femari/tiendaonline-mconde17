@@ -21,7 +21,7 @@ create table PRODUCTS
    PRODUCTSHORTDESCRIPTION varchar(60) not null,
    PRODUCTLONGDESCRIPTION varchar(600) not null,
    PRODUCTSTOCK         int not null,
-   PRODUCTIMAGE         blob not null,
+   PRODUCTIMAGE         blob,
    primary key (PRODUCTID)
 );
 
@@ -43,8 +43,7 @@ create table SALES
 create table SHOPPINGCARTS
 (
    PRODUCTID            varchar(30) not null,
-   SALEID               varchar(30) not null,
-   PRODUCTAMOUNT        int not null
+   SALEID               varchar(30) not null 
 );
 
 /*==============================================================*/

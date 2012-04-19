@@ -28,7 +28,7 @@ public class ProductDAOJDBC implements ProductDAO {
     public boolean newProduct(Product product) {
         PreparedStatement statement = null;
         try {
-            String query = "INSERT INTO \"PRODUCTS\" VALUES(?,?,?,?,?)";
+            String query = "INSERT INTO \"PRODUCTS\" VALUES(?,?,?,?,?,?)";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
             }
@@ -37,6 +37,7 @@ public class ProductDAOJDBC implements ProductDAO {
             statement.setString(3, product.getProductShortDescription());
             statement.setString(4, product.getProductLongDescription());
             statement.setInt(5, product.getProductStock());
+            statement.setBlob(6, product.getProductImage());
             return statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar INSERT contra la Base de Datos", ex);
@@ -81,8 +82,8 @@ public class ProductDAOJDBC implements ProductDAO {
         PreparedStatement statement = null;
         try {
             String query = "UPDATE \"PRODUCTS\" SET productID = ?, productPrice = ?, "
-                    + "productShortDescription = ?, productLongDescription = ?, productStock = ?"
-                    + "WHERE productID = ?";
+                    + "productShortDescription = ?, productLongDescription = ?, productStock = ?, "
+                    + "productImage = ? WHERE productID = ?";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
             }
@@ -91,7 +92,8 @@ public class ProductDAOJDBC implements ProductDAO {
             statement.setString(3, newProduct.getProductShortDescription());
             statement.setString(4, newProduct.getProductLongDescription());
             statement.setInt(5, newProduct.getProductStock());
-            statement.setString(6, oldProduct.getProductID());
+            statement.setBlob(6, newProduct.getProductImage());
+            statement.setString(7, oldProduct.getProductID());
             return statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar UPDATE contra la Base de Datos", ex);
@@ -122,7 +124,7 @@ public class ProductDAOJDBC implements ProductDAO {
             if (result.next()) {
                 p = new Product(result.getString("productID"), result.getFloat("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
-                        result.getInt("productStock"));
+                        result.getInt("productStock"), result.getBlob("productImage"));
             }
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar SELECT contra la Base de Datos", ex);
@@ -161,7 +163,7 @@ public class ProductDAOJDBC implements ProductDAO {
             while (result.next()) {
                 p = new Product(result.getString("productID"), result.getFloat("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
-                        result.getInt("productStock"));
+                        result.getInt("productStock"), result.getBlob("productImage"));
                 map.put(p.getProductID(), p);
             }
         } catch (SQLException ex) {
@@ -204,7 +206,7 @@ public class ProductDAOJDBC implements ProductDAO {
             while (result.next()) {
                 p = new Product(result.getString("productID"), result.getFloat("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
-                        result.getInt("productStock"));
+                        result.getInt("productStock"), result.getBlob("productImage"));
                 map.put(p.getProductID(), p);
             }
         } catch (SQLException ex) {
