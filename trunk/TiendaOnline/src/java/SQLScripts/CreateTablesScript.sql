@@ -21,7 +21,7 @@ create table PRODUCTS
    PRODUCTSHORTDESCRIPTION varchar(60) not null,
    PRODUCTLONGDESCRIPTION varchar(600) not null,
    PRODUCTSTOCK         int not null,
-   PRODUCTIMAGE         longblob not null,
+   PRODUCTIMAGE         blob not null,
    primary key (PRODUCTID)
 );
 
@@ -57,7 +57,7 @@ create table USERS
    USERADRESS           varchar(240) not null,
    USEREMAIL            varchar(60) not null,
    USERPASSWORD         varchar(30) not null,
-   USERPRIVILEGED       bool not null,
+   USERPRIVILEGED       char not null,
    primary key (USEREMAIL)
 );
 
