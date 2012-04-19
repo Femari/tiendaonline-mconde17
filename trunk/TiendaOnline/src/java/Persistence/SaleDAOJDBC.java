@@ -1,10 +1,12 @@
 package Persistence;
 
+import Model.Product;
 import Model.Sale;
 import Model.ShoppingCart;
 import Model.User;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,18 +30,19 @@ public class SaleDAOJDBC implements SaleDAO {
 
     @Override
     public boolean newSale(Sale sale) {
+        boolean statementResult = false;
+        boolean addShoppingCartResult;
         PreparedStatement statement = null;
         try {
-            String query = "INSERT INTO \"SALES\" VALUES(?,?,?,?,?)";
+            String query = "INSERT INTO \"SALES\" VALUES(?,?,?,?)";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
             }
             statement.setString(1, sale.getSaleID());
-            statement.setObject(2, sale.getSaleClient());
-            statement.setObject(3, sale.getSaleShoppingCart());
-            statement.setString(4, sale.getSalePaymentMethod());
-            statement.setString(5, sale.getSaleDate());
-            return statement.execute();
+            statement.setString(2, sale.getSaleClient().getUserEmail());
+            statement.setString(3, sale.getSalePaymentMethod());
+            statement.setString(4, sale.getSaleDate());
+            statementResult = statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar INSERT contra la Base de Datos", ex);
             return false;
@@ -52,10 +55,17 @@ public class SaleDAOJDBC implements SaleDAO {
                 }
             }
         }
+        addShoppingCartResult = addShoppingCart(sale.getSaleID(), sale.getSaleShoppingCart());
+        if (statementResult && addShoppingCartResult) {
+            statementResult = true;
+        }
+        return statementResult;
     }
 
     @Override
     public boolean deleteSale(Sale sale) {
+        boolean statementResult = false;
+        boolean deleteShoppingCartResult;
         PreparedStatement statement = null;
         try {
             String query = "DELETE FROM \"SALES\" WHERE saleID = ?";
@@ -63,7 +73,7 @@ public class SaleDAOJDBC implements SaleDAO {
                 statement = connection.prepareStatement(query);
             }
             statement.setString(1, sale.getSaleID());
-            return statement.execute();
+            statementResult = statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar DELETE contra la Base de Datos", ex);
             return false;
@@ -76,11 +86,19 @@ public class SaleDAOJDBC implements SaleDAO {
                 }
             }
         }
+        deleteShoppingCartResult = deleteShoppingCart(sale.getSaleID());
+        if (statementResult && deleteShoppingCartResult) {
+            statementResult = true;
+        }
+        return statementResult;
     }
 
     @Override
     public boolean updateSale(Sale oldSale, Sale newSale) {
         PreparedStatement statement = null;
+        boolean statementResult = false;
+        boolean deleteShoppingCartResult;
+        boolean addShoppingCartResult;
         try {
             String query = "UPDATE \"SALES\" SET saleID = ?, saleClient = ?, "
                     + "saleCart = ?, salePaymentMethod = ?, saleDate = ?"
@@ -94,7 +112,7 @@ public class SaleDAOJDBC implements SaleDAO {
             statement.setString(4, newSale.getSalePaymentMethod());
             statement.setString(5, newSale.getSaleDate());
             statement.setString(6, oldSale.getSaleID());
-            return statement.execute();
+            statementResult = statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar UPDATE contra la Base de Datos", ex);
             return false;
@@ -107,6 +125,12 @@ public class SaleDAOJDBC implements SaleDAO {
                 }
             }
         }
+        deleteShoppingCartResult = deleteShoppingCart(oldSale.getSaleID());
+        addShoppingCartResult = addShoppingCart(newSale.getSaleID(), newSale.getSaleShoppingCart());
+        if (statementResult && deleteShoppingCartResult && addShoppingCartResult) {
+            statementResult = true;
+        }
+        return statementResult;
     }
 
     @Override
@@ -122,8 +146,11 @@ public class SaleDAOJDBC implements SaleDAO {
             statement.setString(1, saleID);
             result = statement.executeQuery();
             if (result.next()) {
-                s = new Sale(result.getString("saleID"), (User) result.getObject("saleClient"),
-                        (ShoppingCart) result.getObject("saleCart"), result.getString("salePaymentMethod"),
+                String userEmail = result.getString("userEmail");
+                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                ShoppingCart cart = getShoppingCart(saleID);
+                s = new Sale(result.getString("saleID"), u,
+                        cart, result.getString("salePaymentMethod"),
                         result.getString("saleDate"));
             }
         } catch (SQLException ex) {
@@ -161,8 +188,12 @@ public class SaleDAOJDBC implements SaleDAO {
             }
             result = statement.executeQuery();
             while (result.next()) {
-                s = new Sale(result.getString("saleID"), (User) result.getObject("saleClient"),
-                        (ShoppingCart) result.getObject("saleCart"), result.getString("salePaymentMethod"),
+                String userEmail = result.getString("userEmail");
+                String saleID = result.getString("saleID");
+                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                ShoppingCart cart = getShoppingCart(saleID);
+                s = new Sale(result.getString("saleID"), u,
+                        cart, result.getString("salePaymentMethod"),
                         result.getString("saleDate"));
                 map.put(s.getSaleID(), s);
             }
@@ -204,8 +235,12 @@ public class SaleDAOJDBC implements SaleDAO {
             statement.setString(2, condition);
             result = statement.executeQuery();
             while (result.next()) {
-                s = new Sale(result.getString("saleID"), (User) result.getObject("saleClient"),
-                        (ShoppingCart) result.getObject("saleCart"), result.getString("salePaymentMethod"),
+                String userEmail = result.getString("userEmail");
+                String saleID = result.getString("saleID");
+                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                ShoppingCart cart = getShoppingCart(saleID);
+                s = new Sale(result.getString("saleID"), u,
+                        cart, result.getString("salePaymentMethod"),
                         result.getString("saleDate"));
                 map.put(s.getSaleID(), s);
             }
@@ -252,5 +287,103 @@ public class SaleDAOJDBC implements SaleDAO {
             log.log(Level.WARNING, "No se ha podido cerrar la conexión con la Base de Datos", ex);
             return false;
         }
+    }
+
+    public boolean addShoppingCart(String saleID, ShoppingCart c) {
+        PreparedStatement statement = null;
+        boolean statementResult = false;
+        try {
+            String query = "SELECT * FROM \"SHOPPINGCARTS\" WHERE saleID = ?";
+            synchronized (lock) {
+                statement = connection.prepareStatement(query);
+            }
+            Iterator it = c.getShoppingCart().iterator();
+            while (it.hasNext()) {
+                Product p = (Product) it.next();
+                statement.setString(1, saleID);
+                statement.setString(2, p.getProductID());
+                statementResult = statement.execute();
+                if (!statementResult) {
+                    return statementResult;
+                }
+            }
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Fallo al realizar INSERT contra la Base de Datos", ex);
+            return false;
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex2) {
+                    log.log(Level.INFO, "No se pudo cerrar el Statemet del INSERT", ex2);
+                }
+            }
+        }
+        return statementResult;
+    }
+
+    public boolean deleteShoppingCart(String saleID) {
+        PreparedStatement statement = null;
+        try {
+            String query = "DELETE FROM \"SHOPPINGCARTS\" WHERE saleID = ?";
+            synchronized (lock) {
+                statement = connection.prepareStatement(query);
+            }
+            statement.setString(1, saleID);
+            return statement.execute();
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Fallo al realizar DELETE contra la Base de Datos", ex);
+            return false;
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex2) {
+                    log.log(Level.INFO, "No se pudo cerrar el Statemet del DELETE", ex2);
+                }
+            }
+        }
+    }
+
+    public ShoppingCart getShoppingCart(String saleID) {
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        ShoppingCart cart = null;
+        try {
+            String query = "SELECT * FROM \"PRODUCTS\" p, \"SHOPPINGCARTS\"s WHERE "
+                    + "s.productID = p.productID "
+                    + "AND s.saleID = ?";
+            synchronized (lock) {
+                statement = connection.prepareStatement(query);
+            }
+            Product p;
+            statement.setString(1, saleID);
+            result = statement.executeQuery();
+            while (result.next()) {
+                p = new Product(result.getString("productID"), result.getFloat("productPrice"),
+                        result.getString("productShortDescription"), result.getString("productLongDescription"),
+                        result.getInt("productStock"), result.getBlob("productImage"));
+                cart.addProduct(p);
+            }
+        } catch (SQLException ex) {
+            log.log(Level.WARNING, "Fallo al realizar SELECT contra la Base de Datos", ex);
+            return null;
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException ex2) {
+                    log.log(Level.INFO, "No se pudo cerrar el ResultSet del SELECT", ex2);
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex2) {
+                    log.log(Level.INFO, "No se pudo cerrar el Statemet del SELECT", ex2);
+                }
+            }
+        }
+        return cart;
     }
 }

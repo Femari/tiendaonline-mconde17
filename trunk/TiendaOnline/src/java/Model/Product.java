@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Blob;
+
 public class Product {
 
     private String productID;
@@ -7,14 +9,16 @@ public class Product {
     private String productShortDescription;
     private String productLongDescription;
     private int productStock;
+    private Blob productImage;
 
     public Product(String nameID, float price, String shortDescription, String longDescription,
-            int stock) {
+            int stock, Blob image) {
         productID = nameID;
         productPrice = price;
         productShortDescription = shortDescription;
         productLongDescription = longDescription;
         productStock = stock;
+        productImage = image;
     }
 
     public void setProductID(String nameID) {
@@ -55,6 +59,14 @@ public class Product {
 
     public int getProductStock() {
         return this.productStock;
+    }
+    
+    public void setProductImage(Blob image){
+        this.productImage = image;
+    }
+    
+    public Blob getProductImage(){
+        return this.productImage;
     }
 
     public boolean isEquals(String parameter, String condition) {
