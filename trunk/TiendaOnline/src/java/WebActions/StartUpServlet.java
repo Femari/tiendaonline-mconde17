@@ -3,7 +3,7 @@ package WebActions;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class ContextListenerServlet implements ServletContextListener {
+public class StartUpServlet implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
