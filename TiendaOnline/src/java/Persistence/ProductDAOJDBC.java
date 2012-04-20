@@ -232,7 +232,7 @@ public class ProductDAOJDBC implements ProductDAO {
     }
 
     @Override
-    public boolean connect(String user, String pass, String destiny, String driver) {
+    public boolean connection(String user, String pass, String destiny, String driver) {
         try {
             Class.forName(driver);
             connection = DriverManager.getConnection(user, pass, destiny);

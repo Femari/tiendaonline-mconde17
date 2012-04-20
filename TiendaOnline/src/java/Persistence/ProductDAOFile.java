@@ -80,7 +80,7 @@ public class ProductDAOFile implements ProductDAO {
     }
 
     @Override
-    public boolean connect(String user, String pass, String destiny, String driver) {
+    public boolean connection(String user, String pass, String destiny, String driver) {
         this.productFile = destiny;
         File f = new File(this.productFile);
         InputStream is = null;

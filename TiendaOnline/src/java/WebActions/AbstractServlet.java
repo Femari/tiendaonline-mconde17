@@ -13,20 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 
 public abstract class AbstractServlet extends HttpServlet {
 
-    protected String implementationType = null;
+    protected String mechanismOfPersistence = null;
     protected String principalPage = null;
     protected String errorPage = null;
     protected String sucessPage = null;
     protected String authenticationServlet = null;
+    protected String addToShoppingCartServlet = null;
     protected String sendEmailServlet = null;
     protected String createServlet = null;
     protected String deleteServlet = null;
     protected String readServlet = null;
     protected String updateServlet = null;
-    
+    protected String saleServlet = null;
+
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response);
 
-    protected void processRequestDispatcher(HttpServletRequest request, HttpServletResponse response,
+    protected void goToRequestDispatcher(HttpServletRequest request, HttpServletResponse response,
             String servletDestiny, boolean isRequest) {
         RequestDispatcher dispatcher;
         if (isRequest) {
@@ -39,7 +41,7 @@ public abstract class AbstractServlet extends HttpServlet {
         } catch (ServletException | IOException ex) {
             Logger.getLogger(AbstractServlet.class.getName()).log(Level.SEVERE,
                     "Error al ejecutar el Dispatcher", ex);
-            processRequestDispatcher(request, response, errorPage, isRequest);
+            goToRequestDispatcher(request, response, errorPage, isRequest);
         }
     }
 
@@ -47,16 +49,18 @@ public abstract class AbstractServlet extends HttpServlet {
     public void init() {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
-        implementationType = context.getInitParameter("implementationType");
+        mechanismOfPersistence = context.getInitParameter("mechanismOfPersistence");
         principalPage = context.getInitParameter("principalPage");
         errorPage = context.getInitParameter("errorPage");
         sucessPage = context.getInitParameter("succesPage");
         authenticationServlet = context.getInitParameter("authenticationServlet");
+        addToShoppingCartServlet = context.getInitParameter("addToShoppingCargServlet");
         sendEmailServlet = context.getInitParameter("sendEmailServlet");
         createServlet = context.getInitParameter("createServlet");
         deleteServlet = context.getInitParameter("deleteServlet");
         readServlet = context.getInitParameter("readServlet");
         updateServlet = context.getInitParameter("updateServlet");
+        saleServlet = context.getInitParameter("saleServlet");
     }
 
     @Override

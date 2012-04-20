@@ -60,12 +60,12 @@ public class Product {
     public int getProductStock() {
         return this.productStock;
     }
-    
-    public void setProductImage(Blob image){
+
+    public void setProductImage(Blob image) {
         this.productImage = image;
     }
-    
-    public Blob getProductImage(){
+
+    public Blob getProductImage() {
         return this.productImage;
     }
 

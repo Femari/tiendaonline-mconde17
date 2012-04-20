@@ -12,6 +12,8 @@ public class SessionListenerServlet implements HttpSessionListener {
         HttpSession session = se.getSession();
         ShoppingCart cart = new ShoppingCart();
         session.setAttribute("shoppingCart", cart);
+        boolean authentication = false;
+        session.setAttribute("authentication", authentication);
     }
 
     @Override
