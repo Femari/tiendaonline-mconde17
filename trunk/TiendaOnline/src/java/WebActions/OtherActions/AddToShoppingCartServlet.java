@@ -4,7 +4,7 @@ import WebActions.AbstractServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddToShoppingCart extends AbstractServlet {
+public class AddToShoppingCartServlet extends AbstractServlet {
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {

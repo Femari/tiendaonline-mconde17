@@ -17,7 +17,7 @@ public interface ProductDAO {
 
     public Map<String, Product> getProductMap(String parameter, String condition);
 
-    public boolean connect(String user, String pass, String destiny, String driver);
+    public boolean connection(String user, String pass, String destiny, String driver);
 
     public boolean disconnect();
 }

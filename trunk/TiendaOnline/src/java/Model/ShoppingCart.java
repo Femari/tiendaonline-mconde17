@@ -10,8 +10,8 @@ public class ShoppingCart {
     public ShoppingCart(ArrayList<Product> cart) {
         shoppingCart = cart;
     }
-    
-    public ShoppingCart(){
+
+    public ShoppingCart() {
         shoppingCart = new ArrayList<>();
     }
 
