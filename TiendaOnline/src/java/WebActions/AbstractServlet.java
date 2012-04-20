@@ -17,7 +17,12 @@ public abstract class AbstractServlet extends HttpServlet {
     protected String principalPage = null;
     protected String errorPage = null;
     protected String sucessPage = null;
-    protected String authentationServlet = null;
+    protected String authenticationServlet = null;
+    protected String sendEmailServlet = null;
+    protected String createServlet = null;
+    protected String deleteServlet = null;
+    protected String readServlet = null;
+    protected String updateServlet = null;
     
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response);
 
@@ -42,9 +47,16 @@ public abstract class AbstractServlet extends HttpServlet {
     public void init() {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
+        implementationType = context.getInitParameter("implementationType");
         principalPage = context.getInitParameter("principalPage");
         errorPage = context.getInitParameter("errorPage");
         sucessPage = context.getInitParameter("succesPage");
+        authenticationServlet = context.getInitParameter("authenticationServlet");
+        sendEmailServlet = context.getInitParameter("sendEmailServlet");
+        createServlet = context.getInitParameter("createServlet");
+        deleteServlet = context.getInitParameter("deleteServlet");
+        readServlet = context.getInitParameter("readServlet");
+        updateServlet = context.getInitParameter("updateServlet");
     }
 
     @Override
