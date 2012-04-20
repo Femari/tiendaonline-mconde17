@@ -1,10 +1,10 @@
 package WebActions.Administrator;
 
-import WebActions.ServletAbstraction;
+import WebActions.AbstractServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UserSearchServlet extends ServletAbstraction {
+public class UserSearchServlet extends AbstractServlet {
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {

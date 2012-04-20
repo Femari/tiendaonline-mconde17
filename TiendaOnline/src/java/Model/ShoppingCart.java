@@ -10,6 +10,10 @@ public class ShoppingCart {
     public ShoppingCart(ArrayList<Product> cart) {
         shoppingCart = cart;
     }
+    
+    public ShoppingCart(){
+        shoppingCart = new ArrayList<>();
+    }
 
     public ArrayList<Product> getShoppingCart() {
         return this.shoppingCart;
