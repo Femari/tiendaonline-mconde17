@@ -16,7 +16,7 @@ public abstract class AbstractServlet extends HttpServlet {
     protected String mechanismOfPersistence = null;
     protected String displayPage = null;
     protected String errorPage = null;
-    protected String sucessPage = null;
+    protected String successPage = null;
     protected String authenticationServlet = null;
     protected String addToShoppingCartServlet = null;
     protected String sendEmailServlet = null;
@@ -58,7 +58,7 @@ public abstract class AbstractServlet extends HttpServlet {
         mechanismOfPersistence = context.getInitParameter("mechanismOfPersistence");
         displayPage = context.getInitParameter("principalPage");
         errorPage = context.getInitParameter("errorPage");
-        sucessPage = context.getInitParameter("succesPage");
+        successPage = context.getInitParameter("succesPage");
         authenticationServlet = context.getInitParameter("authenticationServlet");
         addToShoppingCartServlet = context.getInitParameter("addToShoppingCargServlet");
         sendEmailServlet = context.getInitParameter("sendEmailServlet");

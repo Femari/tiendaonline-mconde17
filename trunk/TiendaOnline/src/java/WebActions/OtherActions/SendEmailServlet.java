@@ -70,7 +70,7 @@ public class SendEmailServlet extends AbstractServlet {
             if (transport != null) {
                 session.removeAttribute("sale");
                 session.setAttribute("confirmation", true);
-                goToURL(sucessPage, request, response);
+                goToURL(successPage, request, response);
             } else {
                 goToURL(errorPage, request, response);
             }

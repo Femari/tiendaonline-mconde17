@@ -14,11 +14,11 @@ public class UpdateServlet extends CreateServlet {
         String newName = request.getParameter("newName");
         Product oldProduct = persistenceManagerProduct.getProduct(newName);
         Product newProduct = super.generateProductFromRequest(request);
-        if(persistenceManagerProduct.updateProduct(oldProduct, newProduct)){
+        if (persistenceManagerProduct.updateProduct(oldProduct, newProduct)) {
             request.setAttribute("product", newProduct);
             request.setAttribute("message", "Modificado con éxito");
-            goToURL(sucessPage, request, response);
-        }else{
+            goToURL(successPage, request, response);
+        } else {
             goToURL(errorPage, request, response);
         }
     }
