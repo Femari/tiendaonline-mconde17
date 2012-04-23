@@ -41,11 +41,11 @@ public class ShoppingCart {
         }
         return total;
     }
-    
-    public String listShoppingCart(){
+
+    public String listShoppingCart() {
         String shop = new String();
         Iterator it = shoppingCart.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             Product p = (Product) it.next();
             shop = shop + p.getProductShortDescription() + " " + p.getProductPrice() + "\n";
         }

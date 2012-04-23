@@ -34,7 +34,7 @@ public class CreateServlet extends AbstractServlet {
                         session.setAttribute("admin", false);
                         request.setAttribute("user", user);
                         request.setAttribute("message", "Usuario creado con éxito");
-                        goToNamedResource(sucessPage, request, response);
+                        goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Usuario");
                         goToURL(errorPage, request, response);
@@ -45,7 +45,7 @@ public class CreateServlet extends AbstractServlet {
                     if (sale != null && persistenceManagerSale.newSale(sale)) {
                         session.setAttribute("sale", sale);
                         //Aquí hay que redirigir a la página de confirmación de la venta
-                        goToNamedResource(sucessPage, request, response);
+                        goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear la Nueva Venta");
                         goToURL(errorPage, request, response);
@@ -56,7 +56,7 @@ public class CreateServlet extends AbstractServlet {
                     if (product != null && persistenceManagerProduct.newProduct(product)) {
                         session.setAttribute("product", product);
                         request.setAttribute("message", "Producto creado con éxito");
-                        goToNamedResource(sucessPage, request, response);
+                        goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Producto");
                         goToURL(errorPage, request, response);
@@ -67,7 +67,7 @@ public class CreateServlet extends AbstractServlet {
                     if (comment != null && persistenceManagerComment.newComment(comment)) {
                         session.setAttribute("comment", comment);
                         session.setAttribute("message", "Comentario añadido con éxito");
-                        goToNamedResource(sucessPage, request, response);
+                        goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Comentario");
                         goToURL(errorPage, request, response);

@@ -1,13 +1,34 @@
 package WebActions.OtherActions;
 
+import Model.User;
+import Persistence.PersistenceDAO;
+import Persistence.UserDAO;
 import WebActions.AbstractServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AuthenticationServlet extends AbstractServlet {
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        response.setContentType("text/html;charset=UTF-8");
+        UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(mechanismOfPersistence);
+        String userEmail = request.getParameter("userEmail");
+        String userPass = request.getParameter("userPassword");
+        String type = request.getParameter("type");
+        User user = persistenceManagerUser.getUser(userEmail);
+        HttpSession session = request.getSession();
+        if (type.equals("user")) {
+            if (persistenceManagerUser.userAuthentication(userEmail, userPass).equals("true")) {
+                session.setAttribute("authentication", true);
+                session.setAttribute("user", user);
+                session.setAttribute("admin", user.getUserPrivileged());
+                goToURL(successPage, request, response);
+            } else {
+                session.setAttribute("authentication", false);
+                goToURL(errorPage, request, response);
+            }
+        }
     }
 }

@@ -14,12 +14,12 @@ public class DeleteServlet extends AbstractServlet {
         ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(mechanismOfPersistence);
         String name = request.getParameter("name");
         Product product = persistenceManagerProduct.getProduct(name);
-        if(product!= null && persistenceManagerProduct.deleteProduct(product)){
+        if (product != null && persistenceManagerProduct.deleteProduct(product)) {
             request.setAttribute("product", product);
             request.setAttribute("message", "Borrado con éxito");
-            goToURL(sucessPage, request, response);
-        }else{
-            goToURL(sucessPage, request, response);
+            goToURL(successPage, request, response);
+        } else {
+            goToURL(successPage, request, response);
         }
     }
 }
