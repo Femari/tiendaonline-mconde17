@@ -6,8 +6,11 @@ import Model.Sale;
 import Model.User;
 import Persistence.*;
 import WebActions.AbstractServlet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CreateServlet extends AbstractServlet {
 
@@ -18,57 +21,137 @@ public class CreateServlet extends AbstractServlet {
         SaleDAO persistenceManagerSale = PersistenceDAO.getSaleDAO(mechanismOfPersistence);
         ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(mechanismOfPersistence);
         CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(mechanismOfPersistence);
-
+        HttpSession session = request.getSession();
         String type = request.getParameter("type");
 
         if (type == null) {
-            goToRequestDispatcher(request, response, errorPage, false);
+            goToURL(errorPage, request, response);
         } else {
             switch (type) {
                 case "user":
                     User user = generateUserFromRequest(request);
                     if (user != null && persistenceManagerUser.newUser(user)) {
+                        session.setAttribute("admin", false);
+                        request.setAttribute("user", user);
+                        request.setAttribute("message", "Usuario creado con éxito");
+                        goToNamedResource(sucessPage, request, response);
                     } else {
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Usuario");
+                        goToURL(errorPage, request, response);
                     }
                     break;
                 case "sale":
                     Sale sale = generateSaleFromRequest(request);
                     if (sale != null && persistenceManagerSale.newSale(sale)) {
+                        session.setAttribute("sale", sale);
+                        //Aquí hay que redirigir a la página de confirmación de la venta
+                        goToNamedResource(sucessPage, request, response);
                     } else {
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear la Nueva Venta");
+                        goToURL(errorPage, request, response);
                     }
                     break;
                 case "product":
                     Product product = generateProductFromRequest(request);
                     if (product != null && persistenceManagerProduct.newProduct(product)) {
+                        session.setAttribute("product", product);
+                        request.setAttribute("message", "Producto creado con éxito");
+                        goToNamedResource(sucessPage, request, response);
                     } else {
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Producto");
+                        goToURL(errorPage, request, response);
                     }
                     break;
                 case "comment":
                     Comment comment = generateCommentFromRequest(request);
                     if (comment != null && persistenceManagerComment.newComment(comment)) {
+                        session.setAttribute("comment", comment);
+                        session.setAttribute("message", "Comentario añadido con éxito");
+                        goToNamedResource(sucessPage, request, response);
                     } else {
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Comentario");
+                        goToURL(errorPage, request, response);
                     }
                     break;
                 default:
-                    goToRequestDispatcher(request, response, errorPage, false);
+                    goToURL(errorPage, request, response);
                     break;
             }
         }
     }
 
     User generateUserFromRequest(HttpServletRequest request) {
-        return null;
+        User user;
+        String userName = request.getParameter("userName");
+        String userSurnames = request.getParameter("userSurnames");
+        String userAdress = request.getParameter("userAdress");
+        String userEmail = request.getParameter("userEmail");
+        String userPassword = request.getParameter("userPassword");
+        user = new User(userName, userSurnames, userAdress, userEmail, userPassword);
+        boolean validate = validateUser();
+        if (!validate) {
+            return null;
+        }
+        return user;
     }
 
     Sale generateSaleFromRequest(HttpServletRequest request) {
-        return null;
+        Sale sale = null;
+        //Faltan el resto de parámetros por insertar en la Venta
+        String salePaymentMethod = request.getParameter("salePaymentMethod");
+        boolean validate = validateSale();
+        if (!validate) {
+            return null;
+        }
+        sale.setSalePaymentMethod(salePaymentMethod);
+        return sale;
     }
 
     Product generateProductFromRequest(HttpServletRequest request) {
-        return null;
+        Product product;
+        String productID = request.getParameter("productID");
+        String productPrice = request.getParameter("productPrice");
+        String productShortDescription = request.getParameter("productShortDescription");
+        String productLongDescription = request.getParameter("productLongDescription");
+        String productStock = request.getParameter("productStock");
+        boolean validate = validateProduct();
+        if (!validate) {
+            return null;
+        }
+        product = new Product(productID, Float.parseFloat(productPrice), productShortDescription,
+                productLongDescription, Integer.parseInt(productStock), null);
+        return product;
     }
 
     Comment generateCommentFromRequest(HttpServletRequest request) {
-        return null;
+        Comment comment;
+        String commentID = request.getParameter("commentID");
+        String commentDate = request.getParameter("commentDate");
+        String commentProductID = request.getParameter("commentProductID");
+        String commentUserEmail = request.getParameter("commentUserEmail");
+        String commentContent = request.getParameter("commentContent");
+        boolean validate = validateComment();
+        if (!validate) {
+            return null;
+        }
+        comment = new Comment(commentID, commentDate, commentProductID, commentUserEmail, commentContent);
+        return comment;
+    }
+
+    //Falta por hacer las validaciones:
+    private boolean validateUser() {
+        return false;
+    }
+
+    private boolean validateSale() {
+        return false;
+    }
+
+    private boolean validateProduct() {
+        return false;
+    }
+
+    private boolean validateComment() {
+        return false;
     }
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class AbstractServlet extends HttpServlet {
 
     protected String mechanismOfPersistence = null;
-    protected String principalPage = null;
+    protected String displayPage = null;
     protected String errorPage = null;
     protected String sucessPage = null;
     protected String authenticationServlet = null;
@@ -28,20 +28,26 @@ public abstract class AbstractServlet extends HttpServlet {
 
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response);
 
-    protected void goToRequestDispatcher(HttpServletRequest request, HttpServletResponse response,
-            String servletDestiny, boolean isRequest) {
+    protected void goToURL(String adress, HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher;
-        if (isRequest) {
-            dispatcher = getServletContext().getRequestDispatcher(servletDestiny);
-        } else {
-            dispatcher = getServletContext().getNamedDispatcher(servletDestiny);
-        }
+        dispatcher = getServletContext().getRequestDispatcher(adress);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException ex) {
             Logger.getLogger(AbstractServlet.class.getName()).log(Level.SEVERE,
                     "Error al ejecutar el Dispatcher", ex);
-            goToRequestDispatcher(request, response, errorPage, isRequest);
+        }
+    }
+
+    protected void goToNamedResource(String address, HttpServletRequest request,
+            HttpServletResponse response) {
+        RequestDispatcher dispatcher;
+        dispatcher = getServletContext().getNamedDispatcher(address);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(AbstractServlet.class.getName()).log(Level.SEVERE,
+                    "Error al ejecutar el Dispatcher", ex);
         }
     }
 
@@ -50,7 +56,7 @@ public abstract class AbstractServlet extends HttpServlet {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         mechanismOfPersistence = context.getInitParameter("mechanismOfPersistence");
-        principalPage = context.getInitParameter("principalPage");
+        displayPage = context.getInitParameter("principalPage");
         errorPage = context.getInitParameter("errorPage");
         sucessPage = context.getInitParameter("succesPage");
         authenticationServlet = context.getInitParameter("authenticationServlet");

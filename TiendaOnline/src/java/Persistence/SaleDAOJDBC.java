@@ -15,17 +15,17 @@ public class SaleDAOJDBC implements SaleDAO {
 
     private final Object lock = new Object();
     private Connection connection = null;
-    private static SaleDAOJDBC implementationType = null;
+    private static SaleDAOJDBC mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(SaleDAOJDBC.class.getName());
 
     public SaleDAOJDBC() {
     }
 
     public static SaleDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new SaleDAOJDBC();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new SaleDAOJDBC();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

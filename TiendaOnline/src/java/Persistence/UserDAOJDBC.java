@@ -11,17 +11,17 @@ public class UserDAOJDBC implements UserDAO {
 
     private final Object lock = new Object();
     private Connection connection = null;
-    private static UserDAOJDBC implementationType = null;
+    private static UserDAOJDBC mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(UserDAOJDBC.class.getName());
 
     public UserDAOJDBC() {
     }
 
     public static UserDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new UserDAOJDBC();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new UserDAOJDBC();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

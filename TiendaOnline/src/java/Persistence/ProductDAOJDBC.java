@@ -11,17 +11,17 @@ public class ProductDAOJDBC implements ProductDAO {
 
     private final Object lock = new Object();
     private Connection connection = null;
-    private static ProductDAOJDBC implementationType = null;
+    private static ProductDAOJDBC mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(ProductDAOJDBC.class.getName());
 
     public ProductDAOJDBC() {
     }
 
     public static ProductDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new ProductDAOJDBC();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new ProductDAOJDBC();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

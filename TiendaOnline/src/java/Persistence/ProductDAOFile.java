@@ -12,17 +12,17 @@ public class ProductDAOFile implements ProductDAO {
 
     private Map<String, Product> productMap = new HashMap<>();
     private String productFile;
-    private static ProductDAOFile implementationType = null;
+    private static ProductDAOFile mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(ProductDAOFile.class.getName());
 
     public ProductDAOFile() {
     }
 
     public static ProductDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new ProductDAOFile();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new ProductDAOFile();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

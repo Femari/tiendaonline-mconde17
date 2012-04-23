@@ -12,17 +12,17 @@ public class SaleDAOFile implements SaleDAO {
 
     private Map<String, Sale> saleMap = new HashMap<>();
     private String saleFile;
-    private static SaleDAOFile implementationType = null;
+    private static SaleDAOFile mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(SaleDAOFile.class.getName());
 
     public SaleDAOFile() {
     }
 
     public static SaleDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new SaleDAOFile();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new SaleDAOFile();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override
