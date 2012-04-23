@@ -18,44 +18,44 @@ public class FrontServlet extends AbstractServlet {
         }
         String form = request.getParameter("form");
         if (form == null || (mechanismOfPersistence != null && mechanismOfPersistence.equals("none"))) {
-            goToRequestDispatcher(request, response, errorPage, false);
+            goToURL(errorPage, request, response);
         } else {
             switch (form) {
                 case "principalPage":
-                    goToRequestDispatcher(request, response, principalPage, true);
+                    goToNamedResource("principalPage", request, response);
                     break;
                 case "errorPage":
-                    goToRequestDispatcher(request, response, errorPage, true);
+                    goToNamedResource("errorPage", request, response);
                     break;
                 case "sucessPage":
-                    goToRequestDispatcher(request, response, sucessPage, true);
+                    goToNamedResource("sucessPage", request, response);
                     break;
                 case "authenticationServlet":
-                    goToRequestDispatcher(request, response, authenticationServlet, true);
+                    goToNamedResource("authenticationServlet", request, response);
                     break;
                 case "addToShoppingCartServlet":
-                    goToRequestDispatcher(request, response, addToShoppingCartServlet, true);
+                    goToNamedResource("addToShoppingCartServlet", request, response);
                     break;
                 case "sendEmailServlet":
-                    goToRequestDispatcher(request, response, sendEmailServlet, true);
+                    goToNamedResource("sendEmailServlet", request, response);
                     break;
                 case "createServlet":
-                    goToRequestDispatcher(request, response, createServlet, true);
+                    goToNamedResource("createServlet", request, response);
                     break;
                 case "deleteServlet":
-                    goToRequestDispatcher(request, response, deleteServlet, true);
+                    goToNamedResource("deleteServlet", request, response);
                     break;
                 case "readServlet":
-                    goToRequestDispatcher(request, response, readServlet, true);
+                    goToNamedResource("readServlet", request, response);
                     break;
                 case "updateServlet":
-                    goToRequestDispatcher(request, response, updateServlet, true);
+                    goToNamedResource("principalPage", request, response);
                     break;
                 case "saleServlet":
-                    goToRequestDispatcher(request, response, saleServlet, true);
+                    goToNamedResource("saleServlet", request, response);
                     break;
                 default:
-                    goToRequestDispatcher(request, response, errorPage, false);
+                    goToURL(errorPage, request, response);
                     break;
             }
         }

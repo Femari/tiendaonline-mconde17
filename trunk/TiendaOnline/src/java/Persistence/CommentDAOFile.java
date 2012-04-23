@@ -12,17 +12,17 @@ public class CommentDAOFile implements CommentDAO {
 
     private Map<String, Comment> commentMap = new HashMap<>();
     private String commentFile;
-    private static CommentDAOFile implementationType = null;
+    private static CommentDAOFile mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(CommentDAOFile.class.getName());
 
     public CommentDAOFile() {
     }
 
     public static CommentDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new CommentDAOFile();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new CommentDAOFile();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

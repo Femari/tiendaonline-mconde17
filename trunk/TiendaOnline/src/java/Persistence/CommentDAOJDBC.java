@@ -11,17 +11,17 @@ public class CommentDAOJDBC implements CommentDAO {
 
     private final Object lock = new Object();
     private Connection connection = null;
-    private static CommentDAOJDBC implementationType = null;
+    private static CommentDAOJDBC mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(CommentDAOJDBC.class.getName());
 
     public CommentDAOJDBC() {
     }
 
     public static CommentDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new CommentDAOJDBC();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new CommentDAOJDBC();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override

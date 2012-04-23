@@ -12,17 +12,17 @@ public class UserDAOFile implements UserDAO {
 
     private Map<String, User> userMap = new HashMap<>();
     private String userFile;
-    private static UserDAOFile implementationType = null;
+    private static UserDAOFile mechanismOfPersistence = null;
     private static final Logger log = Logger.getLogger(UserDAOFile.class.getName());
 
     public UserDAOFile() {
     }
 
     public static UserDAO getImplementation() {
-        if (implementationType == null) {
-            implementationType = new UserDAOFile();
+        if (mechanismOfPersistence == null) {
+            mechanismOfPersistence = new UserDAOFile();
         }
-        return implementationType;
+        return mechanismOfPersistence;
     }
 
     @Override
