@@ -5,9 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
         <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
-        <!--[if IE 6]>
-        <link rel="stylesheet" type="text/css" href="../CSS/iecss.css" />
-        <![endif]-->
         <script type="text/javascript" src="../JavaScripts/boxOver.js"></script>
     </head>
     <body>
@@ -30,7 +27,7 @@
 
                 <div id="logo">
                     <a href="../index.jsp"><img src="../Images/logo.png" alt="" title="" 
-                                             border="0" width="237" height="140" /></a>
+                                                border="0" width="237" height="140" /></a>
                 </div>
 
                 <div class="oferte_content">
@@ -71,9 +68,11 @@
                 <div id="menu_tab">
                     <div class="left_menu_corner"></div>
                     <ul class="menu">
-                        <li><a href="../index.jsp" class="nav1">Página Principal</a></li>
+                        <li><a href="../index.jsp" class="nav1">Inicio</a></li>
                         <li class="divider"></li>
                         <li><a href="../Errors/error501.html" class="nav2">Productos</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../Errors/error501.html" class="nav3">Especiales</a></li>
                         <li class="divider"></li>
                         <li><a href="../Errors/error501.html" class="nav4">Mi Cuenta</a></li>
                         <li class="divider"></li>
@@ -131,7 +130,7 @@
                 </div><!-- end of left content -->
 
                 <div class="center_content">
-                    <div class="center_title_bar">Contact Us</div>
+                    <div class="center_title_bar">Contacta con Nosotros:</div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
@@ -140,7 +139,7 @@
                             <div class="contact_form">
 
                                 <div class="form_row">
-                                    <label class="contact"><strong>Name:</strong></label>
+                                    <label class="contact"><strong>Nombre:</strong></label>
                                     <input type="text" class="contact_input" />
                                 </div>  
 
@@ -150,22 +149,17 @@
                                 </div>
 
                                 <div class="form_row">
-                                    <label class="contact"><strong>Phone:</strong></label>
+                                    <label class="contact"><strong>Título:</strong></label>
                                     <input type="text" class="contact_input" />
                                 </div>
 
                                 <div class="form_row">
-                                    <label class="contact"><strong>Company:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
-
-                                <div class="form_row">
-                                    <label class="contact"><strong>Message:</strong></label>
+                                    <label class="contact"><strong>Mensaje:</strong></label>
                                     <textarea class="contact_textarea" ></textarea>
                                 </div>
 
                                 <div class="form_row">
-                                    <a href="#" class="contact">send</a>
+                                    <a href="#" class="contact">Enviar</a>
                                 </div>      
 
                             </div> 
@@ -229,12 +223,12 @@
                 <div class="center_footer">
                     Manuel Conde. All Rights Reserved 2012<br />
                     <a href="http://twitter.com/#!/mconde17" title="twitter">
-                        <img src="../Images/twitterButton.jpg" alt="twitter" title="twitter" border="0" /></a><br />
+                        <img src="../Images/twitter.jpg" alt="twitter" title="twitter" border="0" /></a><br />
                     <img src="../Images/payment.gif" alt="" title="" />
                 </div>
 
                 <div class="right_footer">
-                    <a href="../index.jsp">Principal</a>
+                    <a href="../index.jsp">Inicio</a>
                     <a href="../WebActions/aboutUs.jsp">Sobre Nosotros</a>
                     <a href="../WebActions/contactUs.jsp">Contacta</a>
                 </div>   
