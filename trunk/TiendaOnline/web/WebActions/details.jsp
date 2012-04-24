@@ -5,9 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
         <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
-        <!--[if IE 6]>
-        <link rel="stylesheet" type="text/css" href="../CSS/iecss.css" />
-        <![endif]-->
         <script>
             PositionX = 100;
             PositionY = 100;
@@ -64,7 +61,7 @@
 
                 <div id="logo">
                     <a href="../index.jsp"><img src="../Images/logo.png" alt="" title="" 
-                                             border="0" width="237" height="140" /></a>
+                                                border="0" width="237" height="140" /></a>
                 </div>
 
                 <div class="oferte_content">
@@ -105,9 +102,11 @@
                 <div id="menu_tab">
                     <div class="left_menu_corner"></div>
                     <ul class="menu">
-                        <li><a href="../index.jsp" class="nav1">Página Principal</a></li>
+                        <li><a href="../index.jsp" class="nav1">Inicio</a></li>
                         <li class="divider"></li>
                         <li><a href="../Errors/error501.html" class="nav2">Productos</a></li>
+                        <li class="divider"></li>
+                        <li><a href="Errors/error501.html" class="nav3">Especiales</a></li>
                         <li class="divider"></li>
                         <li><a href="../Errors/error501.html" class="nav4">Mi Cuenta</a></li>
                         <li class="divider"></li>
@@ -318,12 +317,12 @@
                 <div class="center_footer">
                     Manuel Conde. All Rights Reserved 2012<br />
                     <a href="http://twitter.com/#!/mconde17" title="twitter">
-                        <img src="../Images/twitterButton.jpg" alt="twitter" title="twitter" border="0" /></a><br />
+                        <img src="../Images/twitter.jpg" alt="twitter" title="twitter" border="0" /></a><br />
                     <img src="../Images/payment.gif" alt="" title="" />
                 </div>
 
                 <div class="right_footer">
-                    <a href="../index.jsp">Principal</a>
+                    <a href="../index.jsp">Inicio</a>
                     <a href="../WebActions/aboutUs.jsp">Sobre Nosotros</a>
                     <a href="../WebActions/contactUs.jsp">Contacta</a>
                 </div>   

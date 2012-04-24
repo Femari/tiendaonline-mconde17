@@ -5,9 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
         <link rel="stylesheet" type="text/css" href="CSS/style.css" />
-        <!--[if IE 6]>
-        <link rel="stylesheet" type="text/css" href="CSS/iecss.css" />
-        <![endif]-->
         <script type="text/javascript" src="JavaScripts/boxOver.js"></script>
     </head>
     <body>
@@ -71,9 +68,11 @@
                 <div id="menu_tab">
                     <div class="left_menu_corner"></div>
                     <ul class="menu">
-                        <li><a href="index.jsp" class="nav1">Página Principal</a></li>
+                        <li><a href="index.jsp" class="nav1">Inicio</a></li>
                         <li class="divider"></li>
                         <li><a href="Errors/error501.html" class="nav2">Productos</a></li>
+                        <li class="divider"></li>
+                        <li><a href="Errors/error501.html" class="nav3">Especiales</a></li>
                         <li class="divider"></li>
                         <li><a href="Errors/error501.html" class="nav4">Mi Cuenta</a></li>
                         <li class="divider"></li>
@@ -167,7 +166,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -187,7 +186,7 @@
                         <div class="bottom_prod_box"></div>             
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]"><img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -208,7 +207,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -228,7 +227,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -249,7 +248,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -272,7 +271,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -292,7 +291,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -313,7 +312,7 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
@@ -376,12 +375,12 @@
                 <div class="center_footer">
                     Manuel Conde. All Rights Reserved 2012<br />
                     <a href="http://twitter.com/#!/mconde17" title="twitter">
-                        <img src="Images/twitterButton.jpg" alt="twitter" title="twitter" border="0" /></a><br />
+                        <img src="Images/twitter.jpg" alt="twitter" title="twitter" border="0" /></a><br />
                     <img src="Images/payment.gif" alt="" title="" />
                 </div>
 
                 <div class="right_footer">
-                    <a href="index.jsp">Principal</a>
+                    <a href="index.jsp">Inicio</a>
                     <a href="WebActions/aboutUs.jsp">Sobre Nosotros</a>
                     <a href="WebActions/contactUs.jsp">Contacta</a>
                 </div>   
