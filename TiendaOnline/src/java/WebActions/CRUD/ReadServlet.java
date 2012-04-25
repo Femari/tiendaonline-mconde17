@@ -25,17 +25,17 @@ public class ReadServlet extends AbstractServlet {
         if (product != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("product", product);
-            goToURL(displayPage, request, response);
+            goToURL(displayForm, request, response);
         } else if (sale != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("sale", sale);
-            goToURL(displayPage, request, response);
+            goToURL(displayForm, request, response);
         } else if (user != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("user", user);
-            goToURL(displayPage, request, response);
+            goToURL(displayForm, request, response);
         } else {
-            goToURL(errorPage, request, response);
+            goToURL(errorForm, request, response);
         }
     }
 }

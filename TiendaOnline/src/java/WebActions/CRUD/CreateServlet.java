@@ -25,7 +25,7 @@ public class CreateServlet extends AbstractServlet {
         String type = request.getParameter("type");
 
         if (type == null) {
-            goToURL(errorPage, request, response);
+            goToURL(errorForm, request, response);
         } else {
             switch (type) {
                 case "user":
@@ -37,7 +37,7 @@ public class CreateServlet extends AbstractServlet {
                         goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Usuario");
-                        goToURL(errorPage, request, response);
+                        goToURL(errorForm, request, response);
                     }
                     break;
                 case "sale":
@@ -48,7 +48,7 @@ public class CreateServlet extends AbstractServlet {
                         goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear la Nueva Venta");
-                        goToURL(errorPage, request, response);
+                        goToURL(errorForm, request, response);
                     }
                     break;
                 case "product":
@@ -59,7 +59,7 @@ public class CreateServlet extends AbstractServlet {
                         goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Producto");
-                        goToURL(errorPage, request, response);
+                        goToURL(errorForm, request, response);
                     }
                     break;
                 case "comment":
@@ -70,11 +70,11 @@ public class CreateServlet extends AbstractServlet {
                         goToNamedResource(successPage, request, response);
                     } else {
                         Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Comentario");
-                        goToURL(errorPage, request, response);
+                        goToURL(errorForm, request, response);
                     }
                     break;
                 default:
-                    goToURL(errorPage, request, response);
+                    goToURL(errorForm, request, response);
                     break;
             }
         }

@@ -18,7 +18,7 @@ public class FrontServlet extends AbstractServlet {
         }
         String form = request.getParameter("form");
         if (form == null || (mechanismOfPersistence != null && mechanismOfPersistence.equals("none"))) {
-            goToURL(errorPage, request, response);
+            goToURL(errorForm, request, response);
         } else {
             switch (form) {
                 case "principalPage":
@@ -55,7 +55,7 @@ public class FrontServlet extends AbstractServlet {
                     goToNamedResource("saleServlet", request, response);
                     break;
                 default:
-                    goToURL(errorPage, request, response);
+                    goToURL(errorForm, request, response);
                     break;
             }
         }

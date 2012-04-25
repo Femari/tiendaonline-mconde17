@@ -72,7 +72,7 @@ public class SendEmailServlet extends AbstractServlet {
                 session.setAttribute("confirmation", true);
                 goToURL(successPage, request, response);
             } else {
-                goToURL(errorPage, request, response);
+                goToURL(errorForm, request, response);
             }
         } catch (javax.mail.MessagingException ex) {
             Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,

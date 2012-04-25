@@ -77,7 +77,7 @@
                                 <div class="oferta_text">
                                     Esto parece que de momento funciona de forma decente xD
                                 </div>
-                                <a href="../WebActions/details.jsp" class="details">Detalles</a>
+                                <a href="../WebActions/productDetails.jsp" class="details">Detalles</a>
                             </div>
                         </div>
                         <div class="oferta_pagination">
@@ -142,9 +142,9 @@
 
                     <div class="title_box">Productos Especiales</div>  
                     <div class="border_box">
-                        <div class="product_title"><a href="../WebActions/details.jsp">
+                        <div class="product_title"><a href="../WebActions/productDetails.jsp">
                                 Motorola 156 MX-VL</a></div>
-                        <div class="product_img"><a href="../WebActions/details.jsp">
+                        <div class="product_img"><a href="../WebActions/productDetails.jsp">
                                 <img src="../Images/laptop.png" alt="" title="" border="0" /></a></div>
                         <div class="prod_price"><span class="reduce">350$</span> 
                             <span class="price">270$</span></div>
@@ -158,7 +158,7 @@
 
                     <div class="banner_adds">
 
-                        <a href="#"><img src="../Images/bann2.jpg" alt="" title="" border="0" /></a>
+                        <a href="#"><img src="../Images/banner.jpg" alt="" title="" border="0" /></a>
                     </div>    
 
                 </div><!-- end of left content -->
@@ -203,8 +203,8 @@
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="../WebActions/details.jsp">Motorola 156 MX-VL</a></div>
-                            <div class="product_img"><a href="../WebActions/details.jsp">
+                            <div class="product_title"><a href="../WebActions/productDetails.jsp">Motorola 156 MX-VL</a></div>
+                            <div class="product_img"><a href="../WebActions/productDetails.jsp">
                                     <img src="../Images/laptop.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="reduce">350$</span>
                                 <span class="price">270$</span></div>                        
@@ -213,19 +213,19 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="../Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="../Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="../WebActions/details.jsp" class="prod_details">Detalles</a>            
+                            <a href="../WebActions/productDetails.jsp" class="prod_details">Detalles</a>            
                         </div>                     
                     </div>
 
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="../WebActions/details.jsp">Iphone Apple</a></div>
-                            <div class="product_img"><a href="../WebActions/details.jsp">
+                            <div class="product_title"><a href="../WebActions/productDetails.jsp">Iphone Apple</a></div>
+                            <div class="product_img"><a href="../WebActions/productDetails.jsp">
                                     <img src="../Images/p4.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="price">270$</span></div>                        
                         </div>
@@ -233,19 +233,19 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="../Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="../Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="../WebActions/details.jsp" class="prod_details">Detalles</a>             
+                            <a href="../WebActions/productDetails.jsp" class="prod_details">Detalles</a>             
                         </div>                     
                     </div>
 
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="../WebActions/details.jsp">Samsung Webcam</a></div>
-                            <div class="product_img"><a href="../WebActions/details.jsp">
+                            <div class="product_title"><a href="../WebActions/productDetails.jsp">Samsung Webcam</a></div>
+                            <div class="product_img"><a href="../WebActions/productDetails.jsp">
                                     <img src="../Images/p5.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="reduce">350$</span> 
                                 <span class="price">270$</span></div>                        
@@ -254,11 +254,11 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../Errors/error501.html" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                            <a href="../Errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
                             <a href="../Errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../Images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="../WebActions/details.jsp" class="prod_details">Detalles</a>            
+                            <a href="../WebActions/productDetails.jsp" class="prod_details">Detalles</a>            
                         </div>                     
                     </div> 
 
@@ -281,8 +281,8 @@
 
                     <div class="title_box">Novedades</div>  
                     <div class="border_box">
-                        <div class="product_title"><a href="../WebActions/details.jsp">Motorola 156 MX-VL</a></div>
-                        <div class="product_img"><a href="../WebActions/details.jsp">
+                        <div class="product_title"><a href="../WebActions/productDetails.jsp">Motorola 156 MX-VL</a></div>
+                        <div class="product_img"><a href="../WebActions/productDetails.jsp">
                                 <img src="../Images/p2.gif" alt="" title="" border="0" /></a></div>
                         <div class="prod_price"><span class="reduce">350$</span> 
                             <span class="price">270$</span></div>
@@ -301,7 +301,7 @@
                     </ul>      
 
                     <div class="banner_adds">
-                        <a href="#"><img src="../Images/bann1.jpg" alt="" title="" border="0" /></a>
+                        <a href="#"><img src="../Images/banner.jpg" alt="" title="" border="0" /></a>
                     </div>        
 
                 </div><!-- end of right content -->   
@@ -314,8 +314,7 @@
                     <img src="../Images/footer_logo.png" alt="" title="" width="170" height="49"/>
                 </div>
 
-                <div class="center_footer">
-                    Manuel Conde. All Rights Reserved 2012<br />
+                <div class="center_footer">Manuel Conde &#169 2012<br/>
                     <a href="http://twitter.com/#!/mconde17" title="twitter">
                         <img src="../Images/twitter.jpg" alt="twitter" title="twitter" border="0" /></a><br />
                     <img src="../Images/payment.gif" alt="" title="" />
@@ -325,9 +324,10 @@
                     <a href="../index.jsp">Inicio</a>
                     <a href="../WebActions/aboutUs.jsp">Sobre Nosotros</a>
                     <a href="../WebActions/contactUs.jsp">Contacta</a>
+                    <a href="../index.jsp">Admin</a>
                 </div>   
 
-            </div>                 
+            </div>               
 
         </div>
         <!-- end of main_container -->
