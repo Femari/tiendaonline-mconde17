@@ -27,7 +27,7 @@ public class AuthenticationServlet extends AbstractServlet {
                 goToURL(successPage, request, response);
             } else {
                 session.setAttribute("authentication", false);
-                goToURL(errorPage, request, response);
+                goToURL(errorForm, request, response);
             }
         }
     }

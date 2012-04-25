@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class AbstractServlet extends HttpServlet {
 
     protected String mechanismOfPersistence = null;
-    protected String displayPage = null;
-    protected String errorPage = null;
+    protected String displayForm = null;
+    protected String errorForm = null;
     protected String successPage = null;
     protected String authenticationServlet = null;
     protected String addToShoppingCartServlet = null;
@@ -56,8 +56,8 @@ public abstract class AbstractServlet extends HttpServlet {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         mechanismOfPersistence = context.getInitParameter("mechanismOfPersistence");
-        displayPage = context.getInitParameter("principalPage");
-        errorPage = context.getInitParameter("errorPage");
+        displayForm = context.getInitParameter("principalPage");
+        errorForm = context.getInitParameter("errorPage");
         successPage = context.getInitParameter("succesPage");
         authenticationServlet = context.getInitParameter("authenticationServlet");
         addToShoppingCartServlet = context.getInitParameter("addToShoppingCargServlet");

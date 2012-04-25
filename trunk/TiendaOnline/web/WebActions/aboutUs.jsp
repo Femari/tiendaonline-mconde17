@@ -3,9 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sobre Nosotros</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Página en Construcción!!!!!</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>

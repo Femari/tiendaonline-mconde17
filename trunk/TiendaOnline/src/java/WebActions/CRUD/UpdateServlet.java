@@ -19,7 +19,7 @@ public class UpdateServlet extends CreateServlet {
             request.setAttribute("message", "Modificado con éxito");
             goToURL(successPage, request, response);
         } else {
-            goToURL(errorPage, request, response);
+            goToURL(errorForm, request, response);
         }
     }
 }
