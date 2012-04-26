@@ -1,6 +1,6 @@
-package WebActions;
+package webactions2;
 
-import Model.ShoppingCart;
+import model2.ShoppingCart;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
