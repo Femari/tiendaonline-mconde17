@@ -1,8 +1,8 @@
-package WebActions;
+package webactions2;
 
-import Persistence.PersistenceDAO;
-import Persistence.ProductDAO;
-import Persistence.SaleDAO;
+import persistence2.PersistenceDAO;
+import persistence2.ProductDAO;
+import persistence2.SaleDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
