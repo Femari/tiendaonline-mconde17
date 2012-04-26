@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
-        <link rel="stylesheet" type="text/css" href="../css2/style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
         <script>
             PositionX = 100;
             PositionY = 100;
@@ -39,7 +39,7 @@
                 }}
 
         </script>
-        <script type="text/javascript" src="../javascripts2/boxOver.js"></script>
+        <script type="text/javascript" src="../javascripts/boxOver.js"></script>
     </head>
     <body>
 
@@ -77,16 +77,16 @@
                                 <div class="oferta_text">
                                     Esto parece que de momento funciona de forma decente xD
                                 </div>
-                                <a href="webactions2/productDetails.jsp" class="details">Detalles</a>
+                                <a href="webactions/productDetails.jsp" class="details">Detalles</a>
                             </div>
                         </div>
                         <div class="oferta_pagination">
 
                             <span class="current">1</span>
-                            <a href="../errors2/error501.html">2</a>
-                            <a href="../errors2/error501.html">3</a>
-                            <a href="../errors2/error501.html">4</a>
-                            <a href="../errors2/error501.html">5</a>  
+                            <a href="../errors/error501.html">2</a>
+                            <a href="../errors/error501.html">3</a>
+                            <a href="../errors/error501.html">4</a>
+                            <a href="../errors/error501.html">5</a>  
 
                         </div>        
 
@@ -104,17 +104,17 @@
                     <ul class="menu">
                         <li><a href="../index.jsp" class="nav1">Inicio</a></li>
                         <li class="divider"></li>
-                        <li><a href="../errors2/error501.html" class="nav2">Productos</a></li>
+                        <li><a href="../errors/error501.html" class="nav2">Productos</a></li>
                         <li class="divider"></li>
-                        <li><a href="Errors/error501.html" class="nav3">Especiales</a></li>
+                        <li><a href="../errors/error501.html" class="nav3">Especiales</a></li>
                         <li class="divider"></li>
-                        <li><a href="../errors2/error501.html" class="nav4">Mi Cuenta</a></li>
+                        <li><a href="../errors/error501.html" class="nav4">Mi Cuenta</a></li>
                         <li class="divider"></li>
-                        <li><a href="../errors2/error501.html" class="nav4">Registrar</a></li>
+                        <li><a href="../errors/error501.html" class="nav4">Registrar</a></li>
                         <li class="divider"></li>                         
-                        <li><a href="../errors2/error501.html" class="nav5">Envío</a></li>
+                        <li><a href="../errors/error501.html" class="nav5">Envío</a></li>
                         <li class="divider"></li>
-                        <li><a href="webactions2/contactUs.jsp" class="nav6">Contacta</a></li>
+                        <li><a href="webactions/contactus.jsp" class="nav6">Contacta</a></li>
                         <li class="divider"></li>
                         <li class="currencies">Moneda:
                             <select>
@@ -134,17 +134,17 @@
                     <div class="title_box">Categorías</div>
 
                     <ul class="left_menu">
-                        <li class="odd"><a href="../errors2/error501.html">Procesadores</a></li>
-                        <li class="even"><a href="../errors2/error501.html">Placas Base</a></li>
-                        <li class="odd"><a href="../errors2/error501.html">Sobremesa</a></li>
-                        <li class="even"><a href="../errors2/error501.html">Portátiles</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Procesadores</a></li>
+                        <li class="even"><a href="../errors/error501.html">Placas Base</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Sobremesa</a></li>
+                        <li class="even"><a href="../errors/error501.html">Portátiles</a></li>
                     </ul> 
 
                     <div class="title_box">Productos Especiales</div>  
                     <div class="border_box">
-                        <div class="product_title"><a href="webactions2/productDetails.jsp">
+                        <div class="product_title"><a href="webactions/productdetails.jsp">
                                 Motorola 156 MX-VL</a></div>
-                        <div class="product_img"><a href="webactions2/productDetails.jsp">
+                        <div class="product_img"><a href="webactions/productdetails.jsp">
                                 <img src="../images/laptop.png" alt="" title="" border="0" /></a></div>
                         <div class="prod_price"><span class="reduce">350$</span> 
                             <span class="price">270$</span></div>
@@ -171,7 +171,7 @@
                         <div class="center_prod_box_big">            
 
                             <div class="product_img_big">
-                                <a href="javascript:popImage('../Images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="../images/laptop.gif" alt="" title="" border="0" /></a>
+                                <a href="javascript:popImage('../images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="../images/laptop.gif" alt="" title="" border="0" /></a>
                                 <div class="thumbs">
                                     <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]"><img src="../images/thumb1.gif" alt="" title="" border="0" /></a>
                                     <a href="#" title="header=[Thumb2] body=[&nbsp;] fade=[on]"><img src="../images/thumb1.gif" alt="" title="" border="0" /></a>
@@ -203,8 +203,8 @@
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="webactions2/productDetails.jsp">Motorola 156 MX-VL</a></div>
-                            <div class="product_img"><a href="webactions2/productDetails.jsp">
+                            <div class="product_title"><a href="webactions/productdetails.jsp">Motorola 156 MX-VL</a></div>
+                            <div class="product_img"><a href="webactions/productdetails.jsp">
                                     <img src="../images/laptop.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="reduce">350$</span>
                                 <span class="price">270$</span></div>                        
@@ -213,19 +213,19 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="webactions2/productDetails.jsp" class="prod_details">Detalles</a>            
+                            <a href="webactions/productdetails.jsp" class="prod_details">Detalles</a>            
                         </div>                     
                     </div>
 
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="webactions2/productDetails.jsp">Iphone Apple</a></div>
-                            <div class="product_img"><a href="webactions2/productDetails.jsp">
+                            <div class="product_title"><a href="webactions/productDetails.jsp">Iphone Apple</a></div>
+                            <div class="product_img"><a href="webactions/productDetails.jsp">
                                     <img src="../images/p4.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="price">270$</span></div>                        
                         </div>
@@ -233,19 +233,19 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="webactions2/productDetails.jsp" class="prod_details">Detalles</a>             
+                            <a href="webactions/productdetails.jsp" class="prod_details">Detalles</a>             
                         </div>                     
                     </div>
 
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="webactions2/productDetails.jsp">Samsung Webcam</a></div>
-                            <div class="product_img"><a href="webactions2/productDetails.jsp">
+                            <div class="product_title"><a href="webactions/productdetails.jsp">Samsung Webcam</a></div>
+                            <div class="product_img"><a href="webactions/productdetails.jsp">
                                     <img src="../images/p5.gif" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="reduce">350$</span> 
                                 <span class="price">270$</span></div>                        
@@ -254,11 +254,11 @@
                         <div class="prod_details_tab">
                             <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                 <img src="../images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="../errors2/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
+                            <a href="../errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
                                 <img src="../images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="webactions2/productDetails.jsp" class="prod_details">Detalles</a>            
+                            <a href="webactions/productDetails.jsp" class="prod_details">Detalles</a>            
                         </div>                     
                     </div> 
 
@@ -281,8 +281,8 @@
 
                     <div class="title_box">Novedades</div>  
                     <div class="border_box">
-                        <div class="product_title"><a href="webactions2/productDetails.jsp">Motorola 156 MX-VL</a></div>
-                        <div class="product_img"><a href="webactions2/productDetails.jsp">
+                        <div class="product_title"><a href="webactions/productdetails.jsp">Motorola 156 MX-VL</a></div>
+                        <div class="product_img"><a href="webactions/productdetails.jsp">
                                 <img src="../images/p2.gif" alt="" title="" border="0" /></a></div>
                         <div class="prod_price"><span class="reduce">350$</span> 
                             <span class="price">270$</span></div>
@@ -291,13 +291,13 @@
                     <div class="title_box">Marcas</div>
 
                     <ul class="left_menu">
-                        <li class="odd"><a href="../errors2/error501.html">Sony</a></li>
-                        <li class="even"><a href="../errors2/error501.html">Samsung</a></li>
-                        <li class="odd"><a href="../errors2/error501.html">Daewoo</a></li>
-                        <li class="even"><a href="../errors2/error501.html">LG</a></li>
-                        <li class="odd"><a href="../errors2/error501.html">Fujitsu Siemens</a></li>
-                        <li class="even"><a href="../errors2/error501.html">Motorola</a></li>
-                        <li class="odd"><a href="../errors2/error501.html">Phillips</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Sony</a></li>
+                        <li class="even"><a href="../errors/error501.html">Samsung</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Daewoo</a></li>
+                        <li class="even"><a href="../errors/error501.html">LG</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Fujitsu Siemens</a></li>
+                        <li class="even"><a href="../errors/error501.html">Motorola</a></li>
+                        <li class="odd"><a href="../errors/error501.html">Phillips</a></li>
                     </ul>      
 
                     <div class="banner_adds">
@@ -322,8 +322,8 @@
 
                 <div class="right_footer">
                     <a href="../index.jsp">Inicio</a>
-                    <a href="webactions2/aboutUs.jsp">Sobre Nosotros</a>
-                    <a href="webactions2/contactUs.jsp">Contacta</a>
+                    <a href="webactions/aboutus.jsp">Sobre Nosotros</a>
+                    <a href="webactions/contactus.jsp">Contacta</a>
                     <a href="../index.jsp">Admin</a>
                 </div>   
 
