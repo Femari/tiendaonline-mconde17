@@ -24,7 +24,7 @@ public class AuthenticationServlet extends AbstractServlet {
                 session.setAttribute("authentication", true);
                 session.setAttribute("user", user);
                 session.setAttribute("admin", user.getUserPrivileged());
-                goToURL(successPage, request, response);
+                goToURL(successForm, request, response);
             } else {
                 session.setAttribute("authentication", false);
                 goToURL(errorForm, request, response);

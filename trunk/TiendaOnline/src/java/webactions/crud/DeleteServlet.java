@@ -17,9 +17,9 @@ public class DeleteServlet extends AbstractServlet {
         if (product != null && persistenceManagerProduct.deleteProduct(product)) {
             request.setAttribute("product", product);
             request.setAttribute("message", "Borrado con éxito");
-            goToURL(successPage, request, response);
+            goToURL(successForm, request, response);
         } else {
-            goToURL(successPage, request, response);
+            goToURL(successForm, request, response);
         }
     }
 }
