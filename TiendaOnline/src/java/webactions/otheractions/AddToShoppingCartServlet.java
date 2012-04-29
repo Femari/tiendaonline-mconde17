@@ -32,6 +32,6 @@ public class AddToShoppingCartServlet extends AbstractServlet {
         for (int i = 0; i < amount; i++) {
             cart.addProduct(productList.get(productName));
         }
-        goToURL(successPage, request, response);
+        goToURL(successForm, request, response);
     }
 }

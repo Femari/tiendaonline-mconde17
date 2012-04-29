@@ -16,14 +16,14 @@ public abstract class AbstractServlet extends HttpServlet {
     protected String mechanismOfPersistence = null;
     protected String displayForm = null;
     protected String errorForm = null;
-    protected String successPage = null;
+    protected String successForm = null;
     protected String authenticationServlet = null;
     protected String addToShoppingCartServlet = null;
     protected String sendEmailServlet = null;
-    protected String createServlet = null;
-    protected String deleteServlet = null;
-    protected String readServlet = null;
-    protected String updateServlet = null;
+    protected String createServlet = null; // C
+    protected String readServlet = null; //   R
+    protected String updateServlet = null; // U
+    protected String deleteServlet = null; // D
     protected String saleServlet = null;
 
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response);
@@ -58,7 +58,7 @@ public abstract class AbstractServlet extends HttpServlet {
         mechanismOfPersistence = context.getInitParameter("mechanismOfPersistence");
         displayForm = context.getInitParameter("principalPage");
         errorForm = context.getInitParameter("errorPage");
-        successPage = context.getInitParameter("succesPage");
+        successForm = context.getInitParameter("succesPage");
         authenticationServlet = context.getInitParameter("authenticationServlet");
         addToShoppingCartServlet = context.getInitParameter("addToShoppingCargServlet");
         sendEmailServlet = context.getInitParameter("sendEmailServlet");

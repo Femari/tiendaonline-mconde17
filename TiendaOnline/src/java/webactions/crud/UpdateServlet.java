@@ -17,7 +17,7 @@ public class UpdateServlet extends CreateServlet {
         if (persistenceManagerProduct.updateProduct(oldProduct, newProduct)) {
             request.setAttribute("product", newProduct);
             request.setAttribute("message", "Modificado con éxito");
-            goToURL(successPage, request, response);
+            goToURL(successForm, request, response);
         } else {
             goToURL(errorForm, request, response);
         }
