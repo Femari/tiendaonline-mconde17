@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Comment;
 import java.util.Map;
+import model.Comment;
 
 public interface CommentDAO {
 

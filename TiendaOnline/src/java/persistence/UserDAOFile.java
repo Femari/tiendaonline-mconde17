@@ -1,12 +1,12 @@
 package persistence;
 
-import model.User;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.User;
 
 public class UserDAOFile implements UserDAO {
 
@@ -120,12 +120,16 @@ public class UserDAOFile implements UserDAO {
             return false;
         } finally {
             try {
-                ois.close();
+                if (ois!=null){
+                    ois.close();
+                }
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
-                is.close();
+                if (is != null){
+                    is.close();
+                }
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);
             }

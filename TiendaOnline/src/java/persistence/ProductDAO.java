@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Product;
 import java.util.Map;
+import model.Product;
 
 public interface ProductDAO {
 

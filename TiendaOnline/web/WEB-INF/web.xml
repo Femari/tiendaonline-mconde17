@@ -4,16 +4,23 @@
     <!---->
     <context-param>
         <param-name>successForm</param-name>
-        <param-value>/WEB-INF/view/successpage.jsp</param-value>
+        <param-value>/WEB-INF/view/successform.jsp</param-value>
     </context-param>
+    <!---->
+    <resource-ref>
+        <res-ref-name>jdbc/TiendaOnline</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
     <!---->
     <context-param>
         <param-name>errorForm</param-name>
-        <param-value>/WEB-INF/view/error.html</param-value>
+        <param-value>/WEB-INF/view/errors/error.html</param-value>
     </context-param>
     <context-param>
         <param-name>saleForm</param-name>
-        <param-value>/webactionsuser/saleform.jsp</param-value>
+        <param-value>/webactionsuser/saleform.html</param-value>
     </context-param>
     <context-param>
         <param-name>confirmationSale</param-name>
@@ -27,43 +34,47 @@
         <param-name>createServlet</param-name>
         <param-value>createServlet</param-value>
     </context-param>
+    <!--<context-param>
+        <param-name>ventaUsuarioServlet</param-name>
+        <param-value>ventaUsuarioServlet</param-value>
+    </context-param>-->
     <context-param>
         <param-name>addToShoppingCartServlet</param-name>
-        <param-value>AddToShoppingCartServlet</param-value>
+        <param-value>addToShoppingCartServlet</param-value>
     </context-param>
     <context-param>
         <param-name>saleServlet</param-name>
-        <param-value>SaleServlet</param-value>
+        <param-value>saleServlet</param-value>
     </context-param>
     <context-param>
         <param-name>sendEmailServlet</param-name>
-        <param-value>SendEmailServlet</param-value>
+        <param-value>sendEmailServlet</param-value>
     </context-param>
     <context-param>
         <param-name>authenticationServlet</param-name>
-        <param-value>AuthenticacionServlet</param-value>
+        <param-value>authenticationServlet</param-value>
     </context-param>
     <context-param>
         <param-name>readServlet</param-name>
-        <param-value>ReadServlet</param-value>
+        <param-value>readServlet</param-value>
     </context-param>
     <context-param>
         <param-name>deleteServlet</param-name>
-        <param-value>DeleteServlet</param-value>
+        <param-value>deleteServlet</param-value>
     </context-param>
     <context-param>
         <param-name>updateServlet</param-name>
-        <param-value>UpdateServlet</param-value>
+        <param-value>updateServlet</param-value>
     </context-param>
     <context-param>
         <param-name>displayForm</param-name>
-        <param-value>/WEB-INF/view/displayForm.jsp</param-value>
+        <param-value>/WEB-INF/view/displayform.jsp</param-value>
     </context-param>
     <context-param>
-        <param-name>mechanismOfPersistence</param-name>
+        <param-name>persistenceMechanism</param-name>
         <param-value>file</param-value>
     </context-param>
-    <!--Comienzo de la configuracin de la configuracion de la base de datos jdbc:derby://localhost:1527/TiendaOnline-->
+    <!--Comienzo de la configuracin de la configuracion de la base de datos jdbc:derby://localhost:1527/GuitarOnline-->
     <context-param>
         <param-name>databaseURL</param-name>
         <param-value>TiendaOnline</param-value>
@@ -80,14 +91,18 @@
         <param-name>databaseUser</param-name>
         <param-value>electronixstoreadmin</param-value>
     </context-param>
+    <context-param>
+        <param-name>persistenceMechanism</param-name>
+        <param-value>file</param-value>
+    </context-param>
     <!--Listener de inicializacion-->
     <listener>
         <description>ServletContextListener</description>
-        <listener-class>webactions/StartUpServlet</listener-class>
+        <listener-class>webactions.StartUpListener</listener-class>
     </listener>
     <!--Listener de sesion -->
     <listener>
-        <listener-class>webactions/SessionListenerServlet</listener-class>
+        <listener-class>webactions.SessionListener</listener-class>
     </listener>
     <error-page>
         <error-code>404</error-code>
@@ -118,76 +133,84 @@
     </error-page>
     <servlet>
         <servlet-name>createServlet</servlet-name>
-        <servlet-class>webactions/crud/CrearServlet</servlet-class>
+        <servlet-class>webactions.crud.CreateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>saleServlet</servlet-name>
-        <servlet-class>webactions/otheractions/SaleServlet</servlet-class>
+        <servlet-class>webactions.otheractions.SaleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>readServlet</servlet-name>
-        <servlet-class>webactions/crud/ReadServlet</servlet-class>
+        <servlet-class>webactions.crud.ReadServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteServlet</servlet-name>
-        <servlet-class>webactions/crud/DeleteServlet</servlet-class>
+        <servlet-class>webactions.crud.DeleteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>frontServlet</servlet-name>
-        <servlet-class>webactions/FrontServlet</servlet-class>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>webactions.FrontController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>abstractServlet</servlet-name>
-        <servlet-class>webactions/AbstractServlet</servlet-class>
+        <servlet-name>MyCoolServlet</servlet-name>
+        <servlet-class>webactions.MyCoolServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>startUpServlet</servlet-name>
-        <servlet-class>webactions/StartUpServlet</servlet-class>
+        <servlet-name>StartUpListener</servlet-name>
+        <servlet-class>webactions.StartUpListener</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updateServlet</servlet-name>
-        <servlet-class>webactions/crud/UpdateServlet</servlet-class>
+        <servlet-class>webactions.crud.UpdateServlet</servlet-class>
     </servlet>
+    <!--<servlet>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <servlet-class>controller.CatalogoServlet</servlet-class>
+    </servlet>-->
     <servlet>
         <servlet-name>sendEmailServlet</servlet-name>
-        <servlet-class>webactions/otheractions/SendEmailServlet</servlet-class>
+        <servlet-class>webactions.otheractions.SendEmailServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addToShoppingCartServlet</servlet-name>
-        <servlet-class>webactions/otheractions/AddToShoppingCartServlet</servlet-class>
+        <servlet-class>webactions.otheractions.AddToShoppingCartServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>authenticationServlet</servlet-name>
-        <servlet-class>webactions/otheractions/AuthenticationServlet</servlet-class>
+        <servlet-class>webactions.otheractions.AuthenticationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createServlet</servlet-name>
-        <url-pattern>/CreateServlet</url-pattern>
+        <url-pattern>/crud/createServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>readServlet</servlet-name>
-        <url-pattern>/ReadServlet</url-pattern>
+        <url-pattern>/crud/readServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>deleteServlet</servlet-name>
-        <url-pattern>/DeleteServlet</url-pattern>
+        <url-pattern>/crud/deleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>frontServlet</servlet-name>
-        <url-pattern>/FrontServlet</url-pattern>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/FrontController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>abstractServlet</servlet-name>
-        <url-pattern>/AbstractServlet</url-pattern>
+        <servlet-name>MyCoolServlet</servlet-name>
+        <url-pattern>/MyCoolServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>startUpServlet</servlet-name>
-        <url-pattern>/StartUpServlet</url-pattern>
+        <servlet-name>StartUpListener</servlet-name>
+        <url-pattern>/StartUpListener</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>updateServlet</servlet-name>
-        <url-pattern>/UpdateServlet</url-pattern>
+        <url-pattern>/crud/updateServlet</url-pattern>
     </servlet-mapping>
+    <!--<servlet-mapping>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <url-pattern>/CatalogoServlet</url-pattern>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>saleServlet</servlet-name>
         <url-pattern>/otheractions/SaleServlet</url-pattern>
@@ -197,12 +220,12 @@
         <url-pattern>/otheractions/SendEmailServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>addToShoppingCartServlet</servlet-name>
-        <url-pattern>/otheractions/AddToShoppingCartServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>authenticationServlet</servlet-name>
         <url-pattern>/otheractions/AuthenticationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addToShoppingCartServlet</servlet-name>
+        <url-pattern>/otheractions/addToShoppingCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

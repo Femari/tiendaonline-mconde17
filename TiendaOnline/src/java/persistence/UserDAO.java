@@ -1,7 +1,7 @@
 package persistence;
 
-import model.User;
 import java.util.Map;
+import model.User;
 
 public interface UserDAO {
 
