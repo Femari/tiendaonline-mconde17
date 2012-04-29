@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Sale;
 import java.util.Map;
+import model.Sale;
 
 public interface SaleDAO {
 

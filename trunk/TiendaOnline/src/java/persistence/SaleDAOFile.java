@@ -1,12 +1,12 @@
 package persistence;
 
-import model.Sale;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Sale;
 
 public class SaleDAOFile implements SaleDAO {
 
@@ -90,6 +90,7 @@ public class SaleDAOFile implements SaleDAO {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfSales = (Integer) ois.readObject();
+                System.out.println("Número de Ventas: " + numberOfSales);
                 for (int i = 0; i < numberOfSales; i++) {
                     Sale s = (Sale) ois.readObject();
                     getSaleMap().put(s.getSaleID(), s);
@@ -99,15 +100,22 @@ public class SaleDAOFile implements SaleDAO {
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);
+            System.out.println("Impresión de la traza de error de OIS: ");
+            ex.printStackTrace();
+            System.out.println("Fin de la traza");
             return false;
         } finally {
             try {
-                ois.close();
+                if (ois != null) {
+                    ois.close();
+                }
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
-                is.close();
+                if (is != null) {
+                    is.close();
+                }
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);
             }

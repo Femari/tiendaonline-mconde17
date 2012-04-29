@@ -2,8 +2,8 @@ package persistence;
 
 public class PersistenceDAO {
 
-    public static ProductDAO getProductDAO(String mechanismOfPersistence) {
-        switch (mechanismOfPersistence) {
+    public static ProductDAO getProductDAO(String persistenceMechanism) {
+        switch (persistenceMechanism) {
             case "file":
                 return ProductDAOFile.getImplementation();
             case "jdbc":
@@ -13,8 +13,8 @@ public class PersistenceDAO {
         }
     }
 
-    public static SaleDAO getSaleDAO(String mechanismOfPersistence) {
-        switch (mechanismOfPersistence) {
+    public static SaleDAO getSaleDAO(String persistenceMechanism) {
+        switch (persistenceMechanism) {
             case "file":
                 return SaleDAOFile.getImplementation();
             case "jdbc":
@@ -24,8 +24,8 @@ public class PersistenceDAO {
         }
     }
 
-    public static UserDAO getUserDAO(String mechanismOfPersistence) {
-        switch (mechanismOfPersistence) {
+    public static UserDAO getUserDAO(String persistenceMechanism) {
+        switch (persistenceMechanism) {
             case "file":
                 return UserDAOFile.getImplementation();
             case "jdbc":
@@ -35,8 +35,8 @@ public class PersistenceDAO {
         }
     }
 
-    public static CommentDAO getCommentDAO(String mechanismOfPersistence) {
-        switch (mechanismOfPersistence) {
+    public static CommentDAO getCommentDAO(String persistenceMechanism) {
+        switch (persistenceMechanism) {
             case "file":
                 return CommentDAOFile.getImplementation();
             case "jdbc":

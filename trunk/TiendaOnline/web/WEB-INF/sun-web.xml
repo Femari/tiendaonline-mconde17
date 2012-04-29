@@ -8,4 +8,9 @@
       <description>Keep a copy of the generated servlet class' java code.</description>
     </property>
   </jsp-config>
+  
+  <resource-ref>
+      <res-ref-name>jdbc/TiendaOnline</res-ref-name>
+      <jndi-name>jdbc/TiendaOnline</jndi-name>
+  </resource-ref>
 </sun-web-app>
