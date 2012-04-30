@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <!--Cambiando este parametro usamos la pantalla de exito cutre en vez de la menos cutre-->
-    <!---->
+    <!-- Pantalla de Éxito -->
     <context-param>
         <param-name>successForm</param-name>
         <param-value>/WEB-INF/view/successform.jsp</param-value>
     </context-param>
-    <!---->
+    <!-- Configuración de la Base de Datos (I) -->
     <resource-ref>
         <res-ref-name>jdbc/TiendaOnline</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
-    <!---->
+    <!-- Resto de pantallas -->
     <context-param>
         <param-name>errorForm</param-name>
         <param-value>/WEB-INF/view/errors/error.html</param-value>
@@ -34,10 +33,6 @@
         <param-name>createServlet</param-name>
         <param-value>createServlet</param-value>
     </context-param>
-    <!--<context-param>
-        <param-name>ventaUsuarioServlet</param-name>
-        <param-value>ventaUsuarioServlet</param-value>
-    </context-param>-->
     <context-param>
         <param-name>addToShoppingCartServlet</param-name>
         <param-value>addToShoppingCartServlet</param-value>
@@ -70,11 +65,7 @@
         <param-name>displayForm</param-name>
         <param-value>/WEB-INF/view/displayform.jsp</param-value>
     </context-param>
-    <context-param>
-        <param-name>persistenceMechanism</param-name>
-        <param-value>file</param-value>
-    </context-param>
-    <!--Comienzo de la configuracin de la configuracion de la base de datos jdbc:derby://localhost:1527/GuitarOnline-->
+    <!-- Configuración de la Base de Datos (II) jdbc:derby://localhost:1527/TiendaOnline -->
     <context-param>
         <param-name>databaseURL</param-name>
         <param-value>TiendaOnline</param-value>
@@ -95,42 +86,33 @@
         <param-name>persistenceMechanism</param-name>
         <param-value>file</param-value>
     </context-param>
-    <!--Listener de inicializacion-->
+    <!-- Listener de Arranque -->
     <listener>
         <description>ServletContextListener</description>
         <listener-class>webactions.StartUpListener</listener-class>
     </listener>
-    <!--Listener de sesion -->
+    <!-- Listener de Sesión de Usuario -->
     <listener>
         <listener-class>webactions.SessionListener</listener-class>
     </listener>
+    <!-- Páginas de Errores -->
     <error-page>
         <error-code>404</error-code>
-        <!--En este caso, el recurso va a ser una página HTML estatica-->
-        <location>/WEB-INF/view/errors/error404.html</location>
+        <location>/WEB-INF/view/errors/error404.jsp</location>
     </error-page>
-    <!--Declaramos el recurso que va a gestionar errores http 500-->
     <error-page>
         <error-code>500</error-code>
-        <!--En este caso, el recurso va a ser una página HTML estatica-->
-        <location>/WEB-INF/view/errors/error500.html</location>
+        <location>/WEB-INF/view/errors/error500.jsp</location>
     </error-page>
-    <error-page>
-        <error-code>501</error-code>
-        <!--En este caso, el recurso va a ser una página HTML estatica-->
-        <location>/WEB-INF/view/errors/error501.html</location>
-    </error-page>
-    <!--Declaramos el recurso que va a gestionar NullPointerExceptions en el codigo Java-->
     <error-page>
         <exception-type>java.lang.NullPointerException</exception-type>
-        <!--En este caso, el recurso va a ser Servlet-->
-        <location>/WEB-INF/view/errors/null.html</location>
+        <location>/WEB-INF/view/errors/null.jsp</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <!--En este caso, el recurso va a ser Servlet-->
-        <location>/WEB-INF/view/errors/error.html</location>
+        <location>/WEB-INF/view/errors/error.jsp</location>
     </error-page>
+    <!-- SERVLETS -->
     <servlet>
         <servlet-name>createServlet</servlet-name>
         <servlet-class>webactions.crud.CreateServlet</servlet-class>
@@ -163,10 +145,6 @@
         <servlet-name>updateServlet</servlet-name>
         <servlet-class>webactions.crud.UpdateServlet</servlet-class>
     </servlet>
-    <!--<servlet>
-        <servlet-name>CatalogoServlet</servlet-name>
-        <servlet-class>controller.CatalogoServlet</servlet-class>
-    </servlet>-->
     <servlet>
         <servlet-name>sendEmailServlet</servlet-name>
         <servlet-class>webactions.otheractions.SendEmailServlet</servlet-class>
@@ -207,10 +185,6 @@
         <servlet-name>updateServlet</servlet-name>
         <url-pattern>/crud/updateServlet</url-pattern>
     </servlet-mapping>
-    <!--<servlet-mapping>
-        <servlet-name>CatalogoServlet</servlet-name>
-        <url-pattern>/CatalogoServlet</url-pattern>
-    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>saleServlet</servlet-name>
         <url-pattern>/otheractions/SaleServlet</url-pattern>
@@ -227,11 +201,13 @@
         <servlet-name>addToShoppingCartServlet</servlet-name>
         <url-pattern>/otheractions/addToShoppingCartServlet</url-pattern>
     </servlet-mapping>
+    <!-- Tiempo de vida de la Sesión -->
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!-- Página de Bienvenida -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

@@ -10,9 +10,9 @@
     <body>
 
         <div id="main_container">
-            
+
             <%@include file="/WEB-INF/view/headerpage.jsp" %>
-            
+
             <div id="main_content"> 
 
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
@@ -69,7 +69,7 @@
             </div><!-- end of main content -->
 
             <%@include file="/WEB-INF/view/footerpage.jsp" %>
-            
+
         </div><!-- end of main_container -->
     </body>
 </html>

@@ -1,19 +1,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
+
     <div id="menu_tab">
         <div class="left_menu_corner"></div>
         <ul class="menu">
             <li><a href="/TiendaOnline/index.jsp" class="nav1">Inicio</a></li>
             <li class="divider"></li>
-            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav2">Productos</a></li>
+            <li><a href="/TiendaOnline/webactions/productlist" class="nav2">Productos</a></li>
             <li class="divider"></li>
-            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav3">Especiales</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="nav3">Especiales</a></li>
             <li class="divider"></li>
             <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav4">Mi Cuenta</a></li>
             <li class="divider"></li>
-            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav4">Registrar</a></li>
+            <li><a href="/TiendaOnline/webactionsuser/userform.jsp" class="nav4">Registrar</a></li>
             <li class="divider"></li>                         
             <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav5">Envío</a></li>
             <li class="divider"></li>
