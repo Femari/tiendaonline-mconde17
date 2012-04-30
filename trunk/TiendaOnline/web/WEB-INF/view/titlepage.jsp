@@ -5,19 +5,19 @@
     <div id="menu_tab">
         <div class="left_menu_corner"></div>
         <ul class="menu">
-            <li><a href="/index.jsp" class="nav1">Inicio</a></li>
+            <li><a href="/TiendaOnline/index.jsp" class="nav1">Inicio</a></li>
             <li class="divider"></li>
-            <li><a href="/WEB-INF/view/errors/error501.html" class="nav2">Productos</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav2">Productos</a></li>
             <li class="divider"></li>
-            <li><a href="/WEB-INF/view/errors/error501.html" class="nav3">Especiales</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav3">Especiales</a></li>
             <li class="divider"></li>
-            <li><a href="/WEB-INF/view/errors/error501.html" class="nav4">Mi Cuenta</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav4">Mi Cuenta</a></li>
             <li class="divider"></li>
-            <li><a href="/WEB-INF/view/errors/error501.html" class="nav4">Registrar</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav4">Registrar</a></li>
             <li class="divider"></li>                         
-            <li><a href="/WEB-INF/view/errors/error501.html" class="nav5">Envío</a></li>
+            <li><a href="/TiendaOnline/WEB-INF/view/errors/error501.html" class="nav5">Envío</a></li>
             <li class="divider"></li>
-            <li><a href="/webactions/contactus.jsp" class="nav6">Contacta</a></li>
+            <li><a href="/TiendaOnline/webactions/contactus.jsp" class="nav6">Contacta</a></li>
             <li class="divider"></li>
             <li class="currencies">Moneda:
                 <select>
