@@ -44,7 +44,7 @@
     <body>
 
         <div id="main_container">
-            
+
             <%@include file="/WEB-INF/view/headerpage.jsp" %>
 
             <div id="main_content"> 

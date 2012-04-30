@@ -18,26 +18,27 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Sobre Nosotros</span>
+                    Navegación: <span class="current">Error</span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Sobre Nosotros:</div>
-                        
+                    <div class="center_title_bar">Error Null</div>
+
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <br>Electronix<br>
-                            <br>Esta web es un proyecto para la asignatura de LPI
-                            <br>3º de Ingeniería Informática en la Universidad CEU San Pablo.<br>                            
-                            <br><br>Manuel Conde<br><br>
-                            <a href="http://code.google.com/p/tiendaonline-mconde17/"> Google Code del Proyecto </a>
+                            <br>Lo sentimos... Ha ocurrido un error al procesar tu petición<br>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
-                        
+
+                    <br><br>
+                    <center>
+                        <img src="/TiendaOnline/images/pagenotfound.jpg" alt="" title=""/>
+                    </center>
+
                 </div><!-- end of center content -->
 
                 <%@include file="/WEB-INF/view/rightpage.jsp" %> 

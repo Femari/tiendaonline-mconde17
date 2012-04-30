@@ -10,7 +10,7 @@
 
         <div class="languages">
             <div class="lang_text">Idiomas:</div>
-            <a href="#" class="lang"><img src="/TiendaOnline/images/es.gif" alt="" title="" border="0" /></a>      
+            <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="lang"><img src="/TiendaOnline/images/es.gif" alt="" title="" border="0" /></a>      
         </div>
 
     </div>
@@ -18,7 +18,7 @@
 
         <div id="logo">
             <a href="/TiendaOnline/index.jsp"><img src="/TiendaOnline/images/logo.png" alt="" title="" 
-                                     border="0" width="237" height="140" /></a>
+                                                   border="0" width="237" height="140" /></a>
         </div>
 
         <div class="oferte_content">
@@ -40,10 +40,10 @@
                 <div class="oferta_pagination">
 
                     <span class="current">1</span>
-                    <a href="/TiendaOnline/WEB-INF/view/errors/error501.html">2</a>
-                    <a href="/TiendaOnline/WEB-INF/view/errors/error501.html">3</a>
-                    <a href="/TiendaOnline/WEB-INF/view/errors/error501.html">4</a>
-                    <a href="/TiendaOnline/WEB-INF/view/errors/error501.html">5</a>  
+                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">2</a>
+                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">3</a>
+                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">4</a>
+                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">5</a>  
 
                 </div>        
 

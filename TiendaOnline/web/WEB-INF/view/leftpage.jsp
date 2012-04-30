@@ -5,10 +5,10 @@
         <div class="title_box">Categorías</div>
 
         <ul class="left_menu">
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Procesadores</a></li>
-            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Placas Base</a></li>
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Sobremesa</a></li>
-            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Portátiles</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Procesadores</a></li>
+            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Placas Base</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Sobremesa</a></li>
+            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Portátiles</a></li>
         </ul> 
 
         <div class="title_box">Productos Especiales</div>  
@@ -24,12 +24,12 @@
         <div class="title_box">Noticias</div>  
         <div class="border_box">
             <input type="text" name="Noticias" class="newsletter_input" value="Introduce tu e-mail"/>
-            <a href="#" class="join">Únete</a>
+            <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="join">Únete</a>
         </div>  
 
         <div class="banner_adds">
 
-            <a href="#"><img src="/TiendaOnline/images/banner.jpg" alt="" title="" border="0" /></a>
+            <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp"><img src="/TiendaOnline/images/banner.jpg" alt="" title="" border="0" /></a>
         </div>    
 
     </div><!-- end of left content -->

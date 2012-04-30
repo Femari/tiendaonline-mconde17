@@ -28,17 +28,17 @@
         <div class="title_box">Marcas</div>
 
         <ul class="left_menu">
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Sony</a></li>
-            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Samsung</a></li>
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Daewoo</a></li>
-            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">LG</a></li>
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Fujitsu Siemens</a></li>
-            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Motorola</a></li>
-            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error501.html">Phillips</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Sony</a></li>
+            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Samsung</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Daewoo</a></li>
+            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">LG</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Fujitsu Siemens</a></li>
+            <li class="even"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Motorola</a></li>
+            <li class="odd"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">Phillips</a></li>
         </ul>      
 
         <div class="banner_adds">
-            <a href="#"><img src="/TiendaOnline/images/banner.jpg" alt="" title="" border="0" /></a>
+            <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp"><img src="/TiendaOnline/images/banner.jpg" alt="" title="" border="0" /></a>
         </div>        
 
     </div><!-- end of right content -->   
