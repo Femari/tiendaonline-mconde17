@@ -1,15 +1,15 @@
 package persistence;
 
-import model.Product;
-import model.Sale;
-import model.ShoppingCart;
-import model.User;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Product;
+import model.Sale;
+import model.ShoppingCart;
+import model.User;
 
 public class SaleDAOJDBC implements SaleDAO {
 
@@ -34,14 +34,15 @@ public class SaleDAOJDBC implements SaleDAO {
         boolean addShoppingCartResult;
         PreparedStatement statement = null;
         try {
-            String query = "INSERT INTO \"SALES\" VALUES(?,?,?,?)";
+            String query = "INSERT INTO \"SALES\" VALUES(?,?,?,?,?)";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
             }
             statement.setString(1, sale.getSaleID());
             statement.setString(2, sale.getSaleClient().getUserEmail());
             statement.setString(3, sale.getSalePaymentMethod());
-            statement.setString(4, sale.getSaleDate());
+            statement.setString(4, sale.getSaleAdress());
+            statement.setString(5, sale.getSaleDate());
             statementResult = statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar INSERT contra la Base de Datos", ex);
@@ -101,7 +102,7 @@ public class SaleDAOJDBC implements SaleDAO {
         boolean addShoppingCartResult;
         try {
             String query = "UPDATE \"SALES\" SET saleID = ?, saleClient = ?, "
-                    + "saleCart = ?, salePaymentMethod = ?, saleDate = ?"
+                    + "saleCart = ?, salePaymentMethod = ?, saleAdress = ?, saleDate = ?"
                     + "WHERE saleID = ?";
             synchronized (lock) {
                 statement = connection.prepareStatement(query);
@@ -110,8 +111,9 @@ public class SaleDAOJDBC implements SaleDAO {
             statement.setObject(2, newSale.getSaleClient());
             statement.setObject(3, newSale.getSaleShoppingCart());
             statement.setString(4, newSale.getSalePaymentMethod());
-            statement.setString(5, newSale.getSaleDate());
-            statement.setString(6, oldSale.getSaleID());
+            statement.setString(5, newSale.getSaleAdress());
+            statement.setString(6, newSale.getSaleDate());
+            statement.setString(7, oldSale.getSaleID());
             statementResult = statement.execute();
         } catch (SQLException ex) {
             log.log(Level.WARNING, "Fallo al realizar UPDATE contra la Base de Datos", ex);
@@ -151,6 +153,7 @@ public class SaleDAOJDBC implements SaleDAO {
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),
+                        result.getString("saleAdress"),
                         result.getString("saleDate"));
             }
         } catch (SQLException ex) {
@@ -194,6 +197,7 @@ public class SaleDAOJDBC implements SaleDAO {
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),
+                        result.getString("saleAdress"),
                         result.getString("saleDate"));
                 map.put(s.getSaleID(), s);
             }
@@ -241,6 +245,7 @@ public class SaleDAOJDBC implements SaleDAO {
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),
+                        result.getString("saleAdress"),
                         result.getString("saleDate"));
                 map.put(s.getSaleID(), s);
             }

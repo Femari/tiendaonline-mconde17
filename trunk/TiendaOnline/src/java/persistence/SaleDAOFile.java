@@ -100,9 +100,6 @@ public class SaleDAOFile implements SaleDAO {
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);
-            System.out.println("Impresión de la traza de error de OIS: ");
-            ex.printStackTrace();
-            System.out.println("Fin de la traza");
             return false;
         } finally {
             try {

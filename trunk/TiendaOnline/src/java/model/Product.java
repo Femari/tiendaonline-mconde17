@@ -69,6 +69,12 @@ public class Product {
         return this.productImage;
     }
 
+    public String generateProductID() {
+        String id;
+        id = java.util.UUID.randomUUID().toString().substring(0, 29);
+        return id;
+    }
+
     public boolean isEquals(String parameter, String condition) {
         boolean equals = false;
         switch (parameter) {

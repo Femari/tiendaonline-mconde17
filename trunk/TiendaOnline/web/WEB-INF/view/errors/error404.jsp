@@ -18,7 +18,7 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Error</span>
+                    Navegación: <span class="current">Error 404</span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import model.Sale;
 import model.ShoppingCart;
 import model.User;
+import persistence.PersistenceDAO;
 import webactions.MyCoolServlet;
 
 public class SaleServlet extends MyCoolServlet {
@@ -20,16 +21,17 @@ public class SaleServlet extends MyCoolServlet {
         HttpSession session = request.getSession();
         boolean authentication = (boolean) session.getAttribute("authentication");
         User user = (User) session.getAttribute("user");
+        Sale sale = (Sale) PersistenceDAO.getSaleDAO(persistenceMechanism);
         if (authentication) {
-            //Falta por generar el ID de la Venta, la forma de Pago y la fecha
-            Sale sale = new Sale("", user, new ShoppingCart(), "", "");
+            sale.setSaleID(sale.generateSaleID());
+            sale.setSaleAdress((String)request.getAttribute("saleAdress"));
+            sale.setSaleClient(user);
+            sale.setSalePaymentMethod((String)request.getAttribute("salePaymentMethod"));
             request.setAttribute("sale", sale);
-            //Falta por construir la página de confirmación
-            goToURL("PAGINADECONFIRMACION", request, response);
+            goToURL("/WEB-INF/view/confirmationsale.jsp", request, response);
         } else {
-            Logger.getLogger(SaleServlet.class.getName()).log(Level.SEVERE, "autenticado es {0}", authentication);
-            //Falta por construir la página el formulario de Venta
-            goToURL("FORMULARIODEVENTA", request, response);
+            Logger.getLogger(SaleServlet.class.getName()).log(Level.SEVERE, "Usuario No Registrado", authentication);
+            goToURL("/TiendaOnline/webactionsuser/saleform.jsp", request, response);
         }
     }
 }

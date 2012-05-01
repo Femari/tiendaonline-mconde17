@@ -1,11 +1,11 @@
 package persistence;
 
-import model.Comment;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Comment;
 
 public class CommentDAOJDBC implements CommentDAO {
 

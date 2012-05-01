@@ -4,7 +4,9 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Comment;
 import model.Product;
+import persistence.CommentDAO;
 import persistence.PersistenceDAO;
 import persistence.ProductDAO;
 import webactions.MyCoolServlet;
@@ -15,14 +17,20 @@ public class DeleteServlet extends MyCoolServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
+        CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(persistenceMechanism);
         String name = request.getParameter("name");
         Product product = persistenceManagerProduct.getProduct(name);
+        Comment comment = persistenceManagerComment.getComment(name);
         if (product != null && persistenceManagerProduct.deleteProduct(product)) {
             request.setAttribute("product", product);
             request.setAttribute("message", "Borrado con éxito");
             goToURL(successForm, request, response);
-        } else {
+        } else if (comment != null && persistenceManagerComment.deleteComment(comment)) {
+            request.setAttribute("comment", comment);
+            request.setAttribute("message", "Borrado con éxito");
             goToURL(successForm, request, response);
+        } else {
+            goToURL(errorForm, request, response);
         }
     }
 }

@@ -6,6 +6,9 @@
         <title>Electronix Store</title>
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
+        <script type="text/javascript" src="/TiendaOnline/javascripts/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="/TiendaOnline/javascripts/jquery.validate.js"></script>
+        <script type="text/javascript" src="/TiendaOnline/javascripts/additional-methods.js"></script>
     </head>
     <body>
 
@@ -53,7 +56,7 @@
                                 </div>
 
                                 <div class="form_row">
-                                    <a href="#" class="contact">Enviar</a>
+                                    <a href="#" class="contact"><strong>Enviar</strong></a>
                                 </div>      
 
                             </div> 

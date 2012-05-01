@@ -20,7 +20,7 @@ public class ShoppingCart {
     }
 
     public int getNumberOfProducts() {
-        return this.shoppingCart.size();
+        return this.getShoppingCart().size();
     }
 
     public void addProduct(Product product) {
