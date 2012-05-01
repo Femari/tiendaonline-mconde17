@@ -33,6 +33,7 @@ create table SALES
    SALEID               varchar(30) not null,
    USEREMAIL            varchar(60) not null,
    SALEPAYMENTMETHOD    varchar(30) not null,
+   SALEADRESS           varchar(240) not null,
    SALEDATE             varchar(30) not null,
    primary key (SALEID)
 );

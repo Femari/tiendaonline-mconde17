@@ -1,11 +1,11 @@
 package persistence;
 
-import model.Product;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Product;
 
 public class ProductDAOJDBC implements ProductDAO {
 

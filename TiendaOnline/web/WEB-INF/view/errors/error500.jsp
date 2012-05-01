@@ -18,7 +18,7 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Error</span>
+                    Navegación: <span class="current">Error 500</span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
@@ -33,12 +33,12 @@
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
-                    
+
                     <br><br>
                     <center>
-                    <img src="/TiendaOnline/images/underconstruction.jpg" alt="" title=""/>
+                        <img src="/TiendaOnline/images/underconstruction.jpg" alt="" title=""/>
                     </center>
-                    
+
                 </div><!-- end of center content -->
 
                 <%@include file="/WEB-INF/view/rightpage.jsp" %> 

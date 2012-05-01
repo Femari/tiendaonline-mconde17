@@ -39,7 +39,8 @@ public class CreateServlet extends MyCoolServlet {
                         request.setAttribute("message", "Usuario creado con éxito");
                         goToNamedResource(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Usuario");
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                                "Fallo al Crear el Nuevo Usuario");
                         goToURL(errorForm, request, response);
                     }
                     break;
@@ -47,10 +48,10 @@ public class CreateServlet extends MyCoolServlet {
                     Sale sale = generateSaleFromRequest(request);
                     if (sale != null && persistenceManagerSale.newSale(sale)) {
                         session.setAttribute("sale", sale);
-                        //Aquí hay que redirigir a la página de confirmación de la venta
-                        goToNamedResource(successForm, request, response);
+                        goToNamedResource("/WEB-INF/view/confirmationsale.jsp", request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear la Nueva Venta");
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                                "Fallo al Crear la Nueva Venta");
                         goToURL(errorForm, request, response);
                     }
                     break;
@@ -61,7 +62,8 @@ public class CreateServlet extends MyCoolServlet {
                         request.setAttribute("message", "Producto creado con éxito");
                         goToNamedResource(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Producto");
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                                "Fallo al Crear el Nuevo Producto");
                         goToURL(errorForm, request, response);
                     }
                     break;
@@ -72,7 +74,8 @@ public class CreateServlet extends MyCoolServlet {
                         session.setAttribute("message", "Comentario añadido con éxito");
                         goToNamedResource(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, "Fallo al Crear el Nuevo Comentario");
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                                "Fallo al Crear el Nuevo Comentario");
                         goToURL(errorForm, request, response);
                     }
                     break;
@@ -143,18 +146,18 @@ public class CreateServlet extends MyCoolServlet {
 
     //Falta por hacer las validaciones:
     private boolean validateUser() {
-        return false;
+        return true;
     }
 
     private boolean validateSale() {
-        return false;
+        return true;
     }
 
     private boolean validateProduct() {
-        return false;
+        return true;
     }
 
     private boolean validateComment() {
-        return false;
+        return true;
     }
 }

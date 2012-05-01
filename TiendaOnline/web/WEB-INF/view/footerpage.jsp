@@ -17,7 +17,7 @@
             <a href="/TiendaOnline/index.jsp">Inicio</a>
             <a href="/TiendaOnline/webactions/aboutus.jsp">Sobre Nosotros</a>
             <a href="/TiendaOnline/webactions/contactus.jsp">Contacta</a>
-            <a href="/TiendaOnline/webactionsadmin/adminform.jsp">Admin</a>
+            <a href="/TiendaOnline/webactionsadmin/adminlogin.jsp">Admin</a>
         </div>   
 
     </div> 

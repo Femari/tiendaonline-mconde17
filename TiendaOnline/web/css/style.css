@@ -571,7 +571,7 @@ textarea.contact_textarea{
     color: #999999;
     background-color:#fff;
     border:1px #DFDFDF solid;
-    float:left;
+    float:right;
 }
 a.contact{
     width:99px;

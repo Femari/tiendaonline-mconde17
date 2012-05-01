@@ -1,11 +1,11 @@
 package persistence;
 
-import model.User;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.User;
 
 public class UserDAOJDBC implements UserDAO {
 

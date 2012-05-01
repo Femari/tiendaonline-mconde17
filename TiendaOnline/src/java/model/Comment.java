@@ -56,6 +56,12 @@ public class Comment {
         return this.commentContent;
     }
 
+    public String generateCommentID() {
+        String id;
+        id = java.util.UUID.randomUUID().toString().substring(0, 29);
+        return id;
+    }
+
     public boolean isEquals(String parameter, String condition) {
         boolean equals = false;
         switch (parameter) {
