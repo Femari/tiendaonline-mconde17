@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="cart" class="model.ShoppingCart" scope="session"></jsp:useBean>
+<jsp:useBean id="shoppingCart" class="model.ShoppingCart" scope="session"></jsp:useBean>
     <!DOCTYPE html>
     <html>
         <div class="right_content">
@@ -7,10 +7,10 @@
                 <div class="cart_title">Carrito de la Compra</div>
 
                 <div class="cart_details">
-                <%= cart.getNumberOfProducts()%> Productos<br />
+                <%= shoppingCart.getNumberOfProducts()%> Productos<br />
                 <span class="border_cart"></span>
                 Total: <span class="price"> 
-                    <%= cart.getPriceOfShoppingCart()%> €
+                    <%= shoppingCart.getPriceOfShoppingCart()%> €
                 </span>
             </div>
 

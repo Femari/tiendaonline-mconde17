@@ -25,19 +25,19 @@
 
                 <div class="center_content">
                     <div class="center_title_bar">Sobre Nosotros:</div>
-                        
+
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <br>Electronix<br>
+                            <br>Electronix Store<br>
                             <br>Esta web es un proyecto para la asignatura de LPI
-                            <br>3º de Ingeniería Informática en la Universidad CEU San Pablo.<br>                            
+                            <br>3º de Ingeniería Informática en la Universidad CEU San Pablo<br>                            
                             <br><br>Manuel Conde<br><br>
                             <a href="http://code.google.com/p/tiendaonline-mconde17/"> Google Code del Proyecto </a>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
-                        
+
                 </div><!-- end of center content -->
 
                 <%@include file="/WEB-INF/view/rightpage.jsp" %> 

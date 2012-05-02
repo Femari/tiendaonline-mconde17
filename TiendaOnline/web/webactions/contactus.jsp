@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="form_row">
-                                    <a href="#" class="contact"><strong>Enviar</strong></a>
+                                    <a href="/WEB-INF/view/errors/error404.jsp" class="contact"><strong>Enviar</strong></a>
                                 </div>      
 
                             </div> 

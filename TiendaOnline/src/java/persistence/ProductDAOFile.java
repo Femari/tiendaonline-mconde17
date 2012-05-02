@@ -86,7 +86,7 @@ public class ProductDAOFile implements ProductDAO {
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
-            if (f.exists() && f.isFile()) {
+            if (f.exists() && f.isFile() && f.length()>0) {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfProducts = (Integer) ois.readObject();
@@ -95,7 +95,9 @@ public class ProductDAOFile implements ProductDAO {
                     getProductMap().put(p.getProductID(), p);
                 }
             } else {
-                f.createNewFile();
+                if(f.createNewFile()){
+                    return true;
+                }
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);

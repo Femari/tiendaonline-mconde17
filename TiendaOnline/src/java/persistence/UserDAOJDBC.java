@@ -110,11 +110,11 @@ public class UserDAOJDBC implements UserDAO {
     }
 
     @Override
-    public String userAuthentication(String userEmail, String userPass) {
+    public boolean userAuthentication(String userEmail, String userPass) {
         PreparedStatement statement = null;
         ResultSet result = null;
-        User u;
-        String response = null;
+        User u = null;
+        boolean response = false;
         if (userEmail != null && userPass != null) {
             try {
                 String query = "SELECT * FROM \"USERS\" WHERE userEmail = ?";
@@ -127,15 +127,13 @@ public class UserDAOJDBC implements UserDAO {
                     u = new User(result.getString("userName"), result.getString("userSurnames"),
                             result.getString("userAdress"), result.getString("userEmail"),
                             result.getString("userPassword"), result.getBoolean("userPrivileged"));
-                    if (u.getUserPrivileged()) {
-                        response = "true";
-                    } else {
-                        response = "false";
-                    }
+                }
+                if (u!=null){
+                    response = true;
                 }
             } catch (SQLException ex) {
                 log.log(Level.WARNING, "Fallo al realizar SELECT contra la Base de Datos", ex);
-                response = null;
+                response = false;
             } finally {
                 if (result != null) {
                     try {

@@ -21,20 +21,27 @@ public class AddToShoppingCartServlet extends MyCoolServlet {
         response.setContentType("text/html;charset=UTF-8");
         String productName = request.getParameter("productName");
         String productAmount = request.getParameter("productAmount");
+        if (productAmount == null) {
+            productAmount = "0";
+        }
         int amount = Integer.parseInt(productAmount);
         ServletContext context = request.getServletContext();
         Map<String, Product> productList = (Map<String, Product>) context.getAttribute("productList");
         HttpSession session = request.getSession();
-        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+        ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingCart");
         Boolean authentication = (Boolean) session.getAttribute("authentication");
         if (authentication == null) {
             session.setAttribute("authentication", false);
             Logger.getLogger(AddToShoppingCartServlet.class.getName()).log(Level.SEVERE,
                     "El usuario no se ha registrado", authentication);
         }
-        for (int i = 0; i < amount; i++) {
-            cart.addProduct(productList.get(productName));
+        if (productList.get(productName).getProductStock() > amount) {
+            for (int i = 0; i < amount; i++) {
+                cart.addProduct(productList.get(productName));
+            }
+            goToURL(successForm, request, response);
+        } else {
+            goToURL(errorForm, request, response);
         }
-        goToURL(successForm, request, response);
     }
 }

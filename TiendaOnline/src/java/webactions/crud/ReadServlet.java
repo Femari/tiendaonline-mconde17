@@ -20,11 +20,17 @@ public class ReadServlet extends MyCoolServlet {
         SaleDAO persistenceManagerSale = PersistenceDAO.getSaleDAO(persistenceMechanism);
         UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(persistenceMechanism);
         CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(persistenceMechanism);
-        String name = request.getParameter("name");
-        Product product = persistenceManagerProduct.getProduct(name);
-        Sale sale = persistenceManagerSale.getSale(name);
-        User user = persistenceManagerUser.getUser(name);
-        Comment comment = persistenceManagerComment.getComment(name);
+        String parameter = request.getParameter("parameter");
+        String condition = request.getParameter("condition");
+        Product product;
+        if (parameter == null){
+            product = persistenceManagerProduct.getProduct(condition);
+        }else{
+            product = (Product) persistenceManagerProduct.getProductMap(parameter, condition);
+        }
+        Sale sale = persistenceManagerSale.getSale(condition);
+        User user = persistenceManagerUser.getUser(condition);
+        Comment comment = persistenceManagerComment.getComment(condition);
         if (product != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("product", product);

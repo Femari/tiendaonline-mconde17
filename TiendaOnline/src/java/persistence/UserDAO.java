@@ -11,7 +11,7 @@ public interface UserDAO {
 
     public boolean updateUser(User oldUser, User newUser);
 
-    public String userAuthentication(String userEmail, String userPass);
+    public boolean userAuthentication(String userEmail, String userPass);
 
     public User getUser(String userEmail);
 

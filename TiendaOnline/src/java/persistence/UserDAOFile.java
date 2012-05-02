@@ -56,19 +56,21 @@ public class UserDAOFile implements UserDAO {
     }
 
     @Override
-    public String userAuthentication(String userEmail, String userPass) {
-        String response;
+    public boolean userAuthentication(String userEmail, String userPass) {
+        boolean response;
         if (userEmail != null && userPass != null) {
-            User u = getUserMap().get(userEmail);
-            if (u == null) {
-                response = null;
-            } else if (u.getUserPrivileged()) {
-                response = "true";
-            } else {
-                response = "false";
+            if(getUserMap().containsKey(userEmail)){
+                 User u = getUser(userEmail);
+                 if (u.getUserPassword().equals(userPass)){
+                     response = true;
+                 }else{
+                     response = false;
+                 }
+            }else{
+                response = false;
             }
         } else {
-            response = null;
+            response = false;
         }
         return response;
     }
@@ -101,6 +103,7 @@ public class UserDAOFile implements UserDAO {
     public boolean connection(String user, String pass, String destiny, String driver) {
         this.userFile = user;
         File f = new File(this.userFile);
+        System.out.println("Ruta del Archivo: " + f.getAbsolutePath());
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
@@ -114,6 +117,7 @@ public class UserDAOFile implements UserDAO {
                 }
             } else {
                 f.createNewFile();
+                System.out.println("Ruta del Archivo: " + f.getAbsolutePath());
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);
@@ -140,6 +144,7 @@ public class UserDAOFile implements UserDAO {
     @Override
     public boolean disconnect() {
         File f = new File(this.userFile);
+        System.out.println("Ruta del Archivo(Desconectar Usuario): " + f.getAbsolutePath());
         OutputStream os = null;
         ObjectOutputStream oos = null;
         try {

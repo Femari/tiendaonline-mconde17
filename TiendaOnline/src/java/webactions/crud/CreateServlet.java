@@ -1,6 +1,7 @@
 package webactions.crud;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -37,9 +38,9 @@ public class CreateServlet extends MyCoolServlet {
                         session.setAttribute("admin", false);
                         request.setAttribute("user", user);
                         request.setAttribute("message", "Usuario creado con éxito");
-                        goToNamedResource(successForm, request, response);
+                        goToURL(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE,
                                 "Fallo al Crear el Nuevo Usuario");
                         goToURL(errorForm, request, response);
                     }
@@ -48,9 +49,9 @@ public class CreateServlet extends MyCoolServlet {
                     Sale sale = generateSaleFromRequest(request);
                     if (sale != null && persistenceManagerSale.newSale(sale)) {
                         session.setAttribute("sale", sale);
-                        goToNamedResource("/WEB-INF/view/confirmationsale.jsp", request, response);
+                        goToURL("/WEB-INF/view/confirmationsale.jsp", request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE,
                                 "Fallo al Crear la Nueva Venta");
                         goToURL(errorForm, request, response);
                     }
@@ -59,10 +60,17 @@ public class CreateServlet extends MyCoolServlet {
                     Product product = generateProductFromRequest(request);
                     if (product != null && persistenceManagerProduct.newProduct(product)) {
                         session.setAttribute("product", product);
+                        HashMap<String, Product> productList = new HashMap<>();
+                        if(session.getAttribute("productList")==null){
+                            session.setAttribute("productList", productList);
+                        }
+                        productList = (HashMap<String, Product>) session.getAttribute("productList");
+                        productList.put(product.getProductID(), product);
+                        session.setAttribute("productList", productList);
                         request.setAttribute("message", "Producto creado con éxito");
-                        goToNamedResource(successForm, request, response);
+                        goToURL(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE,
                                 "Fallo al Crear el Nuevo Producto");
                         goToURL(errorForm, request, response);
                     }
@@ -72,9 +80,9 @@ public class CreateServlet extends MyCoolServlet {
                     if (comment != null && persistenceManagerComment.newComment(comment)) {
                         session.setAttribute("comment", comment);
                         session.setAttribute("message", "Comentario añadido con éxito");
-                        goToNamedResource(successForm, request, response);
+                        goToURL(successForm, request, response);
                     } else {
-                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE, 
+                        Logger.getLogger(CreateServlet.class.getName()).log(Level.SEVERE,
                                 "Fallo al Crear el Nuevo Comentario");
                         goToURL(errorForm, request, response);
                     }
@@ -102,20 +110,22 @@ public class CreateServlet extends MyCoolServlet {
     }
 
     Sale generateSaleFromRequest(HttpServletRequest request) {
-        Sale sale = null;
-        //Faltan el resto de parámetros por insertar en la Venta
+        Sale sale = new Sale();
         String salePaymentMethod = request.getParameter("salePaymentMethod");
+        String saleAdress = request.getParameter("saleAdress");
         boolean validate = validateSale();
         if (!validate) {
             return null;
         }
+        sale.setSaleID(sale.generateSaleID());
         sale.setSalePaymentMethod(salePaymentMethod);
+        sale.setSaleAdress(saleAdress);
         return sale;
     }
 
     Product generateProductFromRequest(HttpServletRequest request) {
         Product product;
-        String productID = request.getParameter("productID");
+        String productID = "";
         String productPrice = request.getParameter("productPrice");
         String productShortDescription = request.getParameter("productShortDescription");
         String productLongDescription = request.getParameter("productLongDescription");
@@ -126,12 +136,13 @@ public class CreateServlet extends MyCoolServlet {
         }
         product = new Product(productID, Float.parseFloat(productPrice), productShortDescription,
                 productLongDescription, Integer.parseInt(productStock), null);
+        product.setProductID(product.generateProductID());
         return product;
     }
 
     Comment generateCommentFromRequest(HttpServletRequest request) {
         Comment comment;
-        String commentID = request.getParameter("commentID");
+        String commentID = "";
         String commentDate = request.getParameter("commentDate");
         String commentProductID = request.getParameter("commentProductID");
         String commentUserEmail = request.getParameter("commentUserEmail");
@@ -141,6 +152,7 @@ public class CreateServlet extends MyCoolServlet {
             return null;
         }
         comment = new Comment(commentID, commentDate, commentProductID, commentUserEmail, commentContent);
+        comment.setCommentID(comment.generateCommentID());
         return comment;
     }
 

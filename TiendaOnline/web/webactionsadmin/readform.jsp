@@ -24,38 +24,38 @@
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Contacta con Nosotros:</div>
+                    <div class="center_title_bar">Buscar Producto:</div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <form action="/TiendaOnline/FrontController" method="post" class="createProduct">
+                                    <input name="form" type="hidden" value="readServlet"></input>
+                                    <input name="type" type="hidden" value="product"></input>  
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Nombre:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>  
+                                    <div class="form_row">
+                                        <li class="currencies">Campo a Buscar:
+                                            <select name="parameter">
+                                                <option value="productID">ID</option>
+                                                <option value="productPrice">Precio</option>
+                                                <option value="productShortDescription">Descripción Corta</option>
+                                                <option value="productLongDescription">Descripción Larga</option>
+                                                <option value="productStock">Stock</option>
+                                            </select>
+                                        </li>
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Email:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Contenido:</strong></label>
+                                        <input name="condition" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Título:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
-
-                                <div class="form_row">
-                                    <label class="contact"><strong>Mensaje:</strong></label>
-                                    <textarea class="contact_textarea" ></textarea>
-                                </div>
-
-                                <div class="form_row">
-                                    <a href="#" class="contact">Enviar</a>
-                                </div>      
-
+                                    <div class="form_row">
+                                        <button>¡¡¡Buscar!!!</button>
+                                    </div>      
+                                </form>
                             </div> 
 
                         </div>
