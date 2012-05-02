@@ -9,6 +9,31 @@
         <script type="text/javascript" src="/TiendaOnline/javascripts/jquery-1.7.2.js"></script>
         <script type="text/javascript" src="/TiendaOnline/javascripts/jquery.validate.js"></script>
         <script type="text/javascript" src="/TiendaOnline/javascripts/additional-methods.js"></script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+	
+                $('form.userlogin').validate({
+                    rules: {
+                        userEmail: {
+                            required: true,
+                            email: true
+                        },
+                        userPassword: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        userEmail: {
+                            required:"El e-mail es obligatorio: Es la forma de acceder a tu cuenta",
+                            email: "Tu e-mail debe tener un formato correcto tipo: nombre@dominio.com"
+                        },
+                        userPassword: {
+                            required: "La contraseña es obligatoria..."
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -34,21 +59,23 @@
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <form action="/TiendaOnline/FrontController" method="post" class="userlogin">
+                                    <input name="form" type="hidden" value="authenticationServlet"></input>
+                                    <input name="type" type="hidden" value="user"></input>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Email:</strong></label>
+                                        <input name="userEmail" type="text" class="contact_input" />
+                                    </div>  
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Email:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>  
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Contraseña:</strong></label>
+                                        <input name="userPassword" type="password" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Contraseña:</strong></label>
-                                    <input type="password" class="contact_input" />
-                                </div>
-
-                                <div class="form_row">
-                                    <a href="#" class="contact"><strong>Acceder</strong></a>
-                                </div>      
-
+                                    <div class="form_row">
+                                        <button>Acceder</button>
+                                    </div>      
+                                </form>
                             </div> 
 
                         </div>

@@ -1,12 +1,13 @@
 package webactions;
 
-import model.ShoppingCart;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import model.ShoppingCart;
 
 public class SessionListener implements HttpSessionListener {
 
+    //LifeCycle Listener
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();

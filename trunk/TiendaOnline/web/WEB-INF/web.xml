@@ -15,11 +15,11 @@
     <!-- Resto de pantallas -->
     <context-param>
         <param-name>errorForm</param-name>
-        <param-value>/WEB-INF/view/errors/error.html</param-value>
+        <param-value>/WEB-INF/view/errors/error.jsp</param-value>
     </context-param>
     <context-param>
         <param-name>saleForm</param-name>
-        <param-value>/webactionsuser/saleform.html</param-value>
+        <param-value>/webactionsuser/saleform.jsp</param-value>
     </context-param>
     <context-param>
         <param-name>confirmationSale</param-name>

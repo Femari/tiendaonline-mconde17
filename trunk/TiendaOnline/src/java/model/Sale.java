@@ -23,6 +23,9 @@ public class Sale {
         saleAdress = adress;
         saleDate = shoppingDate;
     }
+    
+    public Sale(){
+    }
 
     public String getSaleID() {
         return this.saleID;

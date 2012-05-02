@@ -48,9 +48,9 @@ public abstract class MyCoolServlet extends HttpServlet {
         persistenceMechanism = context.getInitParameter("persistenceMechanism");
         displayForm = context.getInitParameter("displayForm");
         errorForm = context.getInitParameter("errorForm");
-        successForm = context.getInitParameter("succesForm");
+        successForm = context.getInitParameter("successForm");
         authenticationServlet = context.getInitParameter("authenticationServlet");
-        addToShoppingCartServlet = context.getInitParameter("addToShoppingCargServlet");
+        addToShoppingCartServlet = context.getInitParameter("addToShoppingCartServlet");
         sendEmailServlet = context.getInitParameter("sendEmailServlet");
         createServlet = context.getInitParameter("createServlet");
         deleteServlet = context.getInitParameter("deleteServlet");

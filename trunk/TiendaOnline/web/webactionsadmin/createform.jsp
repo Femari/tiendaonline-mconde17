@@ -24,38 +24,40 @@
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Contacta con Nosotros:</div>
+                    <div class="center_title_bar">Añadir un Producto:</div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <form action="/TiendaOnline/FrontController" method="post" class="createProduct">
+                                    <input name="form" type="hidden" value="createServlet"></input>
+                                    <input name="type" type="hidden" value="product"></input>  
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Nombre:</strong></label>
+                                        <input name="productShortDescription" type="text" class="contact_input" />
+                                    </div>  
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Nombre:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>  
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Precio:</strong></label>
+                                        <input name="productPrice" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Email:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Stock:</strong></label>
+                                        <input name="productStock" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Título:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Descripción:</strong></label>
+                                        <input name="productLongDescription" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Mensaje:</strong></label>
-                                    <textarea class="contact_textarea" ></textarea>
-                                </div>
-
-                                <div class="form_row">
-                                    <a href="#" class="contact">Enviar</a>
-                                </div>      
-
+                                    <div class="form_row">
+                                        <button>Crear Producto</button>
+                                    </div>      
+                                </form>
                             </div> 
 
                         </div>

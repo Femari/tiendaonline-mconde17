@@ -17,21 +17,35 @@ public class AuthenticationServlet extends MyCoolServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(persistenceMechanism);
+        String userName = request.getParameter("userName");
         String userEmail = request.getParameter("userEmail");
         String userPass = request.getParameter("userPassword");
         String type = request.getParameter("type");
         User user = persistenceManagerUser.getUser(userEmail);
         HttpSession session = request.getSession();
-        if (type.equals("user")) {
-            if (persistenceManagerUser.userAuthentication(userEmail, userPass).equals("true")) {
-                session.setAttribute("authentication", true);
-                session.setAttribute("user", user);
-                session.setAttribute("admin", user.getUserPrivileged());
-                goToURL(successForm, request, response);
-            } else {
-                session.setAttribute("authentication", false);
-                goToURL(errorForm, request, response);
-            }
+        switch (type) {
+            case "user":
+                if (persistenceManagerUser.userAuthentication(userEmail, userPass)) {
+                    session.setAttribute("authentication", true);
+                    session.setAttribute("user", user);
+                    session.setAttribute("admin", false);
+                    goToURL(successForm, request, response);
+                } else {
+                    session.setAttribute("authentication", false);
+                    goToURL(errorForm, request, response);
+                }
+                break;
+            case "admin":
+                if (userName != null && userName.equals("electronixstoreadmin")
+                        && userPass.equals("electronixstorelpi")) {
+                    session.setAttribute("authentication", true);
+                    session.setAttribute("admin", true);
+                    goToURL(successForm, request, response);
+                } else {
+                    session.setAttribute("authentication", false);
+                    goToURL(errorForm, request, response);
+                }
+                break;
         }
     }
 }
