@@ -55,7 +55,11 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-
+                            <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                            <% if (admin != null && admin) {%>
+                            <br>Ir al menú de administración<br>
+                            <a href="/TiendaOnline/webactionsadmin/admin.jsp">Acceso al menú</a>
+                            <%} else {%>
                             <div class="contact_form">
                                 <form action="/TiendaOnline/FrontController" method="post" class="adminlogin">
                                     <input name="form" type="hidden" value="authenticationServlet"></input>
@@ -75,6 +79,8 @@
                                     </div>      
                                 </form>
                             </div> 
+                            <%}
+                            %>
 
                         </div>
                         <div class="bottom_prod_box_big"></div>                                

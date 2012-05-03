@@ -21,7 +21,7 @@ create table PRODUCTS
    PRODUCTSHORTDESCRIPTION varchar(60) not null,
    PRODUCTLONGDESCRIPTION varchar(600) not null,
    PRODUCTSTOCK         int not null,
-   PRODUCTIMAGE         blob,
+   PRODUCTIMAGEURL         varchar (300) not null,
    primary key (PRODUCTID)
 );
 

@@ -1,24 +1,24 @@
 package model;
 
-import java.sql.Blob;
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable {
 
     private String productID;
     private float productPrice;
     private String productShortDescription;
     private String productLongDescription;
     private int productStock;
-    private Blob productImage;
+    private String productImageURL;
 
     public Product(String nameID, float price, String shortDescription, String longDescription,
-            int stock, Blob image) {
+            int stock, String imageURL) {
         productID = nameID;
         productPrice = price;
         productShortDescription = shortDescription;
         productLongDescription = longDescription;
         productStock = stock;
-        productImage = image;
+        productImageURL = imageURL;
     }
 
     public void setProductID(String nameID) {
@@ -61,12 +61,12 @@ public class Product {
         return this.productStock;
     }
 
-    public void setProductImage(Blob image) {
-        this.productImage = image;
+    public void setProductImageURL(String imageURL) {
+        this.productImageURL = imageURL;
     }
 
-    public Blob getProductImage() {
-        return this.productImage;
+    public String getProductImageURL() {
+        return this.productImageURL;
     }
 
     public String generateProductID() {
