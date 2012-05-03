@@ -367,7 +367,7 @@ public class SaleDAOJDBC implements SaleDAO {
             while (result.next()) {
                 p = new Product(result.getString("productID"), result.getFloat("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
-                        result.getInt("productStock"), result.getBlob("productImage"));
+                        result.getInt("productStock"), result.getString("productImageURL"));
                 cart.addProduct(p);
             }
         } catch (SQLException ex) {

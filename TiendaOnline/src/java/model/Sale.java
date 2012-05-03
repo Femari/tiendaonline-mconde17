@@ -1,11 +1,8 @@
 package model;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
-public class Sale {
+public class Sale implements Serializable {
 
     private String saleID;
     private User saleClient;
@@ -23,8 +20,8 @@ public class Sale {
         saleAdress = adress;
         saleDate = shoppingDate;
     }
-    
-    public Sale(){
+
+    public Sale() {
     }
 
     public String getSaleID() {
