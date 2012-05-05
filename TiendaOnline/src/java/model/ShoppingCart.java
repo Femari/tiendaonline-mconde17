@@ -23,6 +23,17 @@ public class ShoppingCart implements Serializable {
     public int getNumberOfProducts() {
         return this.getShoppingCart().size();
     }
+    
+    public int getNumberOfProducts(Product product){
+        int numberOfProducts = 0;
+        ArrayList<Product> cart = this.getShoppingCart();
+        for (int i=0; i<cart.size(); i++){
+            if(cart.get(i).equals(product)){
+                numberOfProducts++;
+            }
+        }
+        return numberOfProducts;
+    }
 
     public void addProduct(Product product) {
         this.shoppingCart.add(product);
@@ -32,8 +43,8 @@ public class ShoppingCart implements Serializable {
         this.shoppingCart.remove(product);
     }
 
-    public float getPriceOfShoppingCart() {
-        float total = 0;
+    public double getPriceOfShoppingCart() {
+        double total = 0;
         Product p;
         Iterator it = shoppingCart.iterator();
         while (it.hasNext()) {

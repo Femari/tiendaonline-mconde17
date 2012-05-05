@@ -81,12 +81,12 @@ public class CommentDAOFile implements CommentDAO {
 
     @Override
     public boolean connection(String user, String pass, String destiny, String driver) {
-        this.commentFile = destiny;
+        this.commentFile = destiny+"comments";
         File f = new File(this.commentFile);
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
-            if (f.exists() && f.isFile()) {
+            if (f.exists() && f.isFile() && f.length() > 0) {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfProducts = (Integer) ois.readObject();
@@ -95,7 +95,9 @@ public class CommentDAOFile implements CommentDAO {
                     getCommentMap().put(c.getCommentID(), c);
                 }
             } else {
-                f.createNewFile();
+                if(f.createNewFile()){
+                    return true;
+                }
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);

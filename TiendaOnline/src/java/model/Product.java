@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     private String productID;
-    private float productPrice;
+    private double productPrice;
     private String productShortDescription;
     private String productLongDescription;
     private int productStock;
     private String productImageURL;
 
-    public Product(String nameID, float price, String shortDescription, String longDescription,
+    public Product(String nameID, double price, String shortDescription, String longDescription,
             int stock, String imageURL) {
         productID = nameID;
         productPrice = price;
@@ -29,11 +29,11 @@ public class Product implements Serializable {
         return this.productID;
     }
 
-    public void setProductPrice(float price) {
+    public void setProductPrice(double price) {
         this.productPrice = price;
     }
 
-    public float getProductPrice() {
+    public double getProductPrice() {
         return this.productPrice;
     }
 
@@ -84,7 +84,7 @@ public class Product implements Serializable {
                 }
                 break;
             case "productPrice":
-                if (this.productPrice == Float.parseFloat(condition)) {
+                if (this.productPrice == Double.parseDouble(condition)) {
                     equals = true;
                 }
                 break;

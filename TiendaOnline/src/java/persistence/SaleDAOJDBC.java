@@ -365,7 +365,7 @@ public class SaleDAOJDBC implements SaleDAO {
             statement.setString(1, saleID);
             result = statement.executeQuery();
             while (result.next()) {
-                p = new Product(result.getString("productID"), result.getFloat("productPrice"),
+                p = new Product(result.getString("productID"), result.getDouble("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
                         result.getInt("productStock"), result.getString("productImageURL"));
                 cart.addProduct(p);
