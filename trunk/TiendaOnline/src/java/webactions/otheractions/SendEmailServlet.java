@@ -2,6 +2,7 @@ package webactions.otheractions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -11,6 +12,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +21,18 @@ import model.Product;
 import model.Sale;
 import model.ShoppingCart;
 import webactions.MyCoolServlet;
+import webactions.StartUpListener;
 
 public class SendEmailServlet extends MyCoolServlet {
+
+    private String HOST = "smtp.gmail.com";
+    private String USER = "electronixstorelpi@gmail.com";
+    private String PASS = "electronixstorelpi";
+    private String PORT = "465";
+    private static String STARTTLS = "true";
+    private static String AUTH = "true";
+    private static String DEBUG = "true";
+    private static String SOCKET_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,37 +41,47 @@ public class SendEmailServlet extends MyCoolServlet {
         request.setAttribute("email", "send");
         HttpSession session = request.getSession();
         Sale sale = (Sale) request.getAttribute("sale");
+        ServletContext context = StartUpListener.getContext();
+        HashMap<String, Product> catalog = (HashMap<String, Product>) context.getAttribute("productList");
         ShoppingCart cart = sale.getSaleShoppingCart();
         //Ajustar los Stock de productos:
         ArrayList<Product> productList = cart.getShoppingCart();
-        Iterator it = productList.iterator();
+        Iterator it = productList.iterator();      
         while (it.hasNext()) {
             Product p = (Product) it.next();
             p.setProductStock(p.getProductStock() - 1);
+            catalog.remove(p.getProductID());
+            catalog.put(p.getProductID(), p);
         }
         //Ajustar propiedades del email:
         Properties properties = new Properties();
-        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-        properties.setProperty("mail.smtp.startttls.enable", "true");
-        properties.setProperty("mail.smtp.port", "25");
-        properties.setProperty("mail.smtp.user", "electronixstorelpi@gmail.com");
-        properties.setProperty("mail.smtp.auth", "true");
-        properties.setProperty("mail.smtp.localhost", "localhost");
+        properties.put("mail.smtp.host", HOST);
+        properties.put("mail.smtp.port", PORT);
+        properties.put("mail.smtp.user", USER);
+
+        properties.put("mail.smtp.auth", AUTH);
+        properties.put("mail.smtp.starttls.enable", STARTTLS);
+        properties.put("mail.smtp.debug", DEBUG);
+
+        properties.put("mail.smtp.socketFactory.port", PORT);
+        properties.put("mail.smtp.socketFactory.class", SOCKET_FACTORY);
+        properties.put("mail.smtp.socketFactory.fallback", "false");
+
         Session sessionEmail = Session.getDefaultInstance(properties);
         sessionEmail.setDebug(true);
+
         MimeMessage message = new MimeMessage(sessionEmail);
         //Ajustar campos del email:
         try {
             message.setText("Su pedido ha sido tramitado con éxito."
                     + "\nEn breve escucharás el timbre y podrás disfrutar de tu compra ;)"
-                    + "\n\nEstos son los productos que has comprado: "
+                    + "\n\nEstos son los productos que has comprado: \n"
                     + cart.listShoppingCart()
                     + "\n\nGracias por confiar en Electronix. Esperamos que quede satisfecho");
-            message.setSentDate(new java.util.Date());
-            message.addHeader("Content-Type", "text/html");
             message.setSubject("ELECTRONIX - Factura Nº:" + sale.getSaleID());
-            message.setFrom(new InternetAddress("electronixstorelpi@gmail.com"));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(sale.getSaleClient().getUserEmail()));
+            message.setFrom(new InternetAddress(USER));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(sale.getSaleClient().getUserEmail()));
+            message.saveChanges();
         } catch (javax.mail.MessagingException ex) {
             Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
                     "Fallo al crear el cuerpo del Email", ex);
@@ -67,12 +89,15 @@ public class SendEmailServlet extends MyCoolServlet {
         Transport transport = null;
         //Enviar el email:
         try {
-            transport = sessionEmail.getTransport("smtp");
-            transport.connect("electronixstorelpi@gmail.com", "electronixstorelpi");
+            transport = sessionEmail.getTransport("smtps");
+            transport.connect(HOST, USER, PASS);
             transport.sendMessage(message, message.getAllRecipients());
             if (transport != null) {
                 session.removeAttribute("sale");
+                session.removeAttribute("shoppingCart");
+                session.setAttribute("authentication", false);
                 session.setAttribute("confirmation", true);
+                context.setAttribute("productList", catalog);
                 goToURL(successForm, request, response);
             } else {
                 goToURL(errorForm, request, response);

@@ -102,7 +102,8 @@
                                 <div class="contact_form">
                                     <form action="/TiendaOnline/FrontController" method="post" class="usercreate">
                                         <input name="form" type="hidden" value="createServlet"></input>
-                                        <input name="type" type="hidden" value="user"></input>                           
+                                        <input name="type" type="hidden" value="user"></input>
+                                        <br>Recuerda que es necesario tener una cuenta para realizar una compra<br>
                                         <div class="form_row">
                                             <label class="contact"><strong>Nombre*:</strong></label>
                                             <input name="userName" type="text" class="contact_input" />

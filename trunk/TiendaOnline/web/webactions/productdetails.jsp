@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Product"%>
-<% Product product = (Product) request.getAttribute("product"); %>
+<% Product product = (Product) request.getAttribute("product");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,53 +53,57 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Lista de Productos < <%= product.getProductShortDescription() %> </span>
+                    Navegación: <span class="current">Lista de Productos < <%= product.getProductShortDescription()%> </span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar"><%= product.getProductID() %></div>
+                    <div class="center_title_bar"><%= product.getProductID()%></div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">
-                            <div class="product_img_big">
-                                <a href="javascript:popImage('/TiendaOnline/images/imagenotavailable_maxi.jpg','¡¡¡Zoom!!!')" title="header=[Zoom] body=[&nbsp;] fade=[on]">
-                                    <img src= <%= "/TiendaOnline/images/" + product.getProductImageURL() %> alt="" title="" border="0" /></a>
-                                <div class="thumbs">
-                                    <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]">
-                                        <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
-                                    <a href="#" title="header=[Thumb2] body=[&nbsp;] fade=[on]">
-                                        <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
-                                    <a href="#" title="header=[Thumb3] body=[&nbsp;] fade=[on]">
-                                        <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
+                            <form action="/TiendaOnline/FrontController" method="post" class="addProduct">
+                                <input name="form" type="hidden" value="addToShoppingCartServlet"></input>
+                                <input name="productName" type="hidden" value="<%= product.getProductID()%>"></input>
+                                <div class="product_img_big">
+                                    <a href="javascript:popImage('/TiendaOnline/images/imagenotavailable_maxi.jpg','¡¡¡Zoom!!!')" title="header=[Zoom] body=[&nbsp;] fade=[on]">
+                                        <img src= <%= "/TiendaOnline/images/" + product.getProductImageURL()%> alt="" title="" border="0" /></a>
+                                    <div class="thumbs">
+                                        <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]">
+                                            <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
+                                        <a href="#" title="header=[Thumb2] body=[&nbsp;] fade=[on]">
+                                            <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
+                                        <a href="#" title="header=[Thumb3] body=[&nbsp;] fade=[on]">
+                                            <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="details_big_box">
-                                <div class="product_title_big"><%= product.getProductShortDescription() %></div>
-                                <div class="specifications">
-                                    Disponibilidad: <span class="blue"><%= product.getProductStock() %> En Stock</span><br />
+                                <div class="details_big_box">
+                                    <div class="product_title_big"><%= product.getProductShortDescription()%></div>
+                                    <div class="specifications">
+                                        Disponibilidad: <span class="blue"><%= product.getProductStock()%> En Stock</span><br />
 
-                                    Garantía: <span class="blue">24 Meses</span><br />
+                                        Garantía: <span class="blue">24 Meses</span><br />
 
-                                    Tipo de Transporte: <span class="blue">Envío a Domicilio</span><br />
+                                        Tipo de Transporte: <span class="blue">Envío a Domicilio</span><br />
 
-                                    Impuestos Incluidos: <span class="blue">IVA(18%)</span><br />
+                                        Impuestos Incluidos: <span class="blue">IVA(18%)</span><br />
+                                    </div>
+                                    <div class="prod_price_big"><span class="price"><%= product.getProductPrice()%>€</span></div>
+                                    <li class="currencies">Cantidad:
+                                        <select name="productAmount">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </li>
+                                    </input>
+                                    <button>Al Carrito!!!</button>
                                 </div>
-                                <div class="prod_price_big"><span class="price"><%= product.getProductPrice() %>€</span></div>
-
-                                <button>Al Carrito!!!</button>
-                                <li class="currencies">Cantidad:
-                                    <select name="productAmount">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </li>
-                            </div>                        
+                            </form>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
@@ -109,7 +113,7 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <%= product.getProductLongDescription() %>
+                            <%= product.getProductLongDescription()%>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

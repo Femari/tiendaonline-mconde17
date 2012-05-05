@@ -59,7 +59,7 @@ public class ShoppingCart implements Serializable {
         Iterator it = shoppingCart.iterator();
         while (it.hasNext()) {
             Product p = (Product) it.next();
-            shop = shop + p.getProductShortDescription() + " " + p.getProductPrice() + "\n";
+            shop = shop + "Producto: " + p.getProductShortDescription() + " Precio: " + p.getProductPrice() + "€\n";
         }
         return shop;
     }

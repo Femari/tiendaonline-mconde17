@@ -37,7 +37,7 @@
                             increíbles productos<br>
                             <br><br><br>
                             ¿No tienes cuenta de cliente?¿A qué esperas?
-                            <a href="/TiendaOnline/webactionsuser/userform.jsp">¡¡¡Regístrate!!!</a>
+                            <a href="/TiendaOnline/webactionsuser/usercreate.jsp">¡¡¡Regístrate!!!</a>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

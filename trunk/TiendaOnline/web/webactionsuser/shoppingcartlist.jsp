@@ -43,7 +43,13 @@
                             <strong>Precio:</strong>    <%= p.getProductPrice()%>           
                             <%
                                 }%>
-                            <br><br><strong>Precio del carrito:</strong> <%= cart.getPriceOfShoppingCart()%> € <br>
+                            <% if(cart.getPriceOfShoppingCart()>0 && cart.getNumberOfProducts()>0){%>
+                                <br><br><strong>Precio del carrito:</strong> <%= cart.getPriceOfShoppingCart()%> € <br>
+                            <form action="/TiendaOnline/FrontController">
+                                <input name="form" value="saleServlet" type="hidden"/>
+                                <button>Realizar la Compra</button>
+                            </form>
+                            <%}%>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
