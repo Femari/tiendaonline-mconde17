@@ -55,6 +55,11 @@
                                     </div>
 
                                     <div class="form_row">
+                                        <label class="contact"><strong>URL de la Imagen:</strong></label>
+                                        <input name="productImageURL" type="text" class="contact_input" />
+                                    </div>
+
+                                    <div class="form_row">
                                         <button>Crear Producto</button>
                                     </div>      
                                 </form>

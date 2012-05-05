@@ -18,6 +18,14 @@
         <param-value>/WEB-INF/view/errors/error.jsp</param-value>
     </context-param>
     <context-param>
+        <param-name>productDetails</param-name>
+        <param-value>/webactions/productdetails.jsp</param-value>
+    </context-param>
+    <context-param>
+        <param-name>shoppingCartList</param-name>
+        <param-value>/webactionsuser/shoppingcartlist.jsp</param-value>
+    </context-param>
+    <context-param>
         <param-name>saleForm</param-name>
         <param-value>/webactionsuser/saleform.jsp</param-value>
     </context-param>

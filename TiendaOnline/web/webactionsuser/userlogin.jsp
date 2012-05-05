@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,8 +57,23 @@
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
-                        <div class="center_prod_box_big">            
-
+                        <div class="center_prod_box_big">
+                            <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                            <% Boolean authentication = (Boolean) session.getAttribute("authentication");%>
+                            <% if (admin != null && admin) {%>
+                            <br>Ya te has registrado como administrador<br>
+                            <a href="/TiendaOnline/webactionsadmin/admin.jsp">Acceso al menú</a>
+                            <%} else if (authentication != null && authentication) {%>
+                            <% User user = (User) session.getAttribute("user");%>
+                            <br><b>Ya te has registrado</b><br>
+                            <br>Estos son tus datos:<br>
+                            <br><br><b>Nombre:</b><br><%= user.getUserName() %>
+                            <br><br><b>Apellidos:</b><br><%= user.getUserSurnames() %>
+                            <br><br><b>Dirección:</b><br><%= user.getUserAdress() %>
+                            <br><br><b>E-mail:</b><br><%= user.getUserEmail() %>
+                            <br><br>
+                            <a href="/TiendaOnline/index.jsp">Vuelve a la página principal</a>
+                            <%} else {%>
                             <div class="contact_form">
                                 <form action="/TiendaOnline/FrontController" method="post" class="userlogin">
                                     <input name="form" type="hidden" value="authenticationServlet"></input>
@@ -76,8 +92,9 @@
                                         <button>Acceder</button>
                                     </div>      
                                 </form>
-                            </div> 
-
+                            </div>
+                            <%}
+                            %>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +34,7 @@
                             required: true
                         },
                         userPasswordRepeat: {
-                            //equalTo: '.userPassword',
+                            equalTo: ".userPassword",
                             required: true
                         }
                     },
@@ -57,7 +58,7 @@
                             required: "La contraseña es obligatoria..."
                         },
                         userPasswordRepeat: {
-                            //equalTo: "Las contraseñas no son iguales",
+                            equalTo: "Las contraseñas no son iguales",
                             required: "Repetir la contraseña es obligatorio..."
                         }
                     }
@@ -86,7 +87,17 @@
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
-                        <div class="center_prod_box_big">            
+                        <div class="center_prod_box_big">
+                            <% Boolean authentication = (Boolean) session.getAttribute("authentication");%>
+                            <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                            <%if (admin != null && admin) {%>
+                            <br>Ya te has registrado como administrador<br>
+                            <a href="/TiendaOnline/webactionsadmin/admin.jsp">Acceso al menú</a>
+                            <%} else if (authentication != null && authentication) {%>
+                            <% User user = (User) session.getAttribute("user");%>
+                            <br><b>Ya te has registrado</b> <%= user.getUserName() + " " + user.getUserSurnames()%> <br>
+                            <br><a href="/TiendaOnline/index.jsp">Vuelve a la página principal</a>
+                            <%} else {%>
                             <center>
                                 <div class="contact_form">
                                     <form action="/TiendaOnline/FrontController" method="post" class="usercreate">
@@ -114,7 +125,7 @@
 
                                         <div class="form_row">
                                             <label class="contact"><strong>Contraseña*:</strong></label>
-                                            <input name="userPassword" type="password" class="contact_input" />
+                                            <input name="userPassword" type="password" class="contact_input userPassword" />
                                         </div>
 
                                         <div class="form_row">
@@ -128,8 +139,10 @@
                                 </div> 
                             </center>
                             *Campos obligatorios
+                            <%}
+                            %>
                         </div>
-                        <div class="bottom_prod_box_big"></div>                                
+                        <div class="bottom_prod_box_big"></div>
                     </div>
 
                 </div><!-- end of center content -->

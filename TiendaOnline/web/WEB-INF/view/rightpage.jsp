@@ -14,7 +14,7 @@
                 </span>
             </div>
 
-            <div class="cart_icon"><a href="#" title="header=[Visualizar] body=[&nbsp;] fade=[on]">
+            <div class="cart_icon"><a href="/TiendaOnline/FrontController?form=shoppingCartList" title="header=[Visualizar] body=[&nbsp;] fade=[on]">
                     <img src="/TiendaOnline/images/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
 
         </div>
