@@ -5,14 +5,14 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import persistence.PersistenceDAO;
-import persistence.ProductDAO;
-import persistence.SaleDAO;
+import persistence.*;
 
 public class StartUpListener implements ServletContextListener {
 
     private ProductDAO productDAO;
     private SaleDAO saleDAO;
+    private UserDAO userDAO;
+    private CommentDAO commentDAO;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -25,9 +25,16 @@ public class StartUpListener implements ServletContextListener {
         persistenceMechanism = context.getInitParameter("persistenceMechanism");
         productDAO = PersistenceDAO.getProductDAO(persistenceMechanism);
         saleDAO = PersistenceDAO.getSaleDAO(persistenceMechanism);
+        userDAO = PersistenceDAO.getUserDAO(persistenceMechanism);
+        commentDAO = PersistenceDAO.getCommentDAO(persistenceMechanism);
         context.setAttribute("productList", productDAO.getProductMap());
         context.setAttribute("saleList", saleDAO.getSaleMap());
-        boolean ok = productDAO.connection(user, password, destiny, driver) && saleDAO.connection(user, password, destiny, driver);
+        context.setAttribute("userList", userDAO.getUserMap());
+        context.setAttribute("commentList", commentDAO.getCommentMap());
+        boolean ok = productDAO.connection(user, password, destiny, driver)
+                && saleDAO.connection(user, password, destiny, driver)
+                && userDAO.connection(user, password, destiny, driver)
+                && commentDAO.connection(user, password, destiny, driver);
         if (!ok) {
             context.setAttribute("persistenceMechanism", "none");
         }
@@ -35,10 +42,13 @@ public class StartUpListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        boolean ok = productDAO.disconnect();
+        boolean ok = productDAO.disconnect()
+                && saleDAO.disconnect()
+                && userDAO.disconnect()
+                && commentDAO.disconnect();
         if (!ok) {
             Logger.getLogger(StartUpListener.class.getName()).log(Level.SEVERE,
-                    "No se encontró el driver de la base de datos");
+                    "No se pudo realizar correctamente la desconexión");
         }
     }
 }

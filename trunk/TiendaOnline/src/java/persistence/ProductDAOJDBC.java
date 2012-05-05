@@ -33,7 +33,7 @@ public class ProductDAOJDBC implements ProductDAO {
                 statement = connection.prepareStatement(query);
             }
             statement.setString(1, product.getProductID());
-            statement.setFloat(2, product.getProductPrice());
+            statement.setDouble(2, product.getProductPrice());
             statement.setString(3, product.getProductShortDescription());
             statement.setString(4, product.getProductLongDescription());
             statement.setInt(5, product.getProductStock());
@@ -88,7 +88,7 @@ public class ProductDAOJDBC implements ProductDAO {
                 statement = connection.prepareStatement(query);
             }
             statement.setString(1, newProduct.getProductID());
-            statement.setFloat(2, newProduct.getProductPrice());
+            statement.setDouble(2, newProduct.getProductPrice());
             statement.setString(3, newProduct.getProductShortDescription());
             statement.setString(4, newProduct.getProductLongDescription());
             statement.setInt(5, newProduct.getProductStock());
@@ -122,7 +122,7 @@ public class ProductDAOJDBC implements ProductDAO {
             statement.setString(1, productName);
             result = statement.executeQuery();
             if (result.next()) {
-                p = new Product(result.getString("productID"), result.getFloat("productPrice"),
+                p = new Product(result.getString("productID"), result.getDouble("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
                         result.getInt("productStock"), result.getString("productImageURL"));
             }
@@ -161,7 +161,7 @@ public class ProductDAOJDBC implements ProductDAO {
             }
             result = statement.executeQuery();
             while (result.next()) {
-                p = new Product(result.getString("productID"), result.getFloat("productPrice"),
+                p = new Product(result.getString("productID"), result.getDouble("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
                         result.getInt("productStock"), result.getString("productImageURL"));
                 map.put(p.getProductID(), p);
@@ -204,7 +204,7 @@ public class ProductDAOJDBC implements ProductDAO {
             statement.setString(2, condition);
             result = statement.executeQuery();
             while (result.next()) {
-                p = new Product(result.getString("productID"), result.getFloat("productPrice"),
+                p = new Product(result.getString("productID"), result.getDouble("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
                         result.getInt("productStock"), result.getString("productImageURL"));
                 map.put(p.getProductID(), p);

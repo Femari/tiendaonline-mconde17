@@ -61,7 +61,7 @@ public class CreateServlet extends MyCoolServlet {
                     if (product != null && persistenceManagerProduct.newProduct(product)) {
                         session.setAttribute("product", product);
                         HashMap<String, Product> productList = new HashMap<>();
-                        if(session.getAttribute("productList")==null){
+                        if (session.getAttribute("productList") == null) {
                             session.setAttribute("productList", productList);
                         }
                         productList = (HashMap<String, Product>) session.getAttribute("productList");
@@ -102,7 +102,7 @@ public class CreateServlet extends MyCoolServlet {
         String userEmail = request.getParameter("userEmail");
         String userPassword = request.getParameter("userPassword");
         user = new User(userName, userSurnames, userAdress, userEmail, userPassword);
-        boolean validate = validateUser();
+        boolean validate = validateUser(user);
         if (!validate) {
             return null;
         }
@@ -113,7 +113,7 @@ public class CreateServlet extends MyCoolServlet {
         Sale sale = new Sale();
         String salePaymentMethod = request.getParameter("salePaymentMethod");
         String saleAdress = request.getParameter("saleAdress");
-        boolean validate = validateSale();
+        boolean validate = validateSale(sale);
         if (!validate) {
             return null;
         }
@@ -130,13 +130,14 @@ public class CreateServlet extends MyCoolServlet {
         String productShortDescription = request.getParameter("productShortDescription");
         String productLongDescription = request.getParameter("productLongDescription");
         String productStock = request.getParameter("productStock");
-        boolean validate = validateProduct();
+        String productImageURL = request.getParameter("productImageURL");
+        product = new Product(productID, Double.parseDouble(productPrice), productShortDescription,
+                productLongDescription, Integer.parseInt(productStock), productImageURL);
+        product.setProductID(product.generateProductID());
+        boolean validate = validateProduct(product);
         if (!validate) {
             return null;
         }
-        product = new Product(productID, Float.parseFloat(productPrice), productShortDescription,
-                productLongDescription, Integer.parseInt(productStock), null);
-        product.setProductID(product.generateProductID());
         return product;
     }
 
@@ -147,29 +148,29 @@ public class CreateServlet extends MyCoolServlet {
         String commentProductID = request.getParameter("commentProductID");
         String commentUserEmail = request.getParameter("commentUserEmail");
         String commentContent = request.getParameter("commentContent");
-        boolean validate = validateComment();
+        comment = new Comment(commentID, commentDate, commentProductID, commentUserEmail, commentContent);
+        comment.setCommentID(comment.generateCommentID());
+        boolean validate = validateComment(comment);
         if (!validate) {
             return null;
         }
-        comment = new Comment(commentID, commentDate, commentProductID, commentUserEmail, commentContent);
-        comment.setCommentID(comment.generateCommentID());
         return comment;
     }
 
     //Falta por hacer las validaciones:
-    private boolean validateUser() {
+    private boolean validateUser(User user) {
         return true;
     }
 
-    private boolean validateSale() {
+    private boolean validateSale(Sale sale) {
         return true;
     }
 
-    private boolean validateProduct() {
+    private boolean validateProduct(Product product) {
         return true;
     }
 
-    private boolean validateComment() {
+    private boolean validateComment(Comment comment) {
         return true;
     }
 }

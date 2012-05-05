@@ -35,10 +35,12 @@ public class AddToShoppingCartServlet extends MyCoolServlet {
             Logger.getLogger(AddToShoppingCartServlet.class.getName()).log(Level.SEVERE,
                     "El usuario no se ha registrado", authentication);
         }
-        if (productList.get(productName).getProductStock() > amount) {
+        Product product = productList.get(productName);
+        if (product.getProductStock() >= (amount+cart.getNumberOfProducts(product))) {
             for (int i = 0; i < amount; i++) {
                 cart.addProduct(productList.get(productName));
             }
+            session.setAttribute("shoppingCart", cart);
             goToURL(successForm, request, response);
         } else {
             goToURL(errorForm, request, response);

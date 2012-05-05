@@ -101,13 +101,12 @@ public class UserDAOFile implements UserDAO {
 
     @Override
     public boolean connection(String user, String pass, String destiny, String driver) {
-        this.userFile = user;
+        this.userFile = destiny + "users";
         File f = new File(this.userFile);
-        System.out.println("Ruta del Archivo: " + f.getAbsolutePath());
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
-            if (f.exists() && f.isFile()) {
+            if (f.exists() && f.isFile() && f.length()>0) {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfUsers = (Integer) ois.readObject();
@@ -116,8 +115,9 @@ public class UserDAOFile implements UserDAO {
                     getUserMap().put(u.getUserEmail(), u);
                 }
             } else {
-                f.createNewFile();
-                System.out.println("Ruta del Archivo: " + f.getAbsolutePath());
+                if(f.createNewFile()){
+                    return true;
+                }
             }
         } catch (ClassNotFoundException | IOException ex) {
             log.log(Level.WARNING, "No se pudo crear la Conexion correctamente", ex);
@@ -144,7 +144,6 @@ public class UserDAOFile implements UserDAO {
     @Override
     public boolean disconnect() {
         File f = new File(this.userFile);
-        System.out.println("Ruta del Archivo(Desconectar Usuario): " + f.getAbsolutePath());
         OutputStream os = null;
         ObjectOutputStream oos = null;
         try {

@@ -96,7 +96,7 @@ public class Sale implements Serializable {
                 ShoppingCart cart = s.getSaleShoppingCart();
                 for (int i = 0; i < cart.getNumberOfProducts(); i++) {
                     String productName = cart.getShoppingCart().get(i).getProductShortDescription();
-                    float productPrice = cart.getShoppingCart().get(i).getProductPrice();
+                    double productPrice = cart.getShoppingCart().get(i).getProductPrice();
                     pw.println(productName + " " + productPrice + "€" + "\n");
                 }
                 pw.println("Gracias por su compra. Esperemos que la disfrute.");

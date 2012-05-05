@@ -1,6 +1,7 @@
 package webactions.otheractions;
 
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,8 +37,9 @@ public class AuthenticationServlet extends MyCoolServlet {
                 }
                 break;
             case "admin":
-                if (userName != null && userName.equals("electronixstoreadmin")
-                        && userPass.equals("electronixstorelpi")) {
+                String userAdmin = "electronixstoreadmin";
+                String userAdminPass = "electronixstorelpi";
+                if (userName.equals(userAdmin) && userPass.equals(userAdminPass)) {
                     session.setAttribute("authentication", true);
                     session.setAttribute("admin", true);
                     goToURL(successForm, request, response);

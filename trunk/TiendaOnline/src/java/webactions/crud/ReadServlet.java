@@ -34,7 +34,7 @@ public class ReadServlet extends MyCoolServlet {
         if (product != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("product", product);
-            goToURL(displayForm, request, response);
+            goToURL(productDetails, request, response);
         } else if (sale != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("sale", sale);
