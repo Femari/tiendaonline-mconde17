@@ -46,13 +46,15 @@
                         </div>
                         <div class="bottom_prod_box"></div>             
                         <div class="prod_details_tab">
-                            <a href="#" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
-                                <img src="/TiendaOnline/images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="/WEB-INF/view/errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
-                                <img src="/TiendaOnline/images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
-                            <a href="/WEB-INF/view/errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
-                                <img src="/TiendaOnline/images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
-                            <a href="/TiendaOnline/webactions/productdetails.jsp" class="prod_details">Detalles</a>            
+                                <!--<input name="form" type="hidden" value="readServlet"></input>
+                                <input name="type" type="hidden" value="product"></input>-->
+                                <a href="/TiendaOnline/FrontController?form=addToShoppingCartServlet&productName=<%= p.getProductID() %>&productAmount=1" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
+                                    <img src="/TiendaOnline/images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
+                                <a href="/WEB-INF/view/errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">
+                                    <img src="/TiendaOnline/images/favs.gif" alt="" title="" border="0" class="left_bt" /></a>
+                                <a href="/WEB-INF/view/errors/error501.html" title="header=[Premios] body=[&nbsp;] fade=[on]">
+                                    <img src="/TiendaOnline/images/favorites.gif" alt="" title="" border="0" class="left_bt" /></a>           
+                                <a href="/TiendaOnline/FrontController?form=readServlet&type=product&condition=<%= p.getProductID()%>" class="prod_details">Detalles</a>            
                         </div>                     
                     </div>
                     <%

@@ -56,9 +56,13 @@
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
                             <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                            <% Boolean authentication = (Boolean) session.getAttribute("authentication");%>
                             <% if (admin != null && admin) {%>
                             <br>Ir al menú de administración<br>
                             <a href="/TiendaOnline/webactionsadmin/admin.jsp">Acceso al menú</a>
+                            <%} else if (authentication != null && authentication) {%>
+                            <br>Ya te has registrado y no eres administrador<br>
+                            <a href="/TiendaOnline/index.jsp">Vuelve a la página principal</a>
                             <%} else {%>
                             <div class="contact_form">
                                 <form action="/TiendaOnline/FrontController" method="post" class="adminlogin">

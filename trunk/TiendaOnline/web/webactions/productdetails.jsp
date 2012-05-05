@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Product"%>
+<% Product product = (Product) request.getAttribute("product"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,21 +53,20 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Lista de Productos < NombredelProducto</span>
+                    Navegación: <span class="current">Lista de Productos < <%= product.getProductShortDescription() %> </span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Motorola 156 MX-VL</div>
+                    <div class="center_title_bar"><%= product.getProductID() %></div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
-                        <div class="center_prod_box_big">            
-
+                        <div class="center_prod_box_big">
                             <div class="product_img_big">
                                 <a href="javascript:popImage('/TiendaOnline/images/imagenotavailable_maxi.jpg','¡¡¡Zoom!!!')" title="header=[Zoom] body=[&nbsp;] fade=[on]">
-                                    <img src="/TiendaOnline/images/imagenotavailable.jpg" alt="" title="" border="0" /></a>
+                                    <img src= <%= "/TiendaOnline/images/" + product.getProductImageURL() %> alt="" title="" border="0" /></a>
                                 <div class="thumbs">
                                     <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]">
                                         <img src="/TiendaOnline/images/imagenotavailable_mini.jpg" alt="" title="" border="0" /></a>
@@ -76,9 +77,9 @@
                                 </div>
                             </div>
                             <div class="details_big_box">
-                                <div class="product_title_big">My Cinema-U3000/DVBT, USB 2.0 TV BOX External, White</div>
+                                <div class="product_title_big"><%= product.getProductShortDescription() %></div>
                                 <div class="specifications">
-                                    Disponibilidad: <span class="blue">En Stock</span><br />
+                                    Disponibilidad: <span class="blue"><%= product.getProductStock() %> En Stock</span><br />
 
                                     Garantía: <span class="blue">24 Meses</span><br />
 
@@ -86,7 +87,7 @@
 
                                     Impuestos Incluidos: <span class="blue">IVA(18%)</span><br />
                                 </div>
-                                <div class="prod_price_big"><span class="reduce">350$</span> <span class="price">270$</span></div>
+                                <div class="prod_price_big"><span class="price"><%= product.getProductPrice() %>€</span></div>
 
                                 <button>Al Carrito!!!</button>
                                 <li class="currencies">Cantidad:
@@ -108,9 +109,7 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <br>El producto es bla bla bla bla bla bla<br>
-                            <br><br>miau miau miau miau miau miau<br>
-                            <br>Gatitooooooooooo!!!<br>
+                            <%= product.getProductLongDescription() %>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
