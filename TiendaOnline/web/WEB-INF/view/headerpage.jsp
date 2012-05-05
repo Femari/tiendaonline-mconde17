@@ -34,7 +34,7 @@
                         <div class="oferta_text">
                             Esto parece que de momento funciona de forma decente xD
                         </div>
-                        <a href="/TiendaOnline/webactions/productdetails.jsp" class="details">Detalles</a>
+                        <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="details">Detalles</a>
                     </div>
                 </div>
                 <div class="oferta_pagination">

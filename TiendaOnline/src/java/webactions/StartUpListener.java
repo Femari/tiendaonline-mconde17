@@ -13,11 +13,12 @@ public class StartUpListener implements ServletContextListener {
     private SaleDAO saleDAO;
     private UserDAO userDAO;
     private CommentDAO commentDAO;
+    private static ServletContext context;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         String destiny, driver, user, password, persistenceMechanism;
-        ServletContext context = sce.getServletContext();
+        context = sce.getServletContext();
         destiny = context.getInitParameter("databaseURL");
         driver = context.getInitParameter("databaseDriver");
         user = context.getInitParameter("databaseUser");
@@ -50,5 +51,9 @@ public class StartUpListener implements ServletContextListener {
             Logger.getLogger(StartUpListener.class.getName()).log(Level.SEVERE,
                     "No se pudo realizar correctamente la desconexión");
         }
+    }
+    
+    public static ServletContext getContext(){
+        return context;
     }
 }

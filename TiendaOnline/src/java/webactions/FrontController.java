@@ -60,6 +60,8 @@ public class FrontController extends MyCoolServlet {
                 case "shoppingCartList":
                     goToURL(shoppingCartList, request, response);
                     break;
+                case "saleForm":
+                    goToURL(saleForm, request, response);
                 default:
                     Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE,
                             "No se pudo establecer el encoding");

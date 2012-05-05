@@ -39,15 +39,13 @@
                     <div class="prod_box">
                         <div class="top_prod_box"></div>
                         <div class="center_prod_box">            
-                            <div class="product_title"><a href="/TiendaOnline/webactions/productdetails.jsp"><%= p.getProductShortDescription()%></a></div>
-                            <div class="product_img"><a href="/TiendaOnline/webactions/productdetails.jsp">
-                                    <img src="/TiendaOnline/images/laptop.gif" alt="" title="" border="0" /></a></div>
+                            <div class="product_title"><a href="/TiendaOnline/FrontController?form=readServlet&type=product&condition=<%= p.getProductID()%>"><%= p.getProductShortDescription()%></a></div>
+                            <div class="product_img"><a href="/TiendaOnline/FrontController?form=readServlet&type=product&condition=<%= p.getProductID()%>">
+                                    <img src="/TiendaOnline/images/<%= p.getProductImageURL() %>" alt="" title="" border="0" /></a></div>
                             <div class="prod_price"><span class="price"><%= p.getProductPrice()%> €</span></div>                        
                         </div>
                         <div class="bottom_prod_box"></div>             
                         <div class="prod_details_tab">
-                                <!--<input name="form" type="hidden" value="readServlet"></input>
-                                <input name="type" type="hidden" value="product"></input>-->
                                 <a href="/TiendaOnline/FrontController?form=addToShoppingCartServlet&productName=<%= p.getProductID() %>&productAmount=1" title="header=[Añadir al Carrito] body=[&nbsp;] fade=[on]">
                                     <img src="/TiendaOnline/images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
                                 <a href="/WEB-INF/view/errors/error501.html" title="header=[Especiales] body=[&nbsp;] fade=[on]">

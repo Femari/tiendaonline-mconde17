@@ -111,15 +111,10 @@ public class CreateServlet extends MyCoolServlet {
 
     Sale generateSaleFromRequest(HttpServletRequest request) {
         Sale sale = new Sale();
-        String salePaymentMethod = request.getParameter("salePaymentMethod");
-        String saleAdress = request.getParameter("saleAdress");
         boolean validate = validateSale(sale);
         if (!validate) {
             return null;
         }
-        sale.setSaleID(sale.generateSaleID());
-        sale.setSalePaymentMethod(salePaymentMethod);
-        sale.setSaleAdress(saleAdress);
         return sale;
     }
 

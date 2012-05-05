@@ -13,9 +13,9 @@
 
         <div class="title_box">Productos Especiales</div>  
         <div class="border_box">
-            <div class="product_title"><a href="/TiendaOnline/webactions/productdetails.jsp">
+            <div class="product_title"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">
                     Motorola 156 MX-VL</a></div>
-            <div class="product_img"><a href="/TiendaOnline/webactions/productdetails.jsp">
+            <div class="product_img"><a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp">
                     <img src="/TiendaOnline/images/laptop.png" alt="" title="" border="0" /></a></div>
             <div class="prod_price"><span class="reduce">350$</span> 
                 <span class="price">270$</span></div>
