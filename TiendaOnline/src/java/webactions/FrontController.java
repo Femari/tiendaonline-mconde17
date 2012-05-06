@@ -24,9 +24,6 @@ public class FrontController extends MyCoolServlet {
             goToURL(errorForm, request, response);
         } else {
             switch (form) {
-                case "displayForm":
-                    goToNamedResource(displayForm, request, response);
-                    break;
                 case "errorForm":
                     goToNamedResource(errorForm, request, response);
                     break;

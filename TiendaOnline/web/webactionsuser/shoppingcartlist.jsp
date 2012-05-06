@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
+        <link href="/TiendaOnline/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
     </head>
@@ -43,8 +44,8 @@
                             <strong>Precio:</strong>    <%= p.getProductPrice()%>           
                             <%
                                 }%>
-                            <% if(cart.getPriceOfShoppingCart()>0 && cart.getNumberOfProducts()>0){%>
-                                <br><br><strong>Precio del carrito:</strong> <%= cart.getPriceOfShoppingCart()%> € <br>
+                            <% if (cart.getPriceOfShoppingCart() > 0 && cart.getNumberOfProducts() > 0) {%>
+                            <br><br><strong>Precio del carrito:</strong> <%= cart.getPriceOfShoppingCart()%> € <br>
                             <form action="/TiendaOnline/FrontController">
                                 <input name="form" value="saleServlet" type="hidden"/>
                                 <button>Realizar la Compra</button>
@@ -53,15 +54,14 @@
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
-                </div>
-            </div><!-- end of center content -->
+                </div><!-- end of center content -->
 
-            <%@include file="/WEB-INF/view/rightpage.jsp" %> 
+                <%@include file="/WEB-INF/view/rightpage.jsp" %> 
 
-        </div><!-- end of main content -->
+            </div><!-- end of main content -->
 
-        <%@include file="/WEB-INF/view/footerpage.jsp" %>
+            <%@include file="/WEB-INF/view/footerpage.jsp" %>
 
-    </div><!-- end of main_container -->
-</body>
+        </div><!-- end of main_container -->
+    </body>
 </html>
