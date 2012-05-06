@@ -14,9 +14,10 @@ public class UpdateServlet extends CreateServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
-        String newName = request.getParameter("newName");
-        Product oldProduct = persistenceManagerProduct.getProduct(newName);
+        String oldProductID = request.getParameter("oldProductID");
+        Product oldProduct = persistenceManagerProduct.getProduct(oldProductID);
         Product newProduct = super.generateProductFromRequest(request);
+        newProduct.setProductID(oldProduct.getProductID());
         if (persistenceManagerProduct.updateProduct(oldProduct, newProduct)) {
             request.setAttribute("product", newProduct);
             request.setAttribute("message", "Modificado con éxito");

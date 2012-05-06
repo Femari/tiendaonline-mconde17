@@ -3,9 +3,14 @@
 <html>
     <div class="top_bar">
         <div class="top_search">
-            <div class="search_text"><a href="#">Buscar Producto:</a></div>
-            <input type="text" class="search_input" name="search" />
-            <input type="image" src="/TiendaOnline/images/search.gif" class="search_bt"/>
+            <form action="/TiendaOnline/FrontController" method="post" class="searchProduct">
+                <input name="form" type="hidden" value="readServlet"></input>
+                <input name="parameter" type="hidden" value="productShortDescription"></input>
+                <div class="search_text">Buscar Producto:</div>
+                <input name="condition" type="text" class="search_input"/>
+                <button style='width:55px; height:28px; border-width:0px; background-color:transparent'>
+                    <center><img src="/TiendaOnline/images/search.gif"/></center></button>
+            </form>
         </div>
 
         <div class="languages">
