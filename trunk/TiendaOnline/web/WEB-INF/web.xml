@@ -69,10 +69,6 @@
         <param-name>updateServlet</param-name>
         <param-value>updateServlet</param-value>
     </context-param>
-    <context-param>
-        <param-name>displayForm</param-name>
-        <param-value>/WEB-INF/view/displayform.jsp</param-value>
-    </context-param>
     <!-- Configuración de la Base de Datos (II) jdbc:derby://localhost:1527/TiendaOnline -->
     <context-param>
         <param-name>databaseURL</param-name>

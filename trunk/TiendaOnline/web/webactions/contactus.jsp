@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Electronix Store</title>
+        <link href="/TiendaOnline/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
         <script type="text/javascript" src="/TiendaOnline/javascripts/jquery-1.7.2.js"></script>
@@ -56,7 +57,7 @@
                                 </div>
 
                                 <div class="form_row">
-                                    <a href="/WEB-INF/view/errors/error404.jsp" class="contact"><strong>Enviar</strong></a>
+                                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="contact"><strong>Enviar</strong></a>
                                 </div>      
 
                             </div> 

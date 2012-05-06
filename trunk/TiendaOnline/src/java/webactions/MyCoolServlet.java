@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class MyCoolServlet extends HttpServlet {
 
     protected String persistenceMechanism = null;
-    protected String displayForm = null;
     protected String errorForm = null;
     protected String successForm = null;
     protected String authenticationServlet = null;
@@ -49,7 +48,6 @@ public abstract class MyCoolServlet extends HttpServlet {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
         persistenceMechanism = context.getInitParameter("persistenceMechanism");
-        displayForm = context.getInitParameter("displayForm");
         errorForm = context.getInitParameter("errorForm");
         successForm = context.getInitParameter("successForm");
         authenticationServlet = context.getInitParameter("authenticationServlet");

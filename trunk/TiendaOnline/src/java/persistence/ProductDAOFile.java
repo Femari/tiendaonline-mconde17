@@ -81,7 +81,7 @@ public class ProductDAOFile implements ProductDAO {
 
     @Override
     public boolean connection(String user, String pass, String destiny, String driver) {
-        this.productFile = destiny;
+        this.productFile = destiny + "products";
         File f = new File(this.productFile);
         InputStream is = null;
         ObjectInputStream ois = null;

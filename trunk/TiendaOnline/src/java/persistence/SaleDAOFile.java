@@ -81,7 +81,7 @@ public class SaleDAOFile implements SaleDAO {
 
     @Override
     public boolean connection(String user, String pass, String destiny, String driver) {
-        this.saleFile = user;
+        this.saleFile = destiny + "sales";
         File f = new File(this.saleFile);
         InputStream is = null;
         ObjectInputStream ois = null;
