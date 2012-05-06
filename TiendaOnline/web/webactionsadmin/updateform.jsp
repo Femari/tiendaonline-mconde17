@@ -24,38 +24,51 @@
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Contacta con Nosotros:</div>
+                    <div class="center_title_bar">Actualizar Producto:</div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <form action="/TiendaOnline/FrontController" method="post" class="updateProduct">
+                                    <input name="form" type="hidden" value="updateServlet"></input>
+                                    <input name="type" type="hidden" value="product"></input>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>ID:</strong></label>
+                                        <input name="oldProductID" type="text" class="contact_input" />
+                                    </div>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Nombre:</strong></label>
+                                        <input name="productShortDescription" type="text" class="contact_input" />
+                                    </div>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Precio:</strong></label>
+                                        <input name="productPrice" type="text" class="contact_input" />
+                                    </div>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Stock:</strong></label>
+                                        <input name="productStock" type="text" class="contact_input" />
+                                    </div>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Descripción Larga:</strong></label>
+                                        <input name="productLongDescription" type="text" class="contact_input" />
+                                    </div>
+                                    
+                                    <div class="form_row">
+                                        <label class="contact"><strong>URL de la Imagen:</strong></label>
+                                        <input name="productImageURL" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Nombre:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>  
-
-                                <div class="form_row">
-                                    <label class="contact"><strong>Email:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
-
-                                <div class="form_row">
-                                    <label class="contact"><strong>Título:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
-
-                                <div class="form_row">
-                                    <label class="contact"><strong>Mensaje:</strong></label>
-                                    <textarea class="contact_textarea" ></textarea>
-                                </div>
-
-                                <div class="form_row">
-                                    <a href="#" class="contact">Enviar</a>
-                                </div>      
-
+                                    <div class="form_row">
+                                        <button>Actualizar</button>
+                                    </div>      
+                                </form>
                             </div> 
 
                         </div>

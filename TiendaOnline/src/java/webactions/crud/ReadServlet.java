@@ -1,6 +1,8 @@
 package webactions.crud;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,10 +25,16 @@ public class ReadServlet extends MyCoolServlet {
         String parameter = request.getParameter("parameter");
         String condition = request.getParameter("condition");
         Product product;
-        if (parameter == null){
+        if (parameter == null) {
             product = persistenceManagerProduct.getProduct(condition);
-        }else{
-            product = (Product) persistenceManagerProduct.getProductMap(parameter, condition);
+        } else {
+            Iterator it = persistenceManagerProduct.getProductMap(parameter, condition).entrySet().iterator();
+            if (it.hasNext()) {
+                Map.Entry e = (Map.Entry) it.next();
+                product = (Product) e.getValue();
+            } else{
+                product = null;
+            }
         }
         Sale sale = persistenceManagerSale.getSale(condition);
         User user = persistenceManagerUser.getUser(condition);
