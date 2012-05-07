@@ -25,6 +25,7 @@ public abstract class MyCoolServlet extends HttpServlet {
     protected String productDetails = null;
     protected String shoppingCartList = null;
     protected String confirmationSale = null;
+    protected String productOrSaleList = null;
 
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException;
@@ -61,6 +62,7 @@ public abstract class MyCoolServlet extends HttpServlet {
         productDetails = context.getInitParameter("productDetails");
         shoppingCartList = context.getInitParameter("shoppingCartList");
         confirmationSale = context.getInitParameter("confirmationSale");
+        productOrSaleList = context.getInitParameter("productOrSaleList");
     }
 
     @Override

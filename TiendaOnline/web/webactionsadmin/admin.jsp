@@ -37,6 +37,7 @@
                                 <br><a href="/TiendaOnline/webactionsadmin/updateform.jsp">Modificar Producto</a>
                                 <br><a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Producto</a>
                                 <br><br><a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Venta</a>
+                                <br><a href="/TiendaOnline/FrontController?form=readServlet&parameter=all">Mostrar todas las ventas</a>
                             </div> 
 
                         </div>

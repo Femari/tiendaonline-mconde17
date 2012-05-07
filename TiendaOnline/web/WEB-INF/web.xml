@@ -30,6 +30,10 @@
         <param-value>/WEB-INF/view/confirmationsale.jsp</param-value>
     </context-param>
     <context-param>
+        <param-name>productOrSaleList</param-name>
+        <param-value>/webactionsadmin/productorsalelist.jsp</param-value>
+    </context-param>
+    <context-param>
         <param-name>mainForm</param-name>
         <param-value>/index.jsp</param-value>
     </context-param>

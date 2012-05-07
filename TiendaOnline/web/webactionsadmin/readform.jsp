@@ -21,10 +21,10 @@
                     },
                     messages: {
                         parameter: {
-                            required: "Es necesario un nombre para el producto"
+                            required: "Es necesario un parámetro de búsqueda"
                         },
                         condition: {
-                            required: "El producto debe tener un precio"
+                            required: "Es necesaria una condición"
                         }
                     }
                 });
@@ -43,11 +43,11 @@
                         }
                     },
                     messages: {
-                        productShortDescription: {
-                            required: "Es necesario un nombre para el producto"
+                        parameter: {
+                            required: "Es necesario un parámetro para la búsqueda"
                         },
-                        productPrice: {
-                            required: "El producto debe tener un precio"
+                        condition: {
+                            required: "Es necesario una condición para la búsqueda"
                         }
                     }
                 });
@@ -65,19 +65,20 @@
                 <%@include file="/WEB-INF/view/titlepage.jsp" %>
 
                 <div class="crumb_navigation">
-                    Navegación: <span class="current">Buscar Producto (Admin)</span>
+                    Navegación: <span class="current">Buscar Producto o Venta (Admin)</span>
                 </div>        
 
                 <%@include file="/WEB-INF/view/leftpage.jsp" %>
 
                 <div class="center_content">
-                    <div class="center_title_bar">Buscar Producto:</div>
+                    <div class="center_title_bar">Buscar Producto o Venta:</div>
 
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <br>Buscar Producto:<br>
                                 <form action="/TiendaOnline/FrontController" method="post" class="readProduct">
                                     <input name="form" type="hidden" value="readServlet"></input>
                                     <input name="type" type="hidden" value="product"></input>  
@@ -114,6 +115,7 @@
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <br>Buscar Venta:<br>
                                 <form action="/TiendaOnline/FrontController" method="post" class="readSale">
                                     <input name="form" type="hidden" value="readServlet"></input>
                                     <input name="type" type="hidden" value="sale"></input>  
