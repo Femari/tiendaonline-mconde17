@@ -128,7 +128,7 @@ public class UserDAOJDBC implements UserDAO {
                             result.getString("userAdress"), result.getString("userEmail"),
                             result.getString("userPassword"), result.getBoolean("userPrivileged"));
                 }
-                if (u!=null){
+                if (u != null) {
                     response = true;
                 }
             } catch (SQLException ex) {

@@ -139,6 +139,11 @@ public class Sale implements Serializable {
                     equals = true;
                 }
                 break;
+            case "saleAdress":
+                if (this.saleAdress.equals(condition)) {
+                    equals = true;
+                }
+                break;
             default:
                 equals = false;
                 break;

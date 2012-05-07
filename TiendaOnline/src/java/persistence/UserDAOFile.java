@@ -59,14 +59,14 @@ public class UserDAOFile implements UserDAO {
     public boolean userAuthentication(String userEmail, String userPass) {
         boolean response;
         if (userEmail != null && userPass != null) {
-            if(getUserMap().containsKey(userEmail)){
-                 User u = getUser(userEmail);
-                 if (u.getUserPassword().equals(userPass)){
-                     response = true;
-                 }else{
-                     response = false;
-                 }
-            }else{
+            if (getUserMap().containsKey(userEmail)) {
+                User u = getUser(userEmail);
+                if (u.getUserPassword().equals(userPass)) {
+                    response = true;
+                } else {
+                    response = false;
+                }
+            } else {
                 response = false;
             }
         } else {
@@ -106,7 +106,7 @@ public class UserDAOFile implements UserDAO {
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
-            if (f.exists() && f.isFile() && f.length()>0) {
+            if (f.exists() && f.isFile() && f.length() > 0) {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfUsers = (Integer) ois.readObject();
@@ -115,7 +115,7 @@ public class UserDAOFile implements UserDAO {
                     getUserMap().put(u.getUserEmail(), u);
                 }
             } else {
-                if(f.createNewFile()){
+                if (f.createNewFile()) {
                     return true;
                 }
             }
@@ -124,14 +124,14 @@ public class UserDAOFile implements UserDAO {
             return false;
         } finally {
             try {
-                if (ois!=null){
+                if (ois != null) {
                     ois.close();
                 }
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
-                if (is != null){
+                if (is != null) {
                     is.close();
                 }
             } catch (IOException ex3) {
