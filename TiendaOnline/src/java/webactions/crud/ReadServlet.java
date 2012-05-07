@@ -37,7 +37,7 @@ public class ReadServlet extends MyCoolServlet {
             productResult = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter, condition);
             product = null;
         }
-        
+
         if (parameter == null) {
             sale = persistenceManagerSale.getSale(condition);
             saleResult = null;
@@ -52,8 +52,10 @@ public class ReadServlet extends MyCoolServlet {
         User user = persistenceManagerUser.getUser(condition);
         Comment comment = persistenceManagerComment.getComment(condition);
         if (product != null) {
+            HashMap<String, Comment> commentList = (HashMap<String, Comment>) persistenceManagerComment.getCommentMap("productID", product.getProductID());
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("product", product);
+            request.setAttribute("commentList", commentList);
             goToURL(productDetails, request, response);
         } else if (product == null && productResult != null && admin != null && admin) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
