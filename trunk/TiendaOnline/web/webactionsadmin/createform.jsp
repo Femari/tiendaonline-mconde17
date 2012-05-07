@@ -7,6 +7,55 @@
         <link href="/TiendaOnline/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+                
+                $('form.createproduct').validate({
+                    rules: {
+                        productShortDescription: {
+                            required: true
+                        },
+                        productPrice: {
+                            required: true,
+                            number: true,
+                            minlength: 1
+                        },
+                        productStock: {
+                            required: true,
+                            number: true,
+                            minlength: 1
+                        },
+                        productLongDescription: {
+                            required: true
+                        },
+                        productImageURL: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        productShortDescription: {
+                            required: "Es necesario un nombre para el producto"
+                        },
+                        productPrice: {
+                            required: "El producto debe tener un precio",
+                            number: "El precio no puede contener letras, sólo números",
+                            minlength: "Al menos debe tener 1 número"
+                        },
+                        productStock: {
+                            required: "El producto debe tener un stock",
+                            number: "El stock no puede contener letras, sólo números",
+                            minlength: "Al menos debe tener 1 número"
+                        },
+                        productLongDescription: {
+                            required: "La descripción del producto es obligatoria"
+                        },
+                        productImageURL: {
+                            required: "El producto debe tener una imagen. Si no existe pon: imagenotavailable.jpg"
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -32,7 +81,7 @@
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
-                                <form action="/TiendaOnline/FrontController" method="post" class="createProduct">
+                                <form action="/TiendaOnline/FrontController" method="post" class="createproduct">
                                     <input name="form" type="hidden" value="createServlet"></input>
                                     <input name="type" type="hidden" value="product"></input>  
                                     <div class="form_row">

@@ -68,10 +68,10 @@
                             <% User user = (User) session.getAttribute("user");%>
                             <br><b>Ya te has registrado</b><br>
                             <br>Estos son tus datos:<br>
-                            <br><br><b>Nombre:</b><br><%= user.getUserName() %>
-                            <br><br><b>Apellidos:</b><br><%= user.getUserSurnames() %>
-                            <br><br><b>Dirección:</b><br><%= user.getUserAdress() %>
-                            <br><br><b>E-mail:</b><br><%= user.getUserEmail() %>
+                            <br><br><b>Nombre:</b><br><%= user.getUserName()%>
+                            <br><br><b>Apellidos:</b><br><%= user.getUserSurnames()%>
+                            <br><br><b>Dirección:</b><br><%= user.getUserAdress()%>
+                            <br><br><b>E-mail:</b><br><%= user.getUserEmail()%>
                             <br><br>
                             <a href="/TiendaOnline/index.jsp">Vuelve a la página principal</a>
                             <%} else {%>

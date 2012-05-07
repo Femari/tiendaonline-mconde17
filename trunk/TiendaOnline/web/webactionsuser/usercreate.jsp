@@ -55,7 +55,7 @@
                         },
                         userPassword: {
                             minlength: "La contraseña debe tener entre 8 y 30 caracteres",
-                            maxlength: "La contraseña tiene más de 30 caracteres",
+                            maxlength: "La contraseña no puede tener más de 30 caracteres",
                             required: "La contraseña es obligatoria..."
                         },
                         userPasswordRepeat: {

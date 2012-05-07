@@ -10,6 +10,41 @@
         <script type="text/javascript" src="/TiendaOnline/javascripts/jquery-1.7.2.js"></script>
         <script type="text/javascript" src="/TiendaOnline/javascripts/jquery.validate.js"></script>
         <script type="text/javascript" src="/TiendaOnline/javascripts/additional-methods.js"></script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+	
+                $('form.contactUs').validate({
+                    rules: {
+                        contactUsName: {
+                            required: true
+                        },
+                        contactUsEmail: {
+                            required: true
+                        },
+                        contactUsTitle: {
+                            required: true
+                        },
+                        contactUsMessage: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        contactUsName: {
+                            required: "Necesitamos su nombre para darle una respuesta"
+                        },
+                        contactUsEmail: {
+                            required: "Necesitamos una forma de comunicarnos con usted"
+                        },
+                        contactUsTitle: {
+                            required: "El título o asunto sobre el contacto es obligatorio"
+                        },
+                        contactUsMessage: {
+                            required: "Sin mensaje no hacemos nada..."
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -35,33 +70,34 @@
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
+                                <form action="/TiendaOnline/FrontController" method="post" class="contactUs">
+                                    <input name="form" type="hidden" value="errorForm"></input> 
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Nombre*:</strong></label>
+                                        <input name="contactUsName" type="text" class="contact_input" />
+                                    </div>  
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Nombre:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>  
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Email*:</strong></label>
+                                        <input name="contactUsEmail" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Email:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Título*:</strong></label>
+                                        <input name ="contactUsTitle" type="text" class="contact_input" />
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Título:</strong></label>
-                                    <input type="text" class="contact_input" />
-                                </div>
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Mensaje*:</strong></label>
+                                        <textarea name="contactUsMessage" class="contact_textarea" ></textarea>
+                                    </div>
 
-                                <div class="form_row">
-                                    <label class="contact"><strong>Mensaje:</strong></label>
-                                    <textarea class="contact_textarea" ></textarea>
-                                </div>
-
-                                <div class="form_row">
-                                    <a href="/TiendaOnline/WEB-INF/view/errors/error404.jsp" class="contact"><strong>Enviar</strong></a>
-                                </div>      
-
+                                    <div class="form_row">
+                                        <button><strong>Enviar</strong></button>
+                                    </div>      
+                                </form>
                             </div> 
-
+                            *Campos Obligatorios
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

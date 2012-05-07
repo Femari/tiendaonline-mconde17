@@ -101,7 +101,7 @@
                                             <option value="5">5</option>
                                         </select>
                                     </li>
-                                    </input>
+                                    <!--</input>-->
                                     <button>Al Carrito!!!</button>
                                 </div>
                             </form>

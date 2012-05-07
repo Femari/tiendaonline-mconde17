@@ -26,10 +26,6 @@
         <param-value>/webactionsuser/shoppingcartlist.jsp</param-value>
     </context-param>
     <context-param>
-        <param-name>saleForm</param-name>
-        <param-value>/webactionsuser/saleform.jsp</param-value>
-    </context-param>
-    <context-param>
         <param-name>confirmationSale</param-name>
         <param-value>/WEB-INF/view/confirmationsale.jsp</param-value>
     </context-param>

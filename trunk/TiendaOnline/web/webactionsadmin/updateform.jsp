@@ -7,6 +7,61 @@
         <link href="/TiendaOnline/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+                
+                $('form.updateProduct').validate({
+                    rules: {
+                        oldProductID:{
+                            required: true
+                        },
+                        productShortDescription: {
+                            required: true
+                        },
+                        productPrice: {
+                            required: true,
+                            number: true,
+                            minlength: 1
+                        },
+                        productStock: {
+                            required: true,
+                            number: true,
+                            minlength: 1
+                        },
+                        productLongDescription: {
+                            required: true
+                        },
+                        productImageURL: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        oldProductID:{
+                            required: "Sin el ID no se puede modificar el producto"  
+                        },
+                        productShortDescription: {
+                            required: "Es necesario un nombre para el producto"
+                        },
+                        productPrice: {
+                            required: "El producto debe tener un precio",
+                            number: "El precio no puede contener letras, sólo números",
+                            minlength: "Al menos debe tener 1 número"
+                        },
+                        productStock: {
+                            required: "El producto debe tener un stock",
+                            number: "El stock no puede contener letras, sólo números",
+                            minlength: "Al menos debe tener 1 número"
+                        },
+                        productLongDescription: {
+                            required: "La descripción del producto es obligatoria"
+                        },
+                        productImageURL: {
+                            required: "El producto debe tener una imagen. Si no existe pon: imagenotavailable.jpg"
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -35,32 +90,32 @@
                                 <form action="/TiendaOnline/FrontController" method="post" class="updateProduct">
                                     <input name="form" type="hidden" value="updateServlet"></input>
                                     <input name="type" type="hidden" value="product"></input>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>ID:</strong></label>
                                         <input name="oldProductID" type="text" class="contact_input" />
                                     </div>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>Nombre:</strong></label>
                                         <input name="productShortDescription" type="text" class="contact_input" />
                                     </div>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>Precio:</strong></label>
                                         <input name="productPrice" type="text" class="contact_input" />
                                     </div>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>Stock:</strong></label>
                                         <input name="productStock" type="text" class="contact_input" />
                                     </div>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>Descripción Larga:</strong></label>
                                         <input name="productLongDescription" type="text" class="contact_input" />
                                     </div>
-                                    
+
                                     <div class="form_row">
                                         <label class="contact"><strong>URL de la Imagen:</strong></label>
                                         <input name="productImageURL" type="text" class="contact_input" />

@@ -14,54 +14,18 @@
         <script type="text/javascript" src="/TiendaOnline/javascripts/additional-methods.js"></script>
         <script type="text/javascript" charset="UTF-8">
             $(document).ready(function(){
-	
-                $('form.usercreate').validate({
+                $('form.confirmationSale').validate({
                     rules: {
-                        userName: {
-                            required: true
+                        saleAdress: {
+                            required: false
                         },
-                        userSurnames: {
-                            required: true
-                        },
-                        userAdress: {
-                            required: true
-                        },
-                        userEmail: {
-                            required: true,
-                            email: true
-                        },
-                        userPassword: {
-                            minlength: 8,
-                            maxlength: 30,
-                            required: true
-                        },
-                        userPasswordRepeat: {
-                            equalTo: ".userPassword",
+                        salePaymentMethod: {
                             required: true
                         }
                     },
                     messages: {
-                        userName: {
-                            required:"Tu nombre es obligatorio..."
-                        },
-                        userSurnames: {
-                            required:"Tus apellidos son obligatorios..."
-                        },
-                        userAdress: {
-                            required:"Tu dirección es obligatoria..."
-                        },
-                        userEmail: {
-                            required: "El e-mail es obligatorio: Es la forma de acceder a tu cuenta",
-                            email: "Tu e-mail debe tener un formato correcto tipo: nombre@dominio.com"
-                        },
-                        userPassword: {
-                            minlength: "La contraseña debe tener entre 8 y 30 caracteres",
-                            maxlength: "La contraseña tiene más de 30 caracteres",
-                            required: "La contraseña es obligatoria..."
-                        },
-                        userPasswordRepeat: {
-                            equalTo: "Las contraseñas no son iguales",
-                            required: "Repetir la contraseña es obligatorio..."
+                        salePaymentMethod: {
+                            required:"El método de Pago es obligatorio"
                         }
                     }
                 });
@@ -101,30 +65,28 @@
                                 <br> Hola <strong><%= user.getUserName() + " " + user.getUserSurnames()%></strong>, 
                                 Para finalizar la compra rellena los siguientes datos:<br>
                                 <div class="contact_form">
-                                    <form action="/TiendaOnline/FrontController" method="post" class="usercreate">
+                                    <form action="/TiendaOnline/FrontController" method="post" class="confirmationSale">
                                         <input name="form" type="hidden" value="saleServlet"></input>
                                         <div class="form_row">
                                             <label class="contact"><strong>Dirección de Envío*:</strong></label>
                                             <input name="saleAdress" type="text" class="contact_input" />
-                                        </div>  
-                                        <div class="form_row">
-                                            <li class="currencies">Forma de Pago*:
-                                                <select name="salePaymentMethod">
-                                                    <option value="Tarjeta">Tarjeta</option>
-                                                    <option value="Transferencia Bancaria">Transferencia Bancaria</option>
-                                                    <option value="Contrareembolso">Contrareembolso</option>
-                                                </select>
-                                            </li>
                                         </div>
-                                        <div class="form_row">
-                                            <button>¡¡¡Crear Usuario!!!</button>
-                                        </div>
+                                        <br>*Si no introduces Dirección de Envío se usará la que introducistes cuando te registrastes<br>
+                                        <li class="currencies">Forma de Pago**:
+                                            <select name="salePaymentMethod">
+                                                <option value="Tarjeta">Tarjeta</option>
+                                                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                                                <option value="Contrareembolso">Contrareembolso</option>
+                                            </select>
+                                        </li>
+                                        <button>¡¡¡Comprar!!!</button>
                                     </form>
                                 </div> 
                             </center>
-                            *Campos obligatorios
+                            **Campo obligatorio
                             <%} else {%>
                             <br> Necesitas una cuenta para poder realizar la comprar...<br>
+                            <br><a href="/TiendaOnline/webactionsuser/usercreate.jsp">Pulsa aquí para crearla</a>
                             <%}
                             %>
                         </div>
