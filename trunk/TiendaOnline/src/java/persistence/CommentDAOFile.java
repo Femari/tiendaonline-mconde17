@@ -81,7 +81,7 @@ public class CommentDAOFile implements CommentDAO {
 
     @Override
     public boolean connection(String user, String pass, String destiny, String driver) {
-        this.commentFile = destiny+"comments";
+        this.commentFile = destiny + "comments";
         File f = new File(this.commentFile);
         InputStream is = null;
         ObjectInputStream ois = null;
@@ -95,7 +95,7 @@ public class CommentDAOFile implements CommentDAO {
                     getCommentMap().put(c.getCommentID(), c);
                 }
             } else {
-                if(f.createNewFile()){
+                if (f.createNewFile()) {
                     return true;
                 }
             }

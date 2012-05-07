@@ -86,7 +86,7 @@ public class SaleDAOFile implements SaleDAO {
         InputStream is = null;
         ObjectInputStream ois = null;
         try {
-            if (f.exists() && f.isFile() && f.length()>0) {
+            if (f.exists() && f.isFile() && f.length() > 0) {
                 is = new FileInputStream(f);
                 ois = new ObjectInputStream(is);
                 int numberOfSales = (Integer) ois.readObject();
@@ -95,7 +95,7 @@ public class SaleDAOFile implements SaleDAO {
                     getSaleMap().put(s.getSaleID(), s);
                 }
             } else {
-                if(f.createNewFile()){
+                if (f.createNewFile()) {
                     return true;
                 }
             }

@@ -23,12 +23,12 @@ public class ShoppingCart implements Serializable {
     public int getNumberOfProducts() {
         return this.getShoppingCart().size();
     }
-    
-    public int getNumberOfProducts(Product product){
+
+    public int getNumberOfProducts(Product product) {
         int numberOfProducts = 0;
         ArrayList<Product> cart = this.getShoppingCart();
-        for (int i=0; i<cart.size(); i++){
-            if(cart.get(i).equals(product)){
+        for (int i = 0; i < cart.size(); i++) {
+            if (cart.get(i).equals(product)) {
                 numberOfProducts++;
             }
         }
