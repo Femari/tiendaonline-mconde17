@@ -7,6 +7,23 @@
         <link href="/TiendaOnline/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" type="text/css" href="/TiendaOnline/css/style.css" />
         <script type="text/javascript" src="/TiendaOnline/javascripts/boxOver.js"></script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+	
+                $('form.deleteProduct').validate({
+                    rules: {
+                        name: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "Sin nombre no se puede borrar nada..."
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 

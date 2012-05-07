@@ -30,7 +30,7 @@
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big"> 
                             <% Boolean admin = (Boolean) session.getAttribute("admin");%>
-                            <% if (admin!= null && admin) {%>
+                            <% if (admin != null && admin) {%>
                             <br>Ir al menú de administración<br>
                             <a href="/TiendaOnline/webactionsadmin/admin.jsp">Acceso al menú</a>
                             <%} else {%>

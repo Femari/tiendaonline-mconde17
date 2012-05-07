@@ -32,10 +32,11 @@
                         <div class="center_prod_box_big">            
 
                             <div class="contact_form">
-                                <a href="/TiendaOnline/webactionsadmin/createform.jsp">Añadir Producto</a>   
-                                <a href="/TiendaOnline/webactionsadmin/deleteform.jsp">Borrar Producto</a>
-                                <a href="/TiendaOnline/webactionsadmin/updateform.jsp">Modificar Producto</a>
-                                <a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Producto</a>
+                                <br><a href="/TiendaOnline/webactionsadmin/createform.jsp">Añadir Producto</a>   
+                                <br><a href="/TiendaOnline/webactionsadmin/deleteform.jsp">Borrar Producto</a>
+                                <br><a href="/TiendaOnline/webactionsadmin/updateform.jsp">Modificar Producto</a>
+                                <br><a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Producto</a>
+                                <br><br><a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Venta</a>
                             </div> 
 
                         </div>

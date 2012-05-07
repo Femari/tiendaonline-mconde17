@@ -12,7 +12,7 @@
         <script type="text/javascript" src="/TiendaOnline/javascripts/additional-methods.js"></script>
         <script type="text/javascript" charset="UTF-8">
             $(document).ready(function(){
-	
+                
                 $('form.adminlogin').validate({
                     rules: {
                         userName: {
