@@ -1,5 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Product"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="model.Comment"%>
+<%@page import="java.util.HashMap"%>
 <% Product product = (Product) request.getAttribute("product");%>
 <!DOCTYPE html>
 <html>
@@ -41,6 +45,23 @@
                     writeln('<img name="George" src='+imageURL+' style="display:block"></body></html>');		
                     close();		
                 }}				
+        </script>
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+                
+                $('form.addComment').validate({
+                    rules: {
+                        commentContent: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        commentContent: {
+                            required:"¿Un Comentario sin comentario?"
+                        }
+                    }
+                });
+            });
         </script>
     </head>
     <body>
@@ -118,6 +139,55 @@
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
+
+                    <div class="center_title_bar">Comentarios Sobre el Producto</div>
+
+                    <div class="prod_box_big">
+                        <div class="top_prod_box_big"></div>
+                        <div class="center_prod_box_big">
+                            <% HashMap<String, Comment> commentList = (HashMap<String, Comment>) request.getAttribute("commentList");%>
+                            <% if (commentList != null) {%>
+                            <% Iterator it = commentList.entrySet().iterator();%>
+                            <% while (it.hasNext()) {
+                                    Map.Entry e = (Map.Entry) it.next();
+                                    Comment c = (Comment) e.getValue();
+                                    String userName = c.getCommentUserEmail();
+                                    int position = userName.indexOf('@');%>
+                            <strong>Usuario: </strong><%= c.getCommentUserEmail().substring(0, position)%> <strong>Fecha: </strong><%= c.getCommentDate()%>                                  
+                            <br><strong>Comentario: </strong><%= c.getCommentContent()%><br><br>
+                            <%}
+                                }
+                            %>
+                        </div>
+                        <div class="bottom_prod_box_big"></div>                                
+                    </div>
+                    <div class="center_title_bar">Añadir Comentario sobre este producto:</div>
+
+                    <% Boolean authentication = (Boolean) session.getAttribute("authentication");%>
+                    <% if (authentication != null && authentication) {%>
+                    <div class="prod_box_big">
+                        <div class="top_prod_box_big"></div>
+                        <div class="center_prod_box_big">
+                            <center>
+                                <form action="/TiendaOnline/FrontController" method="post" class="addComment">
+                                    <input name="form" type="hidden" value="createServlet"></input>
+                                    <input name="type" type="hidden" value="comment"></input>
+                                    <input name="commentProductID" type="hidden" value="<%=product.getProductID()%>"></input>
+
+                                    <div class="form_row">
+                                        <label class="contact"><strong>Comentario:</strong></label>
+                                        <input name="commentContent" type="text" class="contact_input" />
+                                    </div>
+
+                                    <div class="form_row">
+                                        <button>Enviar Comentario</button>
+                                    </div>      
+                                </form>
+                            </center>
+                        </div>
+                        <div class="bottom_prod_box_big"></div>                                
+                    </div>
+                    <%}%>
 
                 </div><!-- end of center content -->
 

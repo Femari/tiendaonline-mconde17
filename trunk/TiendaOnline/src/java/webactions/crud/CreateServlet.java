@@ -1,6 +1,7 @@
 package webactions.crud;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -138,12 +139,14 @@ public class CreateServlet extends MyCoolServlet {
 
     Comment generateCommentFromRequest(HttpServletRequest request) {
         Comment comment;
+        HttpSession session = request.getSession();
         String commentID = "";
-        String commentDate = request.getParameter("commentDate");
+        Date date = new Date();
+        String commentDate = date.toString();
         String commentProductID = request.getParameter("commentProductID");
-        String commentUserEmail = request.getParameter("commentUserEmail");
+        User user = (User) session.getAttribute("user");
         String commentContent = request.getParameter("commentContent");
-        comment = new Comment(commentID, commentDate, commentProductID, commentUserEmail, commentContent);
+        comment = new Comment(commentID, commentDate, commentProductID, user.getUserEmail(), commentContent);
         comment.setCommentID(comment.generateCommentID());
         boolean validate = validateComment(comment);
         if (!validate) {
