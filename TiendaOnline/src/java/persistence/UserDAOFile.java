@@ -18,7 +18,7 @@ public class UserDAOFile implements UserDAO {
     public UserDAOFile() {
     }
 
-    public static UserDAO getImplementation() {
+    public static UserDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new UserDAOFile();
         }

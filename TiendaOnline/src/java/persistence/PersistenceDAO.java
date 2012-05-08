@@ -5,9 +5,9 @@ public class PersistenceDAO {
     public static ProductDAO getProductDAO(String persistenceMechanism) {
         switch (persistenceMechanism) {
             case "file":
-                return ProductDAOFile.getImplementation();
+                return ProductDAOFile.getInstance();
             case "jdbc":
-                return ProductDAOJDBC.getImplementation();
+                return ProductDAOJDBC.getInstance();
             default:
                 return null;
         }
@@ -16,9 +16,9 @@ public class PersistenceDAO {
     public static SaleDAO getSaleDAO(String persistenceMechanism) {
         switch (persistenceMechanism) {
             case "file":
-                return SaleDAOFile.getImplementation();
+                return SaleDAOFile.getInstance();
             case "jdbc":
-                return SaleDAOJDBC.getImplementation();
+                return SaleDAOJDBC.getInstance();
             default:
                 return null;
         }
@@ -27,9 +27,9 @@ public class PersistenceDAO {
     public static UserDAO getUserDAO(String persistenceMechanism) {
         switch (persistenceMechanism) {
             case "file":
-                return UserDAOFile.getImplementation();
+                return UserDAOFile.getInstance();
             case "jdbc":
-                return UserDAOJDBC.getImplementation();
+                return UserDAOJDBC.getInstance();
             default:
                 return null;
         }
@@ -38,9 +38,9 @@ public class PersistenceDAO {
     public static CommentDAO getCommentDAO(String persistenceMechanism) {
         switch (persistenceMechanism) {
             case "file":
-                return CommentDAOFile.getImplementation();
+                return CommentDAOFile.getInstance();
             case "jdbc":
-                return CommentDAOJDBC.getImplementation();
+                return CommentDAOJDBC.getInstance();
             default:
                 return null;
         }

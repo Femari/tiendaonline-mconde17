@@ -18,7 +18,7 @@ public class ProductDAOFile implements ProductDAO {
     public ProductDAOFile() {
     }
 
-    public static ProductDAO getImplementation() {
+    public static ProductDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new ProductDAOFile();
         }

@@ -18,7 +18,7 @@ public class SaleDAOFile implements SaleDAO {
     public SaleDAOFile() {
     }
 
-    public static SaleDAO getImplementation() {
+    public static SaleDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new SaleDAOFile();
         }

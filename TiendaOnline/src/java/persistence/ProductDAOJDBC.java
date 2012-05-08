@@ -17,7 +17,7 @@ public class ProductDAOJDBC implements ProductDAO {
     public ProductDAOJDBC() {
     }
 
-    public static ProductDAO getImplementation() {
+    public static ProductDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new ProductDAOJDBC();
         }
