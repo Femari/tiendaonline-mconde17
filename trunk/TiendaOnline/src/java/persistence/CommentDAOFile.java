@@ -18,7 +18,7 @@ public class CommentDAOFile implements CommentDAO {
     public CommentDAOFile() {
     }
 
-    public static CommentDAO getImplementation() {
+    public static CommentDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new CommentDAOFile();
         }

@@ -21,7 +21,7 @@ public class SaleDAOJDBC implements SaleDAO {
     public SaleDAOJDBC() {
     }
 
-    public static SaleDAO getImplementation() {
+    public static SaleDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new SaleDAOJDBC();
         }
@@ -149,7 +149,7 @@ public class SaleDAOJDBC implements SaleDAO {
             result = statement.executeQuery();
             if (result.next()) {
                 String userEmail = result.getString("userEmail");
-                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                User u = UserDAOJDBC.getInstance().getUser(userEmail);
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),
@@ -193,7 +193,7 @@ public class SaleDAOJDBC implements SaleDAO {
             while (result.next()) {
                 String userEmail = result.getString("userEmail");
                 String saleID = result.getString("saleID");
-                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                User u = UserDAOJDBC.getInstance().getUser(userEmail);
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),
@@ -241,7 +241,7 @@ public class SaleDAOJDBC implements SaleDAO {
             while (result.next()) {
                 String userEmail = result.getString("userEmail");
                 String saleID = result.getString("saleID");
-                User u = UserDAOJDBC.getImplementation().getUser(userEmail);
+                User u = UserDAOJDBC.getInstance().getUser(userEmail);
                 ShoppingCart cart = getShoppingCart(saleID);
                 s = new Sale(result.getString("saleID"), u,
                         cart, result.getString("salePaymentMethod"),

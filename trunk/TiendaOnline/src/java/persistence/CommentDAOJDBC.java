@@ -17,7 +17,7 @@ public class CommentDAOJDBC implements CommentDAO {
     public CommentDAOJDBC() {
     }
 
-    public static CommentDAO getImplementation() {
+    public static CommentDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new CommentDAOJDBC();
         }
