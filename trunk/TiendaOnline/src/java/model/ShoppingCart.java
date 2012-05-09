@@ -51,6 +51,7 @@ public class ShoppingCart implements Serializable {
             p = (Product) it.next();
             total = total + p.getProductPrice();
         }
+        total = Math.rint(total * 100) / 100;
         return total;
     }
 
