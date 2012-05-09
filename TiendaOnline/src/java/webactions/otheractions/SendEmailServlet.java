@@ -44,73 +44,103 @@ public class SendEmailServlet extends MyCoolServlet {
         ServletContext context = StartUpListener.getContext();
         HashMap<String, Product> catalog = (HashMap<String, Product>) context.getAttribute("productList");
         ShoppingCart cart = sale.getSaleShoppingCart();
-        //Ajustar los Stock de productos:
-        ArrayList<Product> productList = cart.getShoppingCart();
-        Iterator it = productList.iterator();
-        while (it.hasNext()) {
-            Product p = (Product) it.next();
-            p.setProductStock(p.getProductStock() - 1);
-            catalog.remove(p.getProductID());
-            catalog.put(p.getProductID(), p);
-        }
-        //Ajustar propiedades del email:
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", HOST);
-        properties.put("mail.smtp.port", PORT);
-        properties.put("mail.smtp.user", USER);
-
-        properties.put("mail.smtp.auth", AUTH);
-        properties.put("mail.smtp.starttls.enable", STARTTLS);
-        properties.put("mail.smtp.debug", DEBUG);
-
-        properties.put("mail.smtp.socketFactory.port", PORT);
-        properties.put("mail.smtp.socketFactory.class", SOCKET_FACTORY);
-        properties.put("mail.smtp.socketFactory.fallback", "false");
-
-        Session sessionEmail = Session.getDefaultInstance(properties);
-        sessionEmail.setDebug(true);
-
-        MimeMessage message = new MimeMessage(sessionEmail);
-        //Ajustar campos del email:
-        try {
-            message.setText("Su pedido ha sido tramitado con éxito."
-                    + "\nEn breve escucharás el timbre y podrás disfrutar de tu compra ;)"
-                    + "\n\nEstos son los productos que has comprado: \n"
-                    + cart.listShoppingCart()
-                    + "\n\nGracias por confiar en Electronix. Esperamos que quede satisfecho");
-            message.setSubject("ELECTRONIX - Factura Nº:" + sale.getSaleID());
-            message.setFrom(new InternetAddress(USER));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(sale.getSaleClient().getUserEmail()));
-            message.saveChanges();
-        } catch (javax.mail.MessagingException ex) {
-            Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
-                    "Fallo al crear el cuerpo del Email", ex);
-        }
-        Transport transport = null;
-        //Enviar el email:
-        try {
-            transport = sessionEmail.getTransport("smtps");
-            transport.connect(HOST, USER, PASS);
-            transport.sendMessage(message, message.getAllRecipients());
-            if (transport != null) {
-                session.removeAttribute("sale");
-                session.removeAttribute("shoppingCart");
-                session.setAttribute("authentication", false);
-                session.setAttribute("confirmation", true);
-                context.setAttribute("productList", catalog);
-                goToURL(successForm, request, response);
-            } else {
-                goToURL(errorForm, request, response);
+        Boolean synchronizedCorrect = false;
+        ArrayList<Product> undoUpdateCatalog = new ArrayList<>();
+        synchronized (catalog) {
+            //Ajustar los Stock de productos:
+            ArrayList<Product> productList = cart.getShoppingCart();
+            Iterator it = productList.iterator();
+            while (it.hasNext()) {
+                Product p = (Product) it.next();
+                if (p.getProductStock() > 0) {
+                    undoUpdateCatalog.add(p);
+                    p.setProductStock(p.getProductStock() - 1);
+                    catalog.remove(p.getProductID());
+                    catalog.put(p.getProductID(), p);
+                    synchronizedCorrect = true;
+                } else {
+                    synchronizedCorrect = false;
+                    break;
+                }
             }
-        } catch (javax.mail.MessagingException ex) {
-            Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
-                    "Fallo al crear la conexión para enviar el Email", ex);
-        } finally {
+        }
+        if (synchronizedCorrect) {
+            //Ajustar propiedades del email:
+            Properties properties = new Properties();
+            properties.put("mail.smtp.host", HOST);
+            properties.put("mail.smtp.port", PORT);
+            properties.put("mail.smtp.user", USER);
+
+            properties.put("mail.smtp.auth", AUTH);
+            properties.put("mail.smtp.starttls.enable", STARTTLS);
+            properties.put("mail.smtp.debug", DEBUG);
+
+            properties.put("mail.smtp.socketFactory.port", PORT);
+            properties.put("mail.smtp.socketFactory.class", SOCKET_FACTORY);
+            properties.put("mail.smtp.socketFactory.fallback", "false");
+
+            Session sessionEmail = Session.getDefaultInstance(properties);
+            sessionEmail.setDebug(true);
+
+            MimeMessage message = new MimeMessage(sessionEmail);
+            //Ajustar campos del email:
             try {
-                transport.close();
+                message.setText("Su pedido ha sido tramitado con éxito."
+                        + "\nEn breve escucharás el timbre y podrás disfrutar de tu compra ;)"
+                        + "\n\nEstos son los productos que has comprado: \n"
+                        + cart.listShoppingCart()
+                        + "\n\n Total de la compra: " + cart.getPriceOfShoppingCart()
+                        + "\n Tipo de Pago: " + sale.getSalePaymentMethod()
+                        + "\n\nGracias por confiar en Electronix. Esperamos que quede satisfecho");
+                message.setSubject("ELECTRONIX - Factura Nº:" + sale.getSaleID());
+                message.setFrom(new InternetAddress(USER));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(sale.getSaleClient().getUserEmail()));
+                message.saveChanges();
             } catch (javax.mail.MessagingException ex) {
                 Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
-                        "Fallo al cerrar la conexión para enviar el Email", ex);
+                        "Fallo al crear el cuerpo del Email", ex);
+            }
+            Transport transport = null;
+            //Enviar el email:
+            try {
+                transport = sessionEmail.getTransport("smtps");
+                transport.connect(HOST, USER, PASS);
+                transport.sendMessage(message, message.getAllRecipients());
+                if (transport != null) {
+                    session.removeAttribute("sale");
+                    session.removeAttribute("shoppingCart");
+                    session.setAttribute("authentication", false);
+                    session.setAttribute("confirmation", true);
+                    context.setAttribute("productList", catalog);
+                    goToURL(successForm, request, response);
+                } else {
+                    goToURL(errorForm, request, response);
+                }
+            } catch (javax.mail.MessagingException ex) {
+                Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
+                        "Fallo al crear la conexión para enviar el Email", ex);
+            } finally {
+                try {
+                    transport.close();
+                } catch (javax.mail.MessagingException ex) {
+                    Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE,
+                            "Fallo al cerrar la conexión para enviar el Email", ex);
+                }
+            }
+        } else {
+            synchronized (catalog) {
+                Product pFirst = null;
+                Product pActual;
+                Iterator it = undoUpdateCatalog.iterator();
+                while (it.hasNext()) {
+                    pActual = (Product) it.next();
+                    if (!pFirst.equals(pActual)) {
+                        pFirst = pActual;
+                        catalog.remove(pFirst.getProductID());
+                        catalog.put(pFirst.getProductID(), pFirst);
+                    }
+                }
+                session.setAttribute("productList", catalog);
             }
         }
     }
