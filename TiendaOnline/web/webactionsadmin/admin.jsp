@@ -30,7 +30,8 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-
+                            <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                            <% if (admin != null && admin) {%>
                             <div class="contact_form">
                                 <br><a href="/TiendaOnline/webactionsadmin/createform.jsp">Añadir Producto</a>   
                                 <br><a href="/TiendaOnline/webactionsadmin/deleteform.jsp">Borrar Producto</a>
@@ -39,7 +40,9 @@
                                 <br><br><a href="/TiendaOnline/webactionsadmin/readform.jsp">Buscar Venta</a>
                                 <br><a href="/TiendaOnline/FrontController?form=readServlet&parameter=all">Mostrar todas las ventas</a>
                             </div> 
-
+                            <%} else {%>
+                            <jsp:forward page="/WEB-INF/view/errors/error.jsp"></jsp:forward>
+                            <%}%>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

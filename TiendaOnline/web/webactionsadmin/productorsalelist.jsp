@@ -33,6 +33,8 @@
                 <div class="center_content">
 
                     <div class="center_title_bar">Búsqueda Avanzada</div>
+                    <% Boolean admin = (Boolean) session.getAttribute("admin");%>
+                    <% if (admin != null && admin) {%>
                     <% Map<String, Product> productList = (Map<String, Product>) request.getAttribute("productAdminList");
                         if (productList != null) {
                             Product p;
@@ -64,7 +66,7 @@
                             }
                         }
                     %>
-                     <% Map<String, Sale> saleList = (Map<String, Sale>) request.getAttribute("productSaleList");
+                    <% Map<String, Sale> saleList = (Map<String, Sale>) request.getAttribute("productSaleList");
                         if (saleList != null) {
                             Sale s;
                             Iterator it = saleList.entrySet().iterator();
@@ -75,12 +77,12 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <br>Identificador de Venta: <%= s.getSaleID() %>
-                            <br>Cliente E-mail: <%= s.getSaleClient().getUserEmail() %>
-                            <br>Importe de la Venta: <%= s.getSaleShoppingCart().getPriceOfShoppingCart() %>
-                            <br>Método de Pago: <%= s.getSalePaymentMethod() %>
-                            <br>Dirección de Envío: <%= s.getSaleAdress() %>
-                            <br>Fecha de Venta: <%= s.getSaleDate() %>
+                            <br>Identificador de Venta: <%= s.getSaleID()%>
+                            <br>Cliente E-mail: <%= s.getSaleClient().getUserEmail()%>
+                            <br>Importe de la Venta: <%= s.getSaleShoppingCart().getPriceOfShoppingCart()%>
+                            <br>Método de Pago: <%= s.getSalePaymentMethod()%>
+                            <br>Dirección de Envío: <%= s.getSaleAdress()%>
+                            <br>Fecha de Venta: <%= s.getSaleDate()%>
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
@@ -88,6 +90,10 @@
                             }
                         }
                     %>
+                    <%} else {%>
+                    <jsp:forward page="/WEB-INF/view/errors/error.jsp"></jsp:forward>
+                    <%}%>
+
                 </div><!-- end of center content -->
 
                 <%@include file="/WEB-INF/view/rightpage.jsp" %> 
