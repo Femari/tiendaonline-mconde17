@@ -24,10 +24,10 @@ public class StartUpListener implements ServletContextListener {
         user = context.getInitParameter("databaseUser");
         password = context.getInitParameter("databasePassword");
         persistenceMechanism = context.getInitParameter("persistenceMechanism");
-        productDAO = PersistenceDAO.getProductDAO(persistenceMechanism);
-        saleDAO = PersistenceDAO.getSaleDAO(persistenceMechanism);
-        userDAO = PersistenceDAO.getUserDAO(persistenceMechanism);
-        commentDAO = PersistenceDAO.getCommentDAO(persistenceMechanism);
+        productDAO = PersistenceFactory.getProductDAO(persistenceMechanism);
+        saleDAO = PersistenceFactory.getSaleDAO(persistenceMechanism);
+        userDAO = PersistenceFactory.getUserDAO(persistenceMechanism);
+        commentDAO = PersistenceFactory.getCommentDAO(persistenceMechanism);
         context.setAttribute("productList", productDAO.getProductMap());
         context.setAttribute("saleList", saleDAO.getSaleMap());
         context.setAttribute("userList", userDAO.getUserMap());

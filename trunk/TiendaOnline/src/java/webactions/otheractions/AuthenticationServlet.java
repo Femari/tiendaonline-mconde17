@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.User;
-import persistence.PersistenceDAO;
+import persistence.PersistenceFactory;
 import persistence.UserDAO;
 import webactions.MyCoolServlet;
 
@@ -16,7 +16,7 @@ public class AuthenticationServlet extends MyCoolServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(persistenceMechanism);
+        UserDAO persistenceManagerUser = PersistenceFactory.getUserDAO(persistenceMechanism);
         String userName = request.getParameter("userName");
         String userEmail = request.getParameter("userEmail");
         String userPass = request.getParameter("userPassword");

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Comment;
 import model.Product;
 import persistence.CommentDAO;
-import persistence.PersistenceDAO;
+import persistence.PersistenceFactory;
 import persistence.ProductDAO;
 import webactions.MyCoolServlet;
 
@@ -16,8 +16,8 @@ public class DeleteServlet extends MyCoolServlet {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
-        CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(persistenceMechanism);
+        ProductDAO persistenceManagerProduct = PersistenceFactory.getProductDAO(persistenceMechanism);
+        CommentDAO persistenceManagerComment = PersistenceFactory.getCommentDAO(persistenceMechanism);
         String name = request.getParameter("name");
         Product product = persistenceManagerProduct.getProduct(name);
         Comment comment = persistenceManagerComment.getComment(name);

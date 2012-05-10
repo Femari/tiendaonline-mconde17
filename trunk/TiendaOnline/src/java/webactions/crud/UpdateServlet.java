@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Product;
-import persistence.PersistenceDAO;
+import persistence.PersistenceFactory;
 import persistence.ProductDAO;
 
 public class UpdateServlet extends CreateServlet {
@@ -13,7 +13,7 @@ public class UpdateServlet extends CreateServlet {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
+        ProductDAO persistenceManagerProduct = PersistenceFactory.getProductDAO(persistenceMechanism);
         String oldProductID = request.getParameter("oldProductID");
         Product oldProduct = persistenceManagerProduct.getProduct(oldProductID);
         Product newProduct = super.generateProductFromRequest(request);
