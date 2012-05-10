@@ -22,10 +22,10 @@ public class CreateServlet extends MyCoolServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(persistenceMechanism);
-        SaleDAO persistenceManagerSale = PersistenceDAO.getSaleDAO(persistenceMechanism);
-        ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
-        CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(persistenceMechanism);
+        UserDAO persistenceManagerUser = PersistenceFactory.getUserDAO(persistenceMechanism);
+        SaleDAO persistenceManagerSale = PersistenceFactory.getSaleDAO(persistenceMechanism);
+        ProductDAO persistenceManagerProduct = PersistenceFactory.getProductDAO(persistenceMechanism);
+        CommentDAO persistenceManagerComment = PersistenceFactory.getCommentDAO(persistenceMechanism);
         HttpSession session = request.getSession();
         String type = request.getParameter("type");
 

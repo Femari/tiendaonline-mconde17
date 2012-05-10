@@ -20,10 +20,10 @@ public class ReadServlet extends MyCoolServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Boolean admin = (Boolean) session.getAttribute("admin");
-        ProductDAO persistenceManagerProduct = PersistenceDAO.getProductDAO(persistenceMechanism);
-        SaleDAO persistenceManagerSale = PersistenceDAO.getSaleDAO(persistenceMechanism);
-        UserDAO persistenceManagerUser = PersistenceDAO.getUserDAO(persistenceMechanism);
-        CommentDAO persistenceManagerComment = PersistenceDAO.getCommentDAO(persistenceMechanism);
+        ProductDAO persistenceManagerProduct = PersistenceFactory.getProductDAO(persistenceMechanism);
+        SaleDAO persistenceManagerSale = PersistenceFactory.getSaleDAO(persistenceMechanism);
+        UserDAO persistenceManagerUser = PersistenceFactory.getUserDAO(persistenceMechanism);
+        CommentDAO persistenceManagerComment = PersistenceFactory.getCommentDAO(persistenceMechanism);
         String parameter = request.getParameter("parameter");
         String condition = request.getParameter("condition");
         Product product;

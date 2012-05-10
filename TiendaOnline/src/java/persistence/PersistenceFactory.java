@@ -1,6 +1,6 @@
 package persistence;
 
-public class PersistenceDAO {
+public class PersistenceFactory {
 
     public static ProductDAO getProductDAO(String persistenceMechanism) {
         switch (persistenceMechanism) {
