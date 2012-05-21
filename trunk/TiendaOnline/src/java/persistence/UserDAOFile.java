@@ -57,20 +57,14 @@ public class UserDAOFile implements UserDAO {
 
     @Override
     public boolean userAuthentication(String userEmail, String userPass) {
-        boolean response;
+        boolean response = false;
         if (userEmail != null && userPass != null) {
             if (getUserMap().containsKey(userEmail)) {
                 User u = getUser(userEmail);
                 if (u.getUserPassword().equals(userPass)) {
                     response = true;
-                } else {
-                    response = false;
                 }
-            } else {
-                response = false;
             }
-        } else {
-            response = false;
         }
         return response;
     }

@@ -2,6 +2,8 @@ package webactions.crud;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,12 +28,22 @@ public class ReadServlet extends MyCoolServlet {
         CommentDAO persistenceManagerComment = PersistenceFactory.getCommentDAO(persistenceMechanism);
         String parameter = request.getParameter("parameter");
         String condition = request.getParameter("condition");
+        String lightSearch = request.getParameter("lightsearch");
+        System.out.println(condition);
+        System.out.println("Parametro: " + parameter);
         Product product;
         HashMap<String, Product> productResult;
         Sale sale;
         HashMap<String, Sale> saleResult;
-        if (parameter == null) {
-            product = persistenceManagerProduct.getProduct(condition);
+        if (lightSearch != null) {
+            HashMap<String, Product> productList = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter,condition);
+            Iterator it = productList.entrySet().iterator();
+            if (it.hasNext()){
+                Map.Entry e = (Map.Entry) it.next();
+                product = (Product) e.getValue();
+            } else{
+                product = null;
+            }
             productResult = null;
         } else {
             productResult = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter, condition);
@@ -54,6 +66,7 @@ public class ReadServlet extends MyCoolServlet {
         if (product != null) {
             HashMap<String, Comment> commentList = (HashMap<String, Comment>) persistenceManagerComment.getCommentMap("productID", product.getProductID());
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
+            System.out.println("He llegado aqui");
             request.setAttribute("product", product);
             request.setAttribute("commentList", commentList);
             goToURL(productDetails, request, response);
