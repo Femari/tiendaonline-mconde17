@@ -6,6 +6,7 @@
             <form action="/TiendaOnline/FrontController" method="post" class="searchProduct">
                 <input name="form" type="hidden" value="readServlet"></input>
                 <input name="parameter" type="hidden" value="productShortDescription"></input>
+                <input name="lightsearch" type="hidden" value="true"></input>
                 <div class="search_text">Buscar Producto:</div>
                 <input name="condition" type="text" class="search_input"/>
                 <button style='width:55px; height:28px; border-width:0px; background-color:transparent'>
