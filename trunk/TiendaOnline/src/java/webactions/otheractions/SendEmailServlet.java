@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import model.Product;
 import model.Sale;
 import model.ShoppingCart;
+import persistence.PersistenceFactory;
+import persistence.SaleDAO;
 import webactions.MyCoolServlet;
 import webactions.StartUpListener;
 
@@ -107,6 +109,11 @@ public class SendEmailServlet extends MyCoolServlet {
                 transport.connect(HOST, USER, PASS);
                 transport.sendMessage(message, message.getAllRecipients());
                 if (transport != null) {
+                    HashMap<String, Sale> saleList = (HashMap<String, Sale>) context.getAttribute("saleList");
+                    saleList.put(sale.getSaleID(), sale);
+                    context.setAttribute("saleList", saleList);
+                    SaleDAO sales = PersistenceFactory.getSaleDAO(persistenceMechanism);
+                    sales.newSale(sale);
                     session.removeAttribute("sale");
                     session.removeAttribute("shoppingCart");
                     session.setAttribute("authentication", false);

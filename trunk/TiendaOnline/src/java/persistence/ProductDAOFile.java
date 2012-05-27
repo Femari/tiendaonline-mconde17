@@ -67,7 +67,7 @@ public class ProductDAOFile implements ProductDAO {
 
     @Override
     public Map<String, Product> getProductMap(String parameter, String condition) {
-        Map<String, Product> resultMap = new HashMap<>();
+        Map<String, Product> resultMap = new HashMap<>(getProductMap());
         Iterator it = getProductMap().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry) it.next();

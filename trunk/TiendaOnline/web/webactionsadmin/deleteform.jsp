@@ -47,14 +47,12 @@
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
-                            <% Boolean admin = (Boolean) session.getAttribute("admin");%>
-                            <% if (admin != null && admin) {%>
                             <div class="contact_form">
                                 <form action="/TiendaOnline/FrontController" method="post" class="deleteProduct">
                                     <input name="form" type="hidden" value="deleteServlet"></input>
                                     <input name="type" type="hidden" value="product"></input>  
                                     <div class="form_row">
-                                        <label class="contact"><strong>Nombre de Producto a Borrar:</strong></label>
+                                        <label class="contact"><strong>ID del Producto a Borrar:</strong></label>
                                         <input name="name" type="text" class="contact_input" />
                                     </div>  
 
@@ -63,10 +61,6 @@
                                     </div>      
                                 </form>
                             </div> 
-                            <%} else {%>
-                            <jsp:forward page="/WEB-INF/view/errors/error.jsp"></jsp:forward>
-                            <%}%>
-
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>

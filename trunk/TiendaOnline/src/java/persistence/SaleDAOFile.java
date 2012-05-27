@@ -67,7 +67,7 @@ public class SaleDAOFile implements SaleDAO {
 
     @Override
     public Map<String, Sale> getSaleMap(String parameter, String condition) {
-        Map<String, Sale> resultMap = new HashMap<>();
+        Map<String, Sale> resultMap = new HashMap<>(getSaleMap());
         Iterator it = getSaleMap().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry) it.next();

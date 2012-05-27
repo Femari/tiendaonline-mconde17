@@ -43,7 +43,7 @@ public class SaleServlet extends MyCoolServlet {
             }
         } else {
             Logger.getLogger(SaleServlet.class.getName()).log(Level.SEVERE, "Usuario No Registrado", authentication);
-            goToURL("/TiendaOnline/webactionsuser/usercreate.jsp", request, response);
+            goToURL("/webactionsuser/usercreate.jsp", request, response);
         }
     }
 }

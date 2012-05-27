@@ -72,8 +72,6 @@
 
                 <div class="center_content">
                     <div class="center_title_bar">Buscar Producto o Venta:</div>
-                    <% Boolean admin = (Boolean) session.getAttribute("admin");%>
-                    <% if (admin != null && admin) {%>
                     <div class="prod_box_big">
                         <div class="top_prod_box_big"></div>
                         <div class="center_prod_box_big">            
@@ -147,9 +145,6 @@
                         </div>
                         <div class="bottom_prod_box_big"></div>                                
                     </div>
-                    <%} else {%>
-                    <jsp:forward page="/WEB-INF/view/errors/error.jsp"></jsp:forward>
-                    <%}%>
                 </div><!-- end of center content -->
 
                 <%@include file="/WEB-INF/view/rightpage.jsp" %> 
