@@ -67,7 +67,7 @@ public class CommentDAOFile implements CommentDAO {
 
     @Override
     public Map<String, Comment> getCommentMap(String parameter, String condition) {
-        Map<String, Comment> resultMap = new HashMap<>();
+        Map<String, Comment> resultMap = new HashMap<>(getCommentMap());
         Iterator it = getCommentMap().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry) it.next();

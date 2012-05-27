@@ -29,44 +29,53 @@ public class ReadServlet extends MyCoolServlet {
         String parameter = request.getParameter("parameter");
         String condition = request.getParameter("condition");
         String lightSearch = request.getParameter("lightsearch");
-        System.out.println(condition);
-        System.out.println("Parametro: " + parameter);
+        String type = request.getParameter("type");
         Product product;
         HashMap<String, Product> productResult;
         Sale sale;
         HashMap<String, Sale> saleResult;
-        if (lightSearch != null) {
-            HashMap<String, Product> productList = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter,condition);
+        if (lightSearch != null && type.equals("product")) {
+            HashMap<String, Product> productList = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter, condition);
             Iterator it = productList.entrySet().iterator();
-            if (it.hasNext()){
+            if (it.hasNext()) {
                 Map.Entry e = (Map.Entry) it.next();
                 product = (Product) e.getValue();
-            } else{
+            } else {
                 product = null;
             }
             productResult = null;
-        } else {
+        } else if (parameter.equals("true") && type != null && type.equals("product")) {
+            HashMap<String, Product> productList = (HashMap<String, Product>) persistenceManagerProduct.getProductMap("productID", condition);
+            product = productList.get(condition);
+            productResult = null;
+        } else if (type != null && type.equals("product")) {
             productResult = (HashMap<String, Product>) persistenceManagerProduct.getProductMap(parameter, condition);
             product = null;
+        } else {
+            product = null;
+            productResult = null;
         }
 
-        if (parameter == null) {
+        if (parameter == null && type != null && type.equals("sale")) {
             sale = persistenceManagerSale.getSale(condition);
-            saleResult = null;
-        } else {
+            saleResult = new HashMap<>();
+            saleResult.put(sale.getSaleID(), sale);
+        } else if (type != null && type.equals("sale")) {
             if (parameter.equals("all")) {
                 saleResult = (HashMap<String, Sale>) persistenceManagerSale.getSaleMap();
             } else {
                 saleResult = (HashMap<String, Sale>) persistenceManagerSale.getSaleMap(parameter, condition);
             }
             sale = null;
+        } else {
+            sale = null;
+            saleResult = null;
         }
         User user = persistenceManagerUser.getUser(condition);
         Comment comment = persistenceManagerComment.getComment(condition);
         if (product != null) {
             HashMap<String, Comment> commentList = (HashMap<String, Comment>) persistenceManagerComment.getCommentMap("productID", product.getProductID());
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
-            System.out.println("He llegado aqui");
             request.setAttribute("product", product);
             request.setAttribute("commentList", commentList);
             goToURL(productDetails, request, response);
@@ -74,11 +83,10 @@ public class ReadServlet extends MyCoolServlet {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("productAdminList", productResult);
             goToURL(productOrSaleList, request, response);
-        } else if (sale != null) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
-            request.setAttribute("sale", sale);
-            goToURL(successForm, request, response);
-        } else if (sale == null && saleResult != null && admin != null && admin) {
+            request.setAttribute("saleAdminList", saleResult);
+            goToURL(productOrSaleList, request, response);
+        } else if (saleResult != null && admin != null && admin) {
             request.setAttribute("message", "Tiene la siguiente información almacenada: ");
             request.setAttribute("saleAdminList", saleResult);
             goToURL(productOrSaleList, request, response);

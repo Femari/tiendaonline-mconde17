@@ -205,6 +205,15 @@
         <servlet-name>addToShoppingCartServlet</servlet-name>
         <url-pattern>/otheractions/addToShoppingCartServlet</url-pattern>
     </servlet-mapping>
+    <!-- Filtro de Administración -->
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>webactions.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/webactionsadmin/*</url-pattern>
+    </filter-mapping>
     <!-- Tiempo de vida de la Sesión -->
     <session-config>
         <session-timeout>

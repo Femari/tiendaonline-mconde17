@@ -112,10 +112,6 @@ public class CreateServlet extends MyCoolServlet {
 
     Sale generateSaleFromRequest(HttpServletRequest request) {
         Sale sale = new Sale();
-        boolean validate = validateSale(sale);
-        if (!validate) {
-            return null;
-        }
         return sale;
     }
 
@@ -155,20 +151,18 @@ public class CreateServlet extends MyCoolServlet {
         return comment;
     }
 
-    //Falta por hacer las validaciones:
     private boolean validateUser(User user) {
-        return true;
-    }
-
-    private boolean validateSale(Sale sale) {
-        return true;
+        ValidationMethods validation = new ValidationMethods(user);
+        return validation.validateUser();
     }
 
     private boolean validateProduct(Product product) {
-        return true;
+        ValidationMethods validation = new ValidationMethods(product);
+        return validation.validateProduct();
     }
 
     private boolean validateComment(Comment comment) {
-        return true;
+        ValidationMethods validation = new ValidationMethods(comment);
+        return validation.validateComment();
     }
 }

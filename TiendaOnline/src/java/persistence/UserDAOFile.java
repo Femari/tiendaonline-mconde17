@@ -81,7 +81,7 @@ public class UserDAOFile implements UserDAO {
 
     @Override
     public Map<String, User> getUserMap(String parameter, String condition) {
-        Map<String, User> resultMap = new HashMap<>();
+        Map<String, User> resultMap = new HashMap<>(getUserMap());
         Iterator it = getUserMap().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry) it.next();
