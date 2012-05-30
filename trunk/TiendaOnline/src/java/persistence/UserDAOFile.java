@@ -158,11 +158,13 @@ public class UserDAOFile implements UserDAO {
             return false;
         } finally {
             try {
+                //@Abraham podría ser null
                 oos.close();
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
+                //@Abraham podría ser null
                 os.close();
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);

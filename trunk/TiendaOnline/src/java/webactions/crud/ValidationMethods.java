@@ -159,6 +159,7 @@ public class ValidationMethods {
         return isGoodLength;
     }
 
+    //@Abraham insisto en que yo hubiese puesto un filtro para mirar eso, por si acaso me despistó y no lo compruebo en alguna ocasión
     private boolean checkXSS(String data) {
         if (data.contains("<") || data.contains(">")) {
             return false;

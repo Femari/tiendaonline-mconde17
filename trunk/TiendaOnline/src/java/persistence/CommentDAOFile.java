@@ -144,11 +144,13 @@ public class CommentDAOFile implements CommentDAO {
             return false;
         } finally {
             try {
+                //@Abraham ojo, oos podría ser null
                 oos.close();
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
+                //@Abraham ojo, os podría ser null
                 os.close();
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);

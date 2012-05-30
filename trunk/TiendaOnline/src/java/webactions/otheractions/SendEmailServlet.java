@@ -108,6 +108,7 @@ public class SendEmailServlet extends MyCoolServlet {
                 transport = sessionEmail.getTransport("smtps");
                 transport.connect(HOST, USER, PASS);
                 transport.sendMessage(message, message.getAllRecipients());
+                //@Abraham excusas comparar; si era null ya peto la aplicación…
                 if (transport != null) {
                     HashMap<String, Sale> saleList = (HashMap<String, Sale>) context.getAttribute("saleList");
                     saleList.put(sale.getSaleID(), sale);
@@ -141,6 +142,7 @@ public class SendEmailServlet extends MyCoolServlet {
                 Iterator it = undoUpdateCatalog.iterator();
                 while (it.hasNext()) {
                     pActual = (Product) it.next();
+                    //@Abraham si alguna vez llegamos a esta línea ... NullPointerException
                     if (!pFirst.equals(pActual)) {
                         pFirst = pActual;
                         catalog.remove(pFirst.getProductID());

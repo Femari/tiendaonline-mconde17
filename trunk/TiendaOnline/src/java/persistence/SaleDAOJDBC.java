@@ -368,6 +368,8 @@ public class SaleDAOJDBC implements SaleDAO {
                 p = new Product(result.getString("productID"), result.getDouble("productPrice"),
                         result.getString("productShortDescription"), result.getString("productLongDescription"),
                         result.getInt("productStock"), result.getString("productImageURL"));
+               //@Abraham se nota que no has probado este codigo;
+                //aquí siempre lanza un NullPointerException
                 cart.addProduct(p);
             }
         } catch (SQLException ex) {
