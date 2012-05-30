@@ -144,11 +144,13 @@ public class ProductDAOFile implements ProductDAO {
             return false;
         } finally {
             try {
+                //@Abraham podría ser null
                 oos.close();
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
+                //@Abraham podría ser un
                 os.close();
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);

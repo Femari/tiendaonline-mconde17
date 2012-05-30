@@ -17,7 +17,7 @@ public class SaleDAOFile implements SaleDAO {
 
     public SaleDAOFile() {
     }
-
+//@Abraham esto puede dar problemas de concurrencia; lo hemos visto en PED. Y lo mismo se aplica a todas las dem↓s factorías.
     public static SaleDAO getInstance() {
         if (mechanismOfPersistence == null) {
             mechanismOfPersistence = new SaleDAOFile();
@@ -144,11 +144,13 @@ public class SaleDAOFile implements SaleDAO {
             return false;
         } finally {
             try {
+                //@Abraham podra ser null
                 oos.close();
             } catch (IOException ex2) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex2);
             }
             try {
+                //@Abraham podría ser null
                 os.close();
             } catch (IOException ex3) {
                 log.log(Level.INFO, "No se pudo cerrar el fichero correctamente", ex3);

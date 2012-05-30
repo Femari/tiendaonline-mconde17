@@ -56,6 +56,7 @@ public class ShoppingCart implements Serializable {
     }
 
     public String listShoppingCart() {
+        //@Abraham nunca llames al constructor de String; es una tontería
         String shop = new String();
         Iterator it = shoppingCart.iterator();
         while (it.hasNext()) {
